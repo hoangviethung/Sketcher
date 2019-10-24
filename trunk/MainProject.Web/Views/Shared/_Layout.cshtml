@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+
+    <link rel="shortcut icon" href="@ViewBag.Favicon">
+    <!-- SEO -->
+    <meta name="title" content="@Html.Raw(ViewBag.MetaTitle)" />
+    <meta name="keywords" content="@Html.Raw(ViewBag.MetaKeywords)">
+    <meta name="description" content="@Html.Raw(ViewBag.MetaDescription)">
+
+    <!-- Facebook Open Graph -->
+    <meta property="og:site_name" content="">
+    <meta property="og:type" content="@ViewBag.Type">
+    <meta property="og:title" content="@Html.Raw(ViewBag.MetaTitle)">
+    <meta property="og:description" content="@Html.Raw(ViewBag.MetaDescription)">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="@Html.Raw(ViewBag.MetaImage)">
+
+    @Styles.Render("~/bundles/css")
+
+    @RenderSection("styleList", required: false)
+    <!-- Put jquery here! -->
+</head>
+<body>
+    @Html.Action("ShowHeader", "Home")
+
+    @RenderBody()
+
+    @Html.Action("ShowFooter", "Home")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/js")
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

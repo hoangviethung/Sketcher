@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "Quản lý resource!";
+    var currentUserHelper = new CurrentUserHelper(Request);
+}
+@using MainProject.Framework.Models
+@using MainProject.Core.Enums
+@model MainProject.ServiceAdmin.Model.StringResource.StringResourceViewModel
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>Tài nguyên</h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-home"></i> Trang chủ</a></li>
+            <li><a href="#">Cài đặt</a></li>
+            <li class="active">Tài nguyên</li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-body">
+                        <!-- select -->
+                        <div class="col-xs-12">
+                            <label>
+                                @Html.Raw(TempData["message"])
+                            </label>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label>Lọc theo ngôn ngữ</label>
+                                @Html.DropDownListFor(d => d.LanguageSelectedValue, Model.Languages, new { @onchange = "changeData();", @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <label>Nội dung</label>
+                            <input type="text" class="form-control" value="@(Model.Filter??" ")" name="Filter" id="Filter" onchange="changeData();" />
+                        </div>
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Từ khóa</th>
+                                    <th>Giá trị</th>
+                                    <th>Tác vụ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    int index = 1;
+                                    foreach (var item in Model.ListStringResource)
+                                    {
+                                        <tr class="@(index % 2 == 0 ? "even" : "odd")">
+                                            <td>@(index++)</td>
+                                            <td>@item.Key.Name</td>
+                                            <td>@item.Value</td>
+                                            <td>
+                                                @if (currentUserHelper.CheckHasPermissionOnFeature(EntityManageTypeCollection.ManageResource, PermissionCollection.Edit))
+                                                {
+                                                    <a href="/Admin/ResourceAdmin/Edit/@item.Id" class="btn btn-default" title="Sửa">
+                                                        <i class="fa fa-edit"></i>
+                                                    </a>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                        <div class="dataTables_paginate">
+                            @Html.RenderPagingAdmin(Model.PagingViewModel, new PagingStyleModel() { CurrentItemStyle = "active", DivContainerStyle = "", ItemStyle = "" })
+                        </div>
+                    </div><!-- /.box-body -->
+                </div><!-- /.box -->
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </section>
+</div>
+<script type="text/javascript">
+    function changeData() {
+        var languageId = $("#LanguageSelectedValue")[0].value;
+        var content = $("#Filter")[0].value;
+        window.location = "?languageId=" + languageId + "&filter=" + content.toString().trim();
+    }
+</script>

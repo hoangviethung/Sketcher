@@ -1,0 +1,125 @@
+﻿@{
+    ViewBag.Title = "Chỉnh sửa chi nhánh";
+}
+@model MainProject.ServiceAdmin.Model.Branch.BranchManageViewModel
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Chi nhánh</h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-home"></i>Trang chủ</a></li>
+            <li><a href="#">Nội dung</a></li>
+            <li class="active">Chi nhánh</li>
+            <li class="active">Chỉnh sửa</li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Chỉnh sửa chi nhánh</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="col-md-12">
+                    <!-- Custom Tabs -->
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tab_1" data-toggle="tab">Nội dung</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_1">
+                                @using (Html.BeginForm())
+                                {
+                                    @Html.ValidationSummary(true)
+                                    @Html.HiddenFor(x => x.Id)
+                                    <div class="box-body">
+                                        <div class="form-group">
+                                            <label>Ngôn ngữ</label>
+                                            @Html.DropDownListFor(d => d.LanguageSelectedValue, Model.Languages, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(d => d.LanguageSelectedValue)
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Tên chi nhánh <span style="color: red">*</span></label>
+                                            @Html.EditorFor(d => d.OfficeName, new { htmlAttributes = new { @class = "form-control" }, })
+                                            @Html.ValidationMessageFor(d => d.OfficeName)
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Địa chỉ</label>
+                                            @Html.EditorFor(d => d.Address, new { htmlAttributes = new { @class = "form-control" }, })
+                                            @Html.ValidationMessageFor(d => d.Address)
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Địa chỉ google maps</label>
+                                            @Html.EditorFor(d => d.AddressMap, new { htmlAttributes = new { @class = "form-control" }, })
+                                            @Html.ValidationMessageFor(d => d.AddressMap)
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Email</label>
+                                            @Html.EditorFor(d => d.Email, new { htmlAttributes = new { @class = "form-control" }, })
+                                            @Html.ValidationMessageFor(d => d.Email)
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Điện thoại</label>
+                                            @Html.EditorFor(d => d.Phone, new { htmlAttributes = new { @class = "form-control" }, })
+                                            @Html.ValidationMessageFor(d => d.Phone)
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Fax</label>
+                                            @Html.EditorFor(d => d.Phone, new { htmlAttributes = new { @class = "form-control" }, })
+                                            @Html.ValidationMessageFor(d => d.Phone)
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Lat</label>
+                                            @Html.EditorFor(d => d.Lat, new { htmlAttributes = new { @class = "form-control" }, })
+                                            @Html.ValidationMessageFor(d => d.Lat)
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Lng</label>
+                                            @Html.EditorFor(d => d.Lng, new { htmlAttributes = new { @class = "form-control" }, })
+                                            @Html.ValidationMessageFor(d => d.Lng)
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Thứ tự hiển thị</label>
+                                            @Html.EditorFor(d => d.Order)
+                                            @Html.ValidationMessageFor(d => d.Order)
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Cho phép hiển thị ?</label><br />
+                                            @Html.EditorFor(d => d.IsPublished)
+                                            @Html.ValidationMessageFor(d => d.IsPublished)
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <!-- /.box-body -->
+                                    <div class="box-footer">
+                                        <button type="submit" class="btn btn-primary">Chỉnh sửa</button>
+                                        <button type="button" class="btn btn-danger" onclick="window.location = '/Admin/BranchAdmin/Index';">Cancel</button>
+                                    </div>
+                                }
+                            </div>
+                            <!-- /.tab-pane -->
+                        </div>
+                        <!-- /.tab-content -->
+                    </div>
+                    <!-- nav-tabs-custom -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#tabs").tabs();
+        $('#IsPublished').attr('checked', true);
+        $("#Order").addClass("form-control");
+    });
+</script>

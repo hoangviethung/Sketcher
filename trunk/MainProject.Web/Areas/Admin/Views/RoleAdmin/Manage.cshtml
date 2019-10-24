@@ -1,0 +1,145 @@
+﻿@model MainProject.ServiceAdmin.Model.Role.RoleManageModel
+@{
+    ViewBag.Title = "Quản lý nhóm tài khoản người dùng";
+    var actionText = Model.RoleId != 0 ? "Chỉnh sửa" : "Thêm mới";
+}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Nhóm tài khoản
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="/Admin/HomeAdmin"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+            <li><a href="/Admin/RoleAdmin">Phân quyền nội dung</a></li>
+            <li class="active">Nhóm tài khoản</li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <!-- right column -->
+            <div class="col-md-12">
+                <!-- Horizontal Form -->
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">@actionText nhóm thành viên</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    @using (Html.BeginForm("Manage", "RoleAdmin", FormMethod.Post, new { @class = "form-horizontal" }))
+                    {
+                        @Html.HiddenFor(x => x.RoleId)
+                        <strong style="color: red">@Html.ValidationSummary(true)</strong>
+                        <div class="box-body">
+                            <div class="form-group">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <button class="btn btn-success" type="submit">@actionText</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="group-name">
+                                    Tên nhóm
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.TextBoxFor(d => d.RoleName, new { @class = "form-control col-md-7 col-xs-12" })
+                                    @Html.ValidationMessageFor(d => d.RoleName)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="message">Mô tả</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.TextAreaFor(d => d.RoleDescription, new { @class = "form-control col-md-7 col-xs-12" })
+                                    @Html.ValidationMessageFor(d => d.RoleDescription)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="box-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped jambo_table bulk_action">
+                                            <thead>
+                                                <tr class="headings">
+                                                    <th class="column-title">Quyền </th>
+                                                    <th class="column-title">Tất cả </th>
+                                                    <th class="column-title">Xem </th>
+                                                    <th class="column-title">Thêm</th>
+                                                    <th class="column-title">Sửa </th>
+                                                    <th class="column-title">Xóa </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @{
+                                                    int index = 1;
+                                                    foreach (var featureGroup in Model.FeatureGroups)
+                                                    {
+                                                        <tr class="even pointer">
+                                                            <td class=" " colspan="6"><strong>@featureGroup.FeatureGroupName</strong></td>
+                                                        </tr>
+                                                        foreach (var feature in featureGroup.Features)
+                                                        {
+                                                            var checkAll = Model.ContentIds.Contains(feature.FeatureValue) ? "checked" : string.Empty;
+                                                            var checkView = Model.ViewContentIds.Contains(feature.FeatureValue) ? "checked" : string.Empty;
+                                                            var checkCreate = Model.CreateContentIds.Contains(feature.FeatureValue) ? "checked" : string.Empty;
+                                                            var checkEdit = Model.EditContentIds.Contains(feature.FeatureValue) ? "checked" : string.Empty;
+                                                            var checkDelete = Model.DeleteContentIds.Contains(feature.FeatureValue) ? "checked" : string.Empty;
+
+                                                            <tr class="@((index++) % 2 == 0 ? "even" : "odd") pointer">
+                                                                <td class=" ">@feature.FeatureName</td>
+                                                                <!-- In case: Create Errors -> reload already checked CheckAll buttons-->
+                                                                <td><input type="checkbox" value="@feature.FeatureValue" class="selectAll" name="ContentIds" @checkAll /></td>
+                                                                <!-- Checking available behaviors of content -->
+                                                                <td>
+                                                                    @if (feature.HasViewPermission)
+                                                                    {
+                                                                        <input type="checkbox" name="ViewContentIds" value="@feature.FeatureValue" @checkView />
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    @if (feature.HasCreatePermission)
+                                                                    {
+                                                                        <input type="checkbox" name="CreateContentIds" value="@feature.FeatureValue" @checkCreate>
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    @if (feature.HasEditPermission)
+                                                                    {
+                                                                        <input type="checkbox" name="EditContentIds" value="@feature.FeatureValue" @checkEdit>
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    @if (feature.HasDeletePermission)
+                                                                    {
+                                                                        <input type="checkbox" name="DeleteContentIds" value="@feature.FeatureValue" @checkDelete>
+                                                                    }
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    }
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    }
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+    </section>
+    <!-- /.content -->
+</div><!-- /.content-wrapper -->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.selectAll').click(function (e) {
+            var tr = $(e.target).closest('tr');
+            $('td input:checkbox', tr).prop('checked', this.checked);
+        });
+    });
+</script>

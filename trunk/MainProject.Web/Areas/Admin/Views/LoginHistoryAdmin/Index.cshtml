@@ -1,0 +1,59 @@
+﻿@using MainProject.Framework.Models
+@using MainProject.ServiceAdmin.Model
+@model IndexViewModel<MainProject.Core.LogHistory>
+@{
+    ViewBag.Title = "Lịch sử đăng nhập";
+}
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>Lịch sử đăng nhập</h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-home"></i> Trang chủ</a></li>
+            <li><a href="#">Lịch sử đăng nhập</a></li>
+            <li class="active">Danh sách</li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-body">
+                        <div class="col-xs-12">
+                            <label>
+                                @Html.Raw(TempData["message"])
+                            </label>
+                        </div>
+                        @Html.Partial("_Filtering", Model.FilterViewModel)
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Tên đăng nhập</th>
+                                    <th>Thời gian đăng nhập</th>
+                                    <th>Ghi chú</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    int index = 1;
+                                    foreach (var item in Model.ListItems)
+                                    {
+                                        <tr class="@(index % 2 == 0 ? "even" : "odd")">
+                                            <td>@(index++)</td>
+                                            <td>@item.ActionBy</td>
+                                            <td>@item.CreatedDate.ToString("dd/MM/yyyy hh:mm:ss")</td>
+                                            <td>@item.Comment</td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                        <div class="dataTables_paginate">
+                            @Html.RenderPagingAdmin(Model.PagingViewModel, new PagingStyleModel() { CurrentItemStyle = "active", DivContainerStyle = "", ItemStyle = "" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

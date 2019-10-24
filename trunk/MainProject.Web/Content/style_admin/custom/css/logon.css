@@ -1,0 +1,9 @@
+.login-logo a {
+    background: url('../images/logo-05.png') center no-repeat;
+    width: 135px;
+    height: 45px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 35px;
+    margin-bottom: 20px;
+}

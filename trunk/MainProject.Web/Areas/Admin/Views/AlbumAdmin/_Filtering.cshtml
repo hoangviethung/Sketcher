@@ -1,0 +1,28 @@
+﻿@{
+    Layout = null;
+}
+@model MainProject.ServiceAdmin.Model.FilterViewModel
+
+@if (Model != null)
+{
+    if (Model.LanguageViewModel != null)
+    {
+        <div class="col-xs-2">
+            <div class="form-group">
+                <label>Lọc theo ngôn ngữ</label>
+                @Html.DropDownList("filterLanguage", Model.LanguageViewModel.Languages, new { @onchange = "Filter()", @class = "form-control" })
+            </div>
+        </div>
+    }
+
+    <div class="clearfix"></div>
+
+    <script type="text/javascript">
+        function Filter() {
+            var languageId = $("#filterLanguage")[0].value;
+            if (!isNaN(languageId)) {
+                document.location = "@Model.BaseUrl" + "languageId=" + languageId;
+            }
+        }
+    </script>
+}

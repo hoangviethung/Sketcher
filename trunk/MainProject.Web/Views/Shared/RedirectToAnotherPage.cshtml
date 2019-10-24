@@ -1,0 +1,11 @@
+﻿@{
+    Layout = null;
+    var page = ViewBag.Url;
+    if (page == null || page == "")
+    {
+        page = "/";
+    }
+}
+<script type="text/javascript">
+    window.location = "@page";
+</script>

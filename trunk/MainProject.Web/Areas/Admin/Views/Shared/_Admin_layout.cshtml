@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewBag.Title</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    <!-- CSS files-->
+    <!-- Bootstrap 3.3.5 -->
+    <link rel="stylesheet" href="~/Content/style_admin/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/Content/style_admin/dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="~/Content/style_admin/dist/css/skins/_all-skins.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/Content/style_admin/plugins/iCheck/flat/blue.css">
+
+    <!-- Custom -->
+    <link rel="stylesheet" href="~/Content/style_admin/custom/css/admin.css">
+
+    <!-- bootstrap datepicker -->
+    <link rel="stylesheet" href="~/Content/style_admin/plugins/datepicker/datepicker3.css" />
+
+    <!-- Select2 -->
+    <link rel="stylesheet" href="~/Content/style_admin/plugins/select2/select2.min.css">
+
+    <!-- Confirm -->
+    <link rel="stylesheet" href="~/Content/style_admin/custom/JqueryConfirm/css/highlight.dark.css">
+
+    @RenderSection("styles", required: false)
+
+    <!-- JS files -->
+    <!-- jQuery 2.1.4 -->
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+        $.widget.bridge('uibutton', $.ui.button);
+    </script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="@Url.Content("~/Content/style_admin/bootstrap/js/bootstrap.min.js")"></script>
+
+    <!-- bootstrap datepicker -->
+    <script src="~/Content/style_admin/plugins/datepicker/bootstrap-datepicker.js"></script>
+
+    <!-- Select2 -->
+    <script src="~/Content/style_admin/plugins/select2/select2.full.min.js"></script>
+    <!-- daterangepicker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="@Url.Content("~/Content/style_admin/dist/js/app.min.js")"></script>
+
+    <!-- LODASH -->
+    <script src="@Url.Content("~/Content/js/lodash.js")"></script>
+
+    <!-- Custom -->
+    <script src="@Url.Content("~/Content/style_admin/custom/js/jquery-migrate-1.2.1.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/style_admin/custom/js/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/style_admin/custom/js/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+    <script src="@Url.Content("~/Content/style_admin/custom/js/ckeditor/ckeditor.js")" type="text/javascript"></script>
+
+    <!-- Confirm -->
+    <script src="@Url.Content("~/Content/style_admin/custom/JqueryConfirm/js/jquery.confirm.min.js")" type="text/javascript"></script>
+    <script src="~/Content/style_admin/Alias.js" type="text/javascript"></script>
+</head>
+
+<body class="hold-transition skin-blue-light sidebar-mini">
+    <div class="wrapper">
+        <header class="main-header">
+            <!-- Logo -->
+            <a href="/Admin/HomeAdmin" class="logo">
+
+                <span class="logo-mini"></span>
+
+                <span class="logo-lg"></span>
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                @*<span class="sr-only">Toggle navigation</span>*@
+                </a>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <span class="hidden-xs" style="font-weight:bold">@User.Identity.Name</span>
+                            </a>
+                        </li>
+                        <li class="dropdown user user-menu">
+                            <a href="/Admin/HomeAdmin/logoff" class="dropdown-toggle">
+                                Đăng xuất
+                            </a>
+                        </li>
+                        <!-- Control Sidebar Toggle Button -->
+                    </ul>
+                </div>
+            </nav>
+        </header>
+    
+        @Html.Partial("_Admin_Menu")
+        
+        @RenderBody()
+
+      <div class="control-sidebar-bg"></div>
+    </div>
+    <script>
+        (function(){
+            document.querySelectorAll('.ckeditor').forEach(function (element) {
+                CKEDITOR.replace(element.id, {
+                    filebrowserBrowseUrl: '@Url.Action("CkfinderPopup", new { controller = "HomeAdmin", area = "Admin" })',
+                });
+            })
+        })();
+    </script>
+</body>
+</html>

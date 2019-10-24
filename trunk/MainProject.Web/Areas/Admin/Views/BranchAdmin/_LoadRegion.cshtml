@@ -1,0 +1,24 @@
+﻿@model MainProject.ServiceAdmin.Model.Region.RegionSelectModel
+@{
+    Layout = null;
+}
+<div class="form-group col-xs-4 nopadding">
+    <label>Tỉnh/Thành phố</label>
+    @Html.DropDownListFor(d => d.CitySelectedValue, Model.Cities, new { @class = "form-control" })
+</div>
+<div class="clearfix"></div>
+
+<div class="form-group col-xs-4 nopadding">
+    <label>Quận/Huyện</label>
+    @Html.DropDownListFor(d => d.DistrictSelectedValue, new List<SelectListItem>(), new { @class = "form-control" })
+    @Html.ValidationMessageFor(d => d.DistrictSelectedValue)
+</div>
+<div class="clearfix"></div>
+
+<script src="~/Scripts/MainProject/RegionController.js"></script>
+<script>
+    $(function () {
+        RegionController.model.districtSelected = @Model.DistrictSelectedValue ;
+        RegionController.initAdmin();
+    })
+</script>

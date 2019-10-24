@@ -1,0 +1,64 @@
+﻿@{ Layout = null; }
+
+@using MainProject.Web.Models
+@using MainProject.Framework.Models
+@using MvcPaging
+@model NewsViewModel
+
+<!-- news -->
+<div class="container vismis">
+    <div class="row">
+        <div class="col-9 wow fadeInLeftBig">
+            <div class="content content-news">
+                @if (Model.Items.Count > 0)
+                {
+                    <h3>@Model.Items.FirstOrDefault().CategoryName</h3>
+
+                    foreach (var item in Model.Items)
+                    {
+                        <div class="item-news row wow fadeIn">
+                            <div class="col-4 img-news">
+                                <img src="@item.ImageDefault" alt="">
+                            </div>
+                            <div class="col-8 detail-news">
+                                <h3>@item.Title</h3>
+                                <p>@Html.Raw(item.Description)</p>
+                                <a href="@item.Link">Read more</a>
+                            </div>
+                        </div>
+                    }
+
+                    <div class="phantrang">
+                        @Html.RenderPagingSite(Model.PagingViewModel, new PagingStyleModel() { CurrentItemStyle = "active", DivContainerStyle = "", ItemStyle = "" })
+                    </div>
+                        @*<div id="paging">
+                            @Html.Raw(Ajax.Pager(
+                           new Options
+                           {
+                               PageSize = Model.PagingViewModel.PageSize,
+                               TotalItemCount = Model.PagingViewModel.TotalItemCount,
+                               CurrentPage = Model.PagingViewModel.CurrentPage,
+                               //ItemTexts = new ItemTexts() { Next = "Next", Previous = "Previous", Page = "" },
+                               //ItemIcon = new ItemIcon() { First = "icon-backward", Previous = "icon-chevron-left", Next = "icon-chevron-right", Last = "icon-forward" },
+                               TooltipTitles = new TooltipTitles() { Next = "Next page", Previous = "Previous page", Page = "Go to page {0}.", First = "Go To First Page", Last = "Go To Last Page" },
+
+                               Size = Size.normal,
+                               Alignment = Alignment.centered,
+                               //IsShowControls = true,
+                               //IsShowFirstLast = true
+                           },
+                           new AjaxOptions
+                           {
+                               UpdateTargetId = "grid-list",
+                               OnBegin = "beginPaging",
+                               OnSuccess = "successPaging",
+                               OnFailure = "failurePaging"
+                           }, new { controller = "News", action = "Index", categoryId = Model.Items.FirstOrDefault().CategoryId }))
+                        </div>*@                    
+                }
+            </div>
+        </div>
+        
+        @Html.Action("RightContent", "Home")
+    </div>
+</div>

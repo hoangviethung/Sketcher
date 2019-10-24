@@ -1,0 +1,34 @@
+﻿@model MainProject.ServiceAdmin.Model.Category.CategoryManageViewModel
+@{
+    Layout = null;
+}
+<div class="form-group nopadding">
+    <label>Ngôn ngữ <span style="color: red">*</span></label>
+    @Html.DropDownListFor(d => d.LanguageSelectedValue, Model.Languages, new { onchange = "changeParentData(this.value);", @class = "form-control" })
+    @Html.ValidationMessageFor(d => d.LanguageSelectedValue)
+</div>
+<div class="form-group nopadding">
+    <label>Danh mục cha</label>
+    @Html.DropDownListFor(d => d.ParentSelectedValue, Model.Parents, new { @class = "form-control" })
+    @Html.ValidationMessageFor(d => d.ParentSelectedValue)
+</div>
+<script type="text/javascript">
+    function changeParentData(selectedValue) {
+        $.ajax({
+            url: "/Admin/AdminCommon/GetCategoryByLanague?id=" + selectedValue + '&cateId=' + '@(Model.Id)',
+            type: "GET",
+            beforeSend: function () {
+                $('#ParentSelectedValue').attr("disabled", true);
+                $('#ParentSelectedValue').html('<option>Đang tải...</option>')
+            }
+        }).done(function (result) {
+            $('#ParentSelectedValue').attr("disabled", false);
+            $('#ParentSelectedValue').children().remove();
+            $.each(result.Data, function (i, item) {
+                $("#ParentSelectedValue").append($('<option></option>').val(item.Value).html(item.Text).attr('selected', item.Selected));
+            });
+        }).fail(function (jqXHR, textStatus) {
+            $('#ParentSelectedValue').html('<option>Vui lòng chọn ngôn ngữ!</option>')
+        });
+    }
+</script>

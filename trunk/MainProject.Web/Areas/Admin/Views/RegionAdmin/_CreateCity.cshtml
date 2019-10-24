@@ -1,0 +1,31 @@
+﻿
+@{
+    Layout = null;
+}
+@model MainProject.ServiceAdmin.Model.Region.CityManageViewModel
+
+<div id="create-modal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="categorymodel-delete-confirmation-title" style="display: none; padding-right: 16px;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="categorymodel-delete-confirmation-title">Thêm mới Tỉnh - Thành phố</h4>
+            </div>
+            @using (Html.BeginForm("CityCreate", "RegionAdmin"))
+            {
+                <div class="box-body">
+                    <div class="form-group">
+                        <label>Tiêu đề <span style="color: red">*</span></label>
+                        @Html.TextBoxFor(d => d.Name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(d => d.Name)
+                    </div>
+                </div>
+
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Thêm</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy bỏ</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>

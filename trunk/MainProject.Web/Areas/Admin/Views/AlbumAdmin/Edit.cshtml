@@ -1,0 +1,187 @@
+﻿@model MainProject.ServiceAdmin.Model.Album.GalleryManageViewModel
+@{
+    ViewBag.Title = "Chỉnh sửa album";
+}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Bài viết</h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-home"></i>Trang chủ</a></li>
+            <li><a href="#">Nội dung</a></li>
+            <li class="active">Album</li>
+            <li class="active">Chỉnh sửa</li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Chỉnh sửa album</h3>
+                </div><!-- /.box-header -->
+                <div class="col-md-12">
+                    <!-- Custom Tabs -->
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tab_1" data-toggle="tab">Nội dung</a></li>
+                            <li><a href="#tab_2" data-toggle="tab">Hình ảnh</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_1">
+                                @using (Html.BeginForm("Edit", "AlbumAdmin", FormMethod.Post, new { id = "CreateArticleFr" }))
+                                {
+                                    <div class="box-body">
+                                        @Html.ValidationSummary(true)
+                                        @Html.HiddenFor(x => x.Id)
+                                        @Html.HiddenFor(x => x.ImageFolder)
+                                        <div class="form-group col-xs-4 nopadding">
+                                            <label>Ngôn ngữ</label>
+                                            @Html.DropDownListFor(d => d.LanguageSelectedValue, Model.Languages, new { @onchange = "changeLanguage();", @class = "form-control" })
+                                            @Html.ValidationMessageFor(d => d.LanguageSelectedValue)
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div class="form-group">
+                                            <label>Tiêu đề <span style="color: red">*</span></label>
+                                            @Html.TextBoxFor(d => d.Name, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(d => d.Name)
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Là Video ?</label><br />
+                                            @Html.EditorFor(d => d.IsVideo)
+                                            @Html.ValidationMessageFor(d => d.IsVideo)
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div class="form-group">
+                                            <label id="ResourcePathName">Ảnh mặc định</label>
+                                            @Html.TextBoxFor(d => d.ResourcePath, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(d => d.ResourcePath)
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Thứ tự sắp xếp</label>
+                                            @Html.EditorFor(d => d.Order, new { htmlAttributes = new { @class = "form-control" }, })
+                                            @Html.ValidationMessageFor(d => d.Order)
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Cho phép hiển thị</label><br />
+                                            @Html.EditorFor(d => d.IsPublished)
+                                            @Html.ValidationMessageFor(d => d.IsPublished)
+                                        </div>
+                                    </div><!-- /.box-body -->
+
+                                    <div class="tab-pane album_images">
+                                        <div class="box-body nopadding">
+                                            <div class="form-group nopadding">
+                                                <table id="program_table" class="table table-bordered table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>STT</th>
+                                                            <th>Tên</th>
+                                                            <th>Đường dẫn hình</th>
+                                                            <th>Alt</th>
+                                                            <th>Thứ tự</th>
+                                                            <th>
+                                                                <input type="button" class="btn btn-primary btnAddProperty" value="Thêm" />
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (var media in Model.Medias)
+                                                        {
+                                                            @Html.Partial("_Media", media)
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="box-footer">
+                                        <button type="submit" class="btn btn-primary">Cập nhật</button>
+                                        <button type="button" class="btn btn-danger" onclick="window.location = '/Admin/AlbumAdmin/Index';">Cancel</button>
+                                    </div>
+                                }
+                            </div><!-- /.tab-pane -->
+                            <div class="tab-pane" id="tab_2">
+                                <iframe name="picturemanager" src="/admin/upload/images?folder=@Model.ImageFolder" style="width: 100%; height: 500px; border:none;"></iframe>
+                            </div><!-- /.tab-pane -->
+
+                        </div><!-- /.tab-content -->
+                    </div><!-- nav-tabs-custom -->
+                </div><!-- /.col -->
+            </div><!-- /.box -->
+        </div> <!-- /.row -->
+    </section><!-- /.content -->
+</div><!-- /.content-wrapper -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#tabs").tabs();
+
+        $('#IsPublished').attr('checked', true);
+
+        var ImageUrl = "";
+        var VideoUrl = "";
+        if ($('#IsVideo').is(':checked')) {
+            $(".box-body .form-group").eq(3).find("label").html("Video Id");
+            $(".nav-tabs li:nth-child(2)").hide();
+            VideoUrl = $("#ResourcePath").val();
+        }
+        else {
+            $(".box-body .form-group").eq(5).find("label").html("Ảnh mặc định");
+            $(".nav-tabs li:nth-child(2)").show();
+            ImageUrl = $("#ResourcePath").val();
+        }
+
+        $("#IsVideo").on('click', function () {
+            if ($('#IsVideo').is(':checked')) {
+                $(".box-body .form-group").eq(3).find("label").html("Video Id");
+                if (VideoUrl != "") {
+                    $("#ResourcePath").val(VideoUrl);
+                }
+                else {
+                    $("#ResourcePath").val("");
+                }
+                $("#IsAvatar").prop("checked", false);
+                $(".nav-tabs li:nth-child(2)").hide();
+                $('#categoryarea').hide();
+            }
+            else {
+                $(".box-body .form-group").eq(3).find("label").html("Ảnh mặc định");
+                if (ImageUrl != "") {
+                    $("#ResourcePath").val(ImageUrl);
+                }
+                else {
+                    $("#ResourcePath").val("");
+                }
+                $(".nav-tabs li:nth-child(2)").show();
+                $('#categoryarea').show();
+            }
+        });
+
+        // Create Media
+		$(document).on('click', ".album_images input[type=button]", function () {
+			// Array position
+			var position = $(this).parents("table").find("tbody tr").length;
+			var $tbody = $(this).parents("table").find("tbody")
+			$.ajax({
+				url: "/Admin/AlbumAdmin/CreateMedia?pos=" + position,
+				type: "GET",
+				beforeSend: function () {
+				},
+				success: function (html) {
+                    $tbody.append(html);
+
+                    var form = $("#CreateArticleFr")
+                        .removeData("validator") /* added by the raw jquery.validate plugin */
+                        .removeData("unobtrusiveValidation");  /* added by the jquery unobtrusive plugin*/
+
+                    $.validator.unobtrusive.parse(form);
+				}
+			})
+		})
+    });
+</script>
+

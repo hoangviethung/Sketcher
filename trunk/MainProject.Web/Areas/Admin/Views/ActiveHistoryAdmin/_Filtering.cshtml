@@ -1,0 +1,32 @@
+﻿@{
+    Layout = null;
+}
+@model MainProject.ServiceAdmin.Model.FilterViewModel
+
+@if (Model != null)
+{
+    if (Model.FatherSelectModel != null)
+    {
+        <div class="col-xs-2 nopadding">
+            <div class="form-group">
+                <label>Lọc theo Tên</label>
+                @Html.TextBox("name", Model.Title, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="col-xs-1">
+            <div class="form-group" style="padding-top:25px;">
+                <button type="button" class="btn btn-block btn-primary btn-flat" onclick="Filter();">Lọc</button>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+
+        <script type="text/javascript">
+            function Filter() {
+                var name = $("#name").val();
+                if (!isNaN(name)) {
+                    document.location = "@Model.BaseUrl" + "name=" + name;
+                }
+            }
+        </script>
+    }
+}

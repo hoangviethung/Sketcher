@@ -1,0 +1,15 @@
+.svn/
+trunk/MainProject.Core/bin/
+trunk/MainProject.Core/obj/
+trunk/MainProject.Data/bin/
+trunk/MainProject.Data/obj/
+trunk/MainProject.EPPlus/obj/
+trunk/MainProject.EPPlus/bin/
+trunk/MainProject.Framework/bin/
+trunk/MainProject.Framework/obj/
+trunk/MainProject.Service/bin/
+trunk/MainProject.Service/obj/
+trunk/MainProject.ServiceAdmin/bin/
+trunk/MainProject.ServiceAdmin/obj/
+trunk/MainProject.Web/bin/
+trunk/MainProject.Web/obj/

@@ -1,0 +1,441 @@
+﻿@using MainProject.Core.Enums
+@{
+    Layout = null;
+
+    var currentUserHelper = new CurrentUserHelper(Request);
+
+    var isShowVariable = EntityManageTypeCollection.ManageVariables.CheckHasPermission(currentUserHelper);
+    var isShowSetting = EntityManageTypeCollection.ManageSettings.CheckHasPermission(currentUserHelper);
+    var isShowResource = EntityManageTypeCollection.ManageResource.CheckHasPermission(currentUserHelper);
+    var isShowMenu = EntityManageTypeCollection.ManageMenu.CheckHasPermission(currentUserHelper);
+    var isManageSettings = (isShowVariable || isShowSetting || isShowResource || isShowMenu);
+
+    var isShowuser = EntityManageTypeCollection.ManageUsers.CheckHasPermission(currentUserHelper);
+    var isShowPermission = EntityManageTypeCollection.ManagePermissions.CheckHasPermission(currentUserHelper);
+    var isManageAccounts = (isShowuser || isShowPermission);
+
+    var isShowLoginStory = EntityManageTypeCollection.ManageLoginHistory.CheckHasPermission(currentUserHelper);
+    var isShowActiveStory = EntityManageTypeCollection.ManageActivityHistory.CheckHasPermission(currentUserHelper);
+    var isShowManageHistory = (isShowLoginStory || isShowActiveStory);
+
+    var isShowProductCategory = EntityManageTypeCollection.ManageCommerceCategory.CheckHasPermission(currentUserHelper);
+    var isShowProduct = EntityManageTypeCollection.ManageCommerceProduct.CheckHasPermission(currentUserHelper);
+    var isShowProductProperty = EntityManageTypeCollection.ManageCommerceProperty.CheckHasPermission(currentUserHelper);
+    var isShowEcommerces = (isShowProductCategory || isShowProduct || isShowProductProperty);
+
+    var isShowCategory = EntityManageTypeCollection.ManageCategories.CheckHasPermission(currentUserHelper);
+    var isShowArticle = EntityManageTypeCollection.ManageNews.CheckHasPermission(currentUserHelper);
+    var isShowBanner = EntityManageTypeCollection.ManageBanner.CheckHasPermission(currentUserHelper);
+    var isShowAlbum = EntityManageTypeCollection.ManageGallery.CheckHasPermission(currentUserHelper);
+    var isShowContexts = (isShowCategory || isShowArticle || isShowBanner || isShowAlbum);
+
+    var isShowContactInfo = EntityManageTypeCollection.ManageContact.CheckHasPermission(currentUserHelper);
+    var isShowSubscribe = EntityManageTypeCollection.ManageSubscribe.CheckHasPermission(currentUserHelper);
+    var isShowContact = (isShowContactInfo || isShowSubscribe);
+    var currentMenu = TempData["CurrentMenu"];
+}
+<aside class="main-sidebar">
+    <section class="sidebar">
+        <ul class="sidebar-menu">
+            <li class="treeview">
+                <a href="/Admin/HomeAdmin">
+                    <i class="fa fa-home"></i> <span>Trang Chủ</span>
+                </a>
+            </li>
+            @if (isManageSettings)
+            {
+                if (currentMenu == "Setting" || currentMenu == "Resource" || currentMenu == "Menu")
+                {
+                    <li class="treeview active">
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-wrench"></i><span>Cài Đặt</span> <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            @if (isShowSetting)
+                            {
+                                if (currentMenu == "Setting")
+                                {
+                                    <li class="active"><a href="/Admin/SettingAdmin"><i class="fa fa-circle-o"></i>Thiết lập</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="/Admin/SettingAdmin"><i class="fa fa-circle-o"></i>Thiết lập</a></li>
+                                }
+                            }
+                            @if (isShowResource)
+                            {
+                                if (currentMenu == "Resource")
+                                {
+                                    <li class="active"><a href="/Admin/ResourceAdmin"><i class="fa fa-circle-o"></i>Tài nguyên</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="/Admin/ResourceAdmin"><i class="fa fa-circle-o"></i>Tài nguyên</a></li>
+                                }
+                            }
+                            @if (isShowMenu)
+                            {
+                                if (currentMenu == "Menu")
+                                {
+                                    <li class="active"><a href="/Admin/MenuAdmin"><i class="fa fa-circle-o"></i>Mục lục</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="/Admin/MenuAdmin"><i class="fa fa-circle-o"></i>Mục lục</a></li>
+                                }
+                            }
+                        </ul>
+                    </li>
+                }
+                else
+                {
+                    <li class="treeview">
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-wrench"></i> <span>Cài Đặt</span> <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            @if (isShowSetting)
+                            {
+                                <li><a href="/Admin/SettingAdmin"><i class="fa fa-circle-o"></i>Thiết lập</a></li>
+                            }
+                            @if (isShowResource)
+                            {
+                                <li><a href="/Admin/ResourceAdmin"><i class="fa fa-circle-o"></i>Tài nguyên</a></li>
+                            }
+                            @if (isShowResource)
+                            {
+                                <li><a href="/Admin/MenuAdmin"><i class="fa fa-circle-o"></i>Mục lục</a></li>
+                            }
+                        </ul>
+                    </li>
+                }
+            }
+            @if (isManageAccounts)
+            {
+                if (currentMenu == "User" || currentMenu == "roleadmin" || currentMenu == "UserAccount")
+                {
+                    <li class="treeview active">
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-user"></i> <span>Tài Khoản</span> <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            @if (isShowuser)
+                            {
+                                if (currentMenu == "User")
+                                {
+                                    <li class="active"><a href="/Admin/UserAdmin"><i class="fa fa-circle-o"></i>Tài khoản quản trị</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="/Admin/UserAdmin"><i class="fa fa-circle-o"></i>Tài khoản quản trị</a></li>
+                                }
+                            }
+                            @if (isShowPermission)
+                            {
+                                if (currentMenu == "roleadmin")
+                                {
+                                    <li class="active"><a href="/Admin/RoleAdmin"><i class="fa fa-circle-o"></i>Quản lý quyền</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="/Admin/RoleAdmin"><i class="fa fa-circle-o"></i>Quản lý quyền</a></li>
+                                }
+                            }
+                        </ul>
+                    </li>
+                }
+                else
+                {
+                    <li class="treeview">
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-user"></i> <span>Tài khoản</span> <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            @if (isShowuser)
+                            {
+                                <li><a href="/Admin/UserAdmin"><i class="fa fa-circle-o"></i>Tài khoản quản trị</a></li>
+                            }
+                            @if (isShowPermission)
+                            {
+                                <li><a href="/Admin/RoleAdmin"><i class="fa fa-circle-o"></i>Quản lý quyền</a></li>
+                            }
+                        </ul>
+                    </li>
+                }
+            }
+
+            @if (isShowManageHistory)
+            {
+                if (currentMenu == "LoginStory" || currentMenu == "ActiveStory")
+                {
+                    <li class="treeview active">
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-history"></i> <span>Quản lý lịch sử</span> <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            @if (isShowLoginStory)
+                            {
+                                if (currentMenu == "LoginStory")
+                                {
+                                    <li class="active"><a href="/Admin/LoginHistoryAdmin"><i class="fa fa-circle-o"></i>Lịch sử đăng nhập</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="/Admin/LoginHistoryAdmin"><i class="fa fa-circle-o"></i>Lịch sử đăng nhập</a></li>
+                                }
+                            }
+                            @if (isShowActiveStory)
+                            {
+                                if (currentMenu == "ActiveStory")
+                                {
+                                    <li class="active"><a href="/Admin/ActiveHistoryAdmin"><i class="fa fa-circle-o"></i>Lịch sử hoạt động</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="/Admin/ActiveHistoryAdmin"><i class="fa fa-circle-o"></i>Lịch sử hoạt động</a></li>
+                                }
+                            }
+                        </ul>
+                    </li>
+                }
+                else
+                {
+                    <li class="treeview">
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-history"></i> <span>Quản lý lịch sử</span> <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            @if (isShowLoginStory)
+                            {
+                                <li><a href="/Admin/LoginHistoryAdmin"><i class="fa fa-circle-o"></i>Lịch sử đăng nhập</a></li>
+                            }
+                            @if (isShowActiveStory)
+                            {
+                                <li><a href="/Admin/ActiveHistoryAdmin"><i class="fa fa-circle-o"></i>Lịch sử hoạt động</a></li>
+                            }
+                        </ul>
+                    </li>
+                }
+            }
+
+            @if (isShowEcommerces)
+            {
+                if (currentMenu == "CommerceCategory"
+                 || currentMenu == "Product"
+                 || currentMenu == "CommerceProperty")
+                {
+                    <li class="treeview active">
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-shopping-cart"></i><span>Thương mại điện tử</span> <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            @if (isShowProductCategory)
+                            {
+                                if (currentMenu == "CommerceCategory")
+                                {
+                                    <li class="active"><a href="/Admin/CommerceCategoryAdmin"><i class="fa fa-circle-o"></i>Danh mục sản phẩm</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="/Admin/CommerceCategoryAdmin"><i class="fa fa-circle-o"></i>Danh mục sản phẩm</a></li>
+                                }
+                            }
+                            @if (isShowProduct)
+                            {
+                                if (currentMenu == "Product")
+                                {
+                                    <li class="active"><a href="/Admin/ProductAdmin"><i class="fa fa-circle-o"></i>Sản phẩm</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="/Admin/ProductAdmin"><i class="fa fa-circle-o"></i>Sản phẩm</a></li>
+                                }
+                            }
+                            @if (isShowProductProperty)
+                            {
+                                if (currentMenu == "CommerceProperty")
+                                {
+                                    <li class="active"><a href="/Admin/CommercePropertyAdmin"><i class="fa fa-circle-o"></i>Thuộc tính sản phẩm</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="/Admin/CommercePropertyAdmin"><i class="fa fa-circle-o"></i>Thuộc tính sản phẩm</a></li>
+                                }
+                            }
+                        </ul>
+                    </li>
+                }
+                else
+                {
+                    <li class="treeview">
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-shopping-cart"></i> <span>Thương mại điện tử</span> <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            @if (isShowProductCategory)
+                            {
+                                <li><a href="/Admin/CommerceCategoryAdmin"><i class="fa fa-circle-o"></i>Danh mục sản phẩm</a></li>
+                            }
+                            @if (isShowProduct)
+                            {
+                                <li><a href="/Admin/ProductAdmin"><i class="fa fa-circle-o"></i>Sản phẩm</a></li>
+                            }
+                            @if (isShowProductProperty)
+                            {
+                                <li><a href="/Admin/CommercePropertyAdmin"><i class="fa fa-circle-o"></i>Thuộc tính sản phẩm</a></li>
+                            }
+                        </ul>
+                    </li>
+                }
+            }
+
+            @if (isShowContexts)
+            {
+                if (currentMenu == "CategoryAdmin"
+                    || currentMenu == "ArticleAdmin"
+                    || currentMenu == "BannerAdmin"
+                    || currentMenu == "AlbumAdmin"
+                    )
+                {
+                    <li class="treeview active">
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-database"></i><span>Nội dung</span> <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            @if (isShowCategory)
+                            {
+                                if (currentMenu == "CategoryAdmin")
+                                {
+                                    <li class="active"><a href="/Admin/CategoryAdmin"><i class="fa fa-circle-o"></i>Danh mục</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="/Admin/CategoryAdmin"><i class="fa fa-circle-o"></i>Danh mục</a></li>
+                                }
+                            }
+                            @if (isShowArticle)
+                            {
+                                if (currentMenu == "ArticleAdmin")
+                                {
+                                    <li class="active"><a href="/Admin/ArticleAdmin"><i class="fa fa-circle-o"></i>Bài viết</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="/Admin/ArticleAdmin"><i class="fa fa-circle-o"></i>Bài viết</a></li>
+                                }
+                            }
+                            @if (isShowBanner)
+                            {
+                                if (currentMenu == "BannerAdmin")
+                                {
+                                    <li class="active"><a href="/Admin/BannerAdmin"><i class="fa fa-circle-o"></i>Banner</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="/Admin/BannerAdmin"><i class="fa fa-circle-o"></i>Banner</a></li>
+                                }
+                            }
+                            @if (isShowAlbum)
+                            {
+                                if (currentMenu == "AlbumAdmin")
+                                {
+                                    <li class="active"><a href="/Admin/AlbumAdmin"><i class="fa fa-circle-o"></i>Thư viện</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="/Admin/AlbumAdmin"><i class="fa fa-circle-o"></i>Thư viện</a></li>
+                                }
+                            }
+                        </ul>
+                    </li>
+                }
+                else
+                {
+                    <li class="treeview">
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-database"></i> <span>Nội dung</span> <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            @if (isShowCategory)
+                            {
+                                <li><a href="/Admin/CategoryAdmin"><i class="fa fa-circle-o"></i>Danh mục</a></li>
+                            }
+                            @if (isShowArticle)
+                            {
+                                <li><a href="/Admin/ArticleAdmin"><i class="fa fa-circle-o"></i>Bài viết</a></li>
+                            }
+                            @if (isShowBanner)
+                            {
+                                <li><a href="/Admin/BannerAdmin"><i class="fa fa-circle-o"></i>Banner</a></li>
+                            }
+                            @if (isShowAlbum)
+                            {
+                                <li><a href="/Admin/AlbumAdmin"><i class="fa fa-circle-o"></i>Thư viện</a></li>
+                            }
+                        </ul>
+                    </li>
+                }
+            }
+
+            @if (isShowContact)
+            {
+                if (currentMenu == "SubscribeAdmin" || currentMenu == "ContactAdmin")
+                {
+                    <li class="treeview active">
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-recycle"></i><span>Liên hệ</span> <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            @if (isShowContactInfo)
+                            {
+                                if (currentMenu == "ContactAdmin")
+                                {
+                                    <li class="active"><a href="/Admin/ContactAdmin"><i class="fa fa-circle-o"></i>Thông tin liên hệ</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="/Admin/ContactAdmin"><i class="fa fa-circle-o"></i>Thông tin liên hệ</a></li>
+                                }
+                            }
+                            @if (isShowSubscribe)
+                            {
+                                if (currentMenu == "SubscribeAdmin")
+                                {
+                                    <li class="active"><a href="/Admin/SubscribeAdmin"><i class="fa fa-circle-o"></i>Đăng ký Email</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="/Admin/SubscribeAdmin"><i class="fa fa-circle-o"></i>Đăng ký Email</a></li>
+                                }
+                            }
+                        </ul>
+                    </li>
+                }
+                else
+                {
+                    <li class="treeview">
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-recycle"></i> <span>Liên hệ</span> <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            @if (isShowContactInfo)
+                            {
+                                <li><a href="/Admin/ContactAdmin"><i class="fa fa-circle-o"></i>Thông tin liên hệ</a></li>
+                            }
+                            @if (isShowSubscribe)
+                            {
+                                <li><a href="/Admin/SubscribeAdmin"><i class="fa fa-circle-o"></i>Đăng ký Email</a></li>
+                            }
+                        </ul>
+                    </li>
+                }
+            }
+
+            <li class="treeview">
+                <a href="@Url.Action("Ckfinder", new { controller = "HomeAdmin", area = "Admin" })">
+                    <i class="fa fa-question-circle"></i> <span>Quản lý hình ảnh</span> <i class="fa pull-right"></i>
+                </a>
+            </li>
+        </ul>
+    </section>
+</aside>

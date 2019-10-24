@@ -1,0 +1,136 @@
+﻿@using System.Text.RegularExpressions
+@model MainProject.ServiceAdmin.Model.CommerceCategory.CommerceCategoryManageModel
+@{
+    ViewBag.Title = "Quản lý Danh mục";
+    string action = Model.Id == 0 ? "Thêm mới" : "Chỉnh sửa";
+}
+@section styles {
+    <link rel="stylesheet" href="~/Content/style_admin/dist/css/pickr.min.css">
+}
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>Danh mục sản phẩm</h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-home"></i>Trang chủ</a></li>
+            <li><a href="#">Thương mại điện tử</a></li>
+            <li class="active">Danh mục sản phẩm</li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">@action danh mục sản phẩm</h3>
+                </div><!-- /.box-header -->
+                <div class="col-md-12">
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tab_1" data-toggle="tab">Nội dung</a></li>
+                            <li><a href="#tab_2" data-toggle="tab">SEO bài viết</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_1">
+                                @using (Html.BeginForm("Manage", "CommerceCategoryAdmin", FormMethod.Post))
+                                {
+                                    @Html.ValidationSummary(true)
+                                    @Html.HiddenFor(x => x.Id)
+                                    @Html.HiddenFor(x => x.LogHistoryId)
+                                    @Html.HiddenFor(x => x.MetaTitle)
+                                    @Html.HiddenFor(x => x.MetaDescription)
+                                    @Html.HiddenFor(x => x.MetaKeywords)
+                                    <div class="box-body">
+                                        <div class="form-group">
+                                            <label>Danh mục cha</label>
+                                            @Html.DropDownListFor(d => d.ParentSelectedValue, Model.Parents.Where(x => Regex.Matches(x.Text, " >> ").Count < 2), new { @class = "form-control", onchange = "showParent()" })
+                                            @Html.ValidationMessageFor(d => d.ParentSelectedValue)
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Đường dẫn danh mục <span style="color: red">*</span></label>
+                                            @Html.TextBoxFor(d => d.SeName, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(d => d.SeName)
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Tên danh mục<span style="color: red">*</span></label>
+                                            @Html.TextBoxFor(d => d.Name, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(d => d.Name)
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Thứ tự sắp xếp<span style="color: red">*</span></label>
+                                            @Html.EditorFor(d => d.Order, new { htmlAttributes = new { @class = "form-control" }, })
+                                            @Html.ValidationMessageFor(d => d.Order)
+                                        </div>
+                                        <div class="form-group col-md-6 nopadding">
+                                            <label>Cho phép hiển thị?</label><br />
+                                            @Html.EditorFor(d => d.IsActive)
+                                            @Html.ValidationMessageFor(d => d.IsActive)
+                                        </div>
+                                        <div class="form-group col-md-6 root">
+                                            <label>Đặt ở trang chủ?</label><br />
+                                            @Html.EditorFor(d => d.IsHot)
+                                            @Html.ValidationMessageFor(d => d.IsHot)
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div class="box-footer">
+                                            <button type="submit" class="btn btn-primary">@action</button>
+                                            <button type="button" class="btn btn-danger" onclick="window.location = '/Admin/CommerceCategoryAdmin/Index'">Cancel</button>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            <div class="tab-pane" id="tab_2">
+                                <div class="form-group">
+                                    <label>MetaTitle</label><br />
+                                    @Html.EditorFor(d => d.MetaTitle, new { htmlAttributes = new { @class = "form-control" }, })
+                                    @Html.ValidationMessageFor(d => d.MetaTitle)
+                                </div>
+                                <div class="form-group">
+                                    <label>MetaDescription</label><br />
+                                    @Html.EditorFor(d => d.MetaDescription, new { htmlAttributes = new { @class = "form-control" }, })
+                                    @Html.ValidationMessageFor(d => d.MetaDescription)
+                                </div>
+                                <div class="form-group">
+                                    <label>MetaKeywords</label><br />
+                                    @Html.EditorFor(d => d.MetaKeywords, new { htmlAttributes = new { @class = "form-control" }, })
+                                    @Html.ValidationMessageFor(d => d.MetaKeywords)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+    $(function () {
+        $("#tabs").tabs();
+        $('.select2').select2();
+        $("#Name").on('keyup', function () {
+            var str = $(this).val();
+            $("#SeName").val(change_alias(str));
+        })
+        $("#tab_2 #MetaTitle").on('keyup', function () {
+            $("#tab_1 #MetaTitle").val($(this).val());
+            console.log($("#tab_1 #MetaTitle").val())
+        });
+
+        $("#tab_2 #MetaDescription").on('keyup', function () {
+            $("#tab_1 #MetaDescription").val($(this).val());
+            console.log($("#tab_1 #MetaDescription").val())
+        });
+
+        $("#tab_2 #MetaKeywords").on('keyup', function () {
+            $("#tab_1 #MetaKeywords").val($(this).val());
+            console.log($("#tab_1 #MetaKeywords").val())
+        });
+    })
+
+    function showParent() {
+        $(".root").hide();
+        if ($("#ParentSelectedValue").val() == 0) {
+            $(".root").show();
+        }
+    }
+</script>

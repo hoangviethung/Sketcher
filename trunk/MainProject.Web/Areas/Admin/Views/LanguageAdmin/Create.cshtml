@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Insert Language";
+}
+<h2>@ViewBag.Title</h2>
+@section Buttons{
+    @Html.ActionLink("Thêm mới", "Create", null, new { @class = "addnew" })
+    @Html.ActionLink("Danh sách", "index", null, null)
+}
+@model MainProject.Core.Language
+
+ @using (Html.BeginForm())
+ {
+     @Html.ValidationSummary(true)
+     <div class="">
+         @Html.LabelFor(d => d.LanguageName)
+     </div>
+     <div class="editor-field">
+         @Html.EditorFor(d => d.LanguageName)
+         @Html.ValidationMessageFor(d=>d.LanguageName)
+     </div>
+
+     <div class="">
+         @Html.LabelFor(d => d.LanguageKey)
+     </div>
+     <div class="editor-field">
+         @Html.EditorFor(d => d.LanguageKey)
+     </div>
+
+     <p>
+         <input type="submit" value="Thêm" />
+     </p>
+ }

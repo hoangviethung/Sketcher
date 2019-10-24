@@ -1,0 +1,33 @@
+﻿@{
+    Layout = null;
+    Model.Properties.Insert(0, new SelectListItem() { Value = "", Text = "Vui lòng chọn thuộc tính!", Selected = true });
+}
+@model MainProject.ServiceAdmin.Model.Product.PropertyManageModel
+
+<tr>
+    <td>
+        @Html.Hidden("Properties[" + Model.Position + "].Id", Model.Id, new { @class = "form-control" })
+        @Html.Hidden("Properties[" + Model.Position + "].IsDeleted", Model.IsDeleted)
+        @Model.Position
+    </td>
+    <td>
+        @Html.DropDownListFor(d => d.PropertySelectedId, Model.Properties, new { @class = "form-control", @Name = "Properties[" + Model.Position + "].PropertySelectedId" })
+        @Html.ValidationMessage("Properties[" + Model.Position + "].PropertySelectedId")
+    </td>
+    <td>
+        @Html.TextBoxFor(d => d.Value, new { @class = "form-control", @Name = "Properties[" + Model.Position + "].Value" })
+        @Html.ValidationMessage("Properties[" + Model.Position + "].Value")
+    </td>
+    @*<td>
+        @Html.TextBoxFor(d => d.Price, new { @class = "form-control", @Name = "Properties[" + Model.Position + "].Price", @type = "number" })
+        @Html.ValidationMessage("Properties[" + Model.Position + "].Price")
+    </td>*@
+    <td>
+        <span id="category-delete" class="btn bg-red"
+              onclick="$(this).parents('tr:first').find('input[name=\'Medias[@Model.Position].IsDeleted\']').val(true);
+                        $(this).parents('tr:first').hide();
+						$(this).parents('tr:first').find('input[type=\'text\']').each(function (i) { $(this).val('Deleted');">
+            <i class="fa fa-trash-o"></i>
+        </span>
+    </td>
+</tr>

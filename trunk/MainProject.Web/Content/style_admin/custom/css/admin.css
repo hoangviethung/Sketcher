@@ -1,0 +1,19 @@
+.field-validation-error { color: red; }
+.nopadding {padding:0;}
+.fa-plus {
+   padding-left: 20px;
+   float: right;
+}
+.fa-edit, .version { padding-right: 2px; }
+
+.icon-choser{
+ padding-left: 15px;
+ padding-right: 15px;
+}
+.icon-choser .icon{
+ width: 9%;
+ display: inline-block
+}
+.icon-choser .tooltip{
+ width: 200px;
+}

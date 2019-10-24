@@ -1,0 +1,44 @@
+﻿@model MainProject.ServiceAdmin.Model.Article.ArticleManageViewModel
+@{
+    Layout = null;
+}
+<div class="form-group col-xs-4 nopadding">
+    <label>Ngôn ngữ</label>
+    @Html.DropDownListFor(d => d.LanguageSelectedValue, Model.Languages, new { @onchange = "changeLanguage();", @class = "form-control" })
+    @Html.ValidationMessageFor(d => d.LanguageSelectedValue)
+</div>
+<div class="clearfix"></div>
+
+<div class="form-group col-xs-4 nopadding">
+    <label>Danh mục</label>
+    @Html.DropDownListFor(d => d.CategorySelectedValue, new List<SelectListItem>(), new { @class = "form-control" })
+    @Html.ValidationMessageFor(d => d.CategorySelectedValue)
+</div>
+<div class="clearfix"></div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        changeLanguage();
+    })
+
+    function changeLanguage() {
+        var cul = $("#LanguageSelectedValue").val();
+
+        $.ajax({
+            url: "/Admin/AdminCommon/GetNewsCategoryByLanguage?langId=" + cul + "&selectedValue=" + @Model.CategorySelectedValue,
+            type: "GET",
+            beforeSend: function () {
+                $('#CategorySelectedValue').attr("disabled", true);
+                $('#CategorySelectedValue').html('<option>Đang tải...</option>')
+            }
+        }).done(function (result) {
+            $('#CategorySelectedValue').attr("disabled", false);
+            $('#CategorySelectedValue').children().remove();
+            $.each(result.Data, function (i, item) {
+                $("#CategorySelectedValue").append($('<option></option>').val(item.Value).html(item.Text).attr('selected', item.Selected));
+            });
+        }).fail(function (jqXHR, textStatus) {
+            $('#CategorySelectedValue').html('<option>Vui lòng chọn ngôn ngữ!</option>')
+        });
+    }
+</script>

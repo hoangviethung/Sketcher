@@ -1,0 +1,150 @@
+﻿@using MainProject.Core.Enums
+@using MainProject.ServiceAdmin.Model
+@model IndexViewModel<MainProject.Core.UserInfos.UserProfile>
+@{
+    ViewBag.Title = "Quản lý tài khoản quản trị";
+    var currentUserHelper = new CurrentUserHelper(Request);
+}
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>Tài khoản quản trị</h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-home"></i> Trang chủ</a></li>
+            <li><a href="#">Tài khoản</a></li>
+            <li class="active">Tài khoản quản trị</li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-body">
+                        <div class="col-xs-12">
+                            <label>
+                                @Html.Raw(TempData["message"])
+                            </label>
+                        </div>
+                        <div class="col-xs-4">
+                            <label>Nhập tên tài khoản cần tìm</label>
+                            <input type="text" class="form-control" value="" name="text" id="text" /><br />
+                        </div>
+                        <div class="col-xs-1 nopadding">
+                            <div class="form-group" style="padding-top:25px;">
+                                <button type="button" class="btn btn-block btn-primary btn-flat" onclick="Filter();">Lọc</button>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="form-group col-xs-2 nopadding">
+                                @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-block btn-primary btn-lg" })
+                            </div>
+                        </div>
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Tên đăng nhập</th>
+                                    <th>Email</th>
+                                    <th>Quyền</th>
+                                    <th>Trạng thái</th>
+                                    <th>Tác vụ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    int index = 1;
+                                    foreach (var item in Model.ListItems)
+                                    {
+                                        <tr class="@(index % 2 == 0 ? "even" : "odd")">
+                                            <td>@(index++)</td>
+                                            <td>
+                                                @item.UserName
+                                            </td>
+                                            <td>
+                                                @item.Email
+                                            </td>
+                                            <td>
+                                                @foreach (var role in item.UserInRoles)
+                                                {
+                                                    <span>@role.Role.RoleName</span><br />
+                                                }
+                                            </td>
+                                            @if (item.IsActive)
+                                            {
+                                                <td>Hoạt động</td>
+                                            }
+                                            else
+                                            {
+                                                <td>Ngừng hoạt động</td>
+                                            }
+                                            <td>
+                                                @if (currentUserHelper.CheckHasPermissionOnFeature(EntityManageTypeCollection.ManageUsers, PermissionCollection.Edit))
+                                                {
+                                                    <a href=@string.Format("/Admin/UserAdmin/Edit/{0}", item.UserId) class="btn btn-default" title="Sửa">
+                                                        <i class="fa fa-edit"></i>
+                                                    </a>
+                                                }
+                                                @if (currentUserHelper.CheckHasPermissionOnFeature(EntityManageTypeCollection.ManageUsers, PermissionCollection.Edit))
+                                                {
+                                                    <a href=@string.Format("/Admin/UserAdmin/ChangePassword/{0}", item.UserId) class="btn bg-green" title="Đổi mật khẩu">
+                                                        <i class="fa fa-unlock" aria-hidden="true"></i>
+                                                    </a>
+                                                }
+                                                @if (currentUserHelper.CheckHasPermissionOnFeature(EntityManageTypeCollection.ManageUsers, PermissionCollection.Delete)
+                                                  && !currentUserHelper.IsCurrentUser(item.UserName))
+                                                {
+                                                    <span id="category-delete" class="btn bg-red" data-toggle="modal" data-target="#categorymodel-delete-confirmation" data-id="@item.UserId">
+                                                        <i class="fa fa-trash-o"></i>
+                                                    </span>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div id="categorymodel-delete-confirmation" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="categorymodel-delete-confirmation-title" style="display: none; padding-right: 16px;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="categorymodel-delete-confirmation-title">Are you sure?</h4>
+            </div>
+            <form action="" method="post" novalidate="novalidate" id="popup-delete">
+                <div class="form-horizontal">
+                    <div class="modal-body">
+                        Are you sure you want to delete this item?
+                    </div>
+                    <div class="modal-footer">
+                        <span class="btn btn-default" data-dismiss="modal">Cancel</span>
+                        <button type="submit" class="btn btn-danger pull-right">
+                            Delete
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    function Filter() {
+        var text = $("#text").val();
+
+        document.location = "/Admin/UserAdmin/Index?username=" + text;
+    }
+
+    $(document).ready(function () {
+        $(document).on("click", "#category-delete", function () {
+            $("#popup-delete").attr("action", "/Admin/UserAdmin/Delete/" + $(this).attr("data-id"));
+        })
+    });
+</script>

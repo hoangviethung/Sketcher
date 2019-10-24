@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Xem chi tiết liên hệ";
+}
+@model MainProject.ServiceAdmin.Model.Contact.ContactManageViewModel
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Liên hệ</h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-home"></i> Trang chủ</a></li>
+            <li><a href="#">Nội dung</a></li>
+            <li class="active">Liên hệ</li>
+            <li class="active">Chi tiết liên hệ</li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-body">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td><label>Họ tên</label></td>
+                                    <td>@Html.Raw(Model.FullName)</td>
+                                </tr>
+                                <tr>
+                                    <td><label>Thời gian</label></td>
+                                    <td>@Model.CreatedDate.ToString("dd/MM/yyyy HH:mm")</td>
+                                </tr>
+                                <tr>
+                                    <td><label>Điện thoại</label></td>
+                                    <td>@Html.Raw(Model.PhoneNumber)</td>
+                                </tr>
+                                <tr>
+                                    <td><label>Email</label></td>
+                                    <td>@Html.Raw(Model.Email)</td>
+                                </tr>
+                                <tr>
+                                    <td><label>Nội dung</label></td>
+                                    <td>
+                                        @Html.Raw(Model.Content)
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="box-footer">
+                        <button type="button" class="btn btn-danger" onclick="window.location = '/Admin/ContactAdmin/Index';">Back</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

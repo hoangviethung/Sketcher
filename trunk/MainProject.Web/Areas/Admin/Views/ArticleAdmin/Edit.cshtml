@@ -1,0 +1,131 @@
+﻿@model MainProject.ServiceAdmin.Model.Article.ArticleManageViewModel
+@{
+    ViewBag.Title = "Chỉnh sửa bài viết";
+}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Bài viết</h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-home"></i>Trang chủ</a></li>
+            <li><a href="#">Nội dung</a></li>
+            <li class="active">Bài viết</li>
+            <li class="active">Chỉnh sửa</li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Thêm bài viết</h3>
+                </div><!-- /.box-header -->
+                <div class="col-md-12">
+                    <!-- Custom Tabs -->
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tab_1" data-toggle="tab">Nội dung</a></li>
+                            <li><a href="#tab_2" data-toggle="tab">SEO bài viết</a></li>
+                            <li><a href="#tab_3" data-toggle="tab">Hình ảnh</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_1">
+                                @using (Html.BeginForm("Edit", "ArticleAdmin", FormMethod.Post, new { id = "EditArticleFr" }))
+                                {
+                                    <div class="box-body">
+                                        @Html.ValidationSummary(true)
+                                        @Html.HiddenFor(x => x.Id)
+                                        @Html.HiddenFor(x => x.LogHistoryId)
+                                        @Html.HiddenFor(x => x.ImageFolder)
+                                        @Html.HiddenFor(x => x.MetaTitle)
+                                        @Html.HiddenFor(x => x.MetaDescription)
+                                        @Html.HiddenFor(x => x.MetaKeywords)
+                                        @Html.Partial("_LoadArticleCategoryBaseLanguage", Model)
+                                        <div class="form-group">
+                                            <label>Ảnh mặc định</label>
+                                            @Html.TextBoxFor(d => d.ImageDefault, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(d => d.ImageDefault)
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Đường dẫn bài viết <span style="color: red">*</span></label>
+                                            @Html.TextBoxFor(d => d.SeName, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(d => d.SeName)
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Tiêu đề <span style="color: red">*</span></label>
+                                            @Html.EditorFor(d => d.Title, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(d => d.Title)
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Mô tả</label>
+                                            @Html.TextAreaFor(d => d.Description, new { @style = "min-height:200px;", @class = "ckeditor" })
+                                            @Html.ValidationMessageFor(d => d.Description)
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Nội dung <span style="color: red">*</span></label>
+                                            @Html.TextAreaFor(d => d.Body, new { @style = "min-height:300px;", @class = "ckeditor" })
+                                            <br />
+                                            @Html.ValidationMessageFor(d => d.Body)
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Cho phép hiển thị?</label><br />
+                                            @Html.EditorFor(d => d.IsPublished)
+                                            @Html.ValidationMessageFor(d => d.IsPublished)
+                                        </div>
+                                    </div>
+                                    <div class="box-footer">
+                                        <button type="submit" class="btn btn-primary">Chỉnh sửa</button>
+                                        <button type="button" class="btn btn-danger" onclick="window.location = '/Admin/ArticleAdmin/Index';">Cancel</button>
+                                    </div>
+                                }
+                            </div>
+                            <div class="tab-pane" id="tab_2">
+                                <div class="form-group">
+                                    <label>MetaTitle</label><br />
+                                    @Html.EditorFor(d => d.MetaTitle, new { htmlAttributes = new { @class = "form-control" }, })
+                                    @Html.ValidationMessageFor(d => d.MetaTitle)
+                                </div>
+                                <div class="form-group">
+                                    <label>MetaDescription</label><br />
+                                    @Html.EditorFor(d => d.MetaDescription, new { htmlAttributes = new { @class = "form-control" }, })
+                                    @Html.ValidationMessageFor(d => d.MetaDescription)
+                                </div>
+                                <div class="form-group">
+                                    <label>MetaKeywords</label><br />
+                                    @Html.EditorFor(d => d.MetaKeywords, new { htmlAttributes = new { @class = "form-control" }, })
+                                    @Html.ValidationMessageFor(d => d.MetaKeywords)
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab_3">
+                                <iframe name="picturemanager" src="/admin/upload/images?folder=@Model.ImageFolder" style="width: 100%; height: 500px; border:none;"></iframe>
+                            </div><!-- /.tab-pane -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#tabs").tabs();
+        $("#Title").on('keyup', function () {
+            var str = $(this).val();
+            $("#SeName").val(change_alias(str));
+        })
+
+        $("#tab_2 #MetaTitle").on('keyup', function () {
+            $("#tab_1 #MetaTitle").val($(this).val());
+        });
+
+        $("#tab_2 #MetaDescription").on('keyup', function () {
+            $("#tab_1 #MetaDescription").val($(this).val());
+        });
+
+        $("#tab_2 #MetaKeywords").on('keyup', function () {
+            $("#tab_1 #MetaKeywords").val($(this).val());
+        });
+    });
+</script>

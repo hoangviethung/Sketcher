@@ -1,0 +1,64 @@
+﻿@using MainProject.Framework.Models
+@using MainProject.ServiceAdmin.Model
+@model IndexViewModel<MainProject.Core.LogHistory>
+@{
+    ViewBag.Title = "Lịch sử hoạt động";
+    var currentUserHelper = new CurrentUserHelper(Request);
+}
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>Lịch sử hoạt động</h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-home"></i> Trang chủ</a></li>
+            <li><a href="#">Lịch sử hoạt động</a></li>
+            <li class="active">Danh sách</li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-body">
+                        <div class="col-xs-12">
+                            <label>
+                                @Html.Raw(TempData["message"])
+                            </label>
+                        </div>
+                        @Html.Partial("_Filtering", Model.FilterViewModel)
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Tên đăng nhập</th>
+                                    <th>Mô tả hoạt động</th>
+                                    <th>Thời gian</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    int index = 1;
+                                    foreach (var item in Model.ListItems)
+                                    {
+                                        <tr class="@(index % 2 == 0 ? "even" : "odd")">
+                                            <td>@(index++)</td>
+                                            <td>@item.ActionBy</td>
+                                            <td>
+                                                @item.ActionType.GetDescription()
+                                                @item.EntityType.GetDescription()
+                                            </td>
+                                            <td>@item.CreatedDate.ToString("dd/MM/yyyy hh:mm:ss")</td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                        <div class="dataTables_paginate">
+                            @Html.RenderPagingAdmin(Model.PagingViewModel, new PagingStyleModel() { CurrentItemStyle = "active", DivContainerStyle = "", ItemStyle = "" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

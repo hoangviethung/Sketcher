@@ -1,0 +1,52 @@
+﻿@model List<MainProject.Core.Language>
+@{
+    ViewBag.Title = "Language";
+}
+
+<h2>@ViewBag.Title</h2>
+@section Buttons{
+    @Html.ActionLink("Thêm mới", "Create", null, new { @class = "addnew" })
+    @Html.ActionLink("Danh sách", "index", null, null)
+    @Html.ActionLink(" ", "index", "HomeAdmin",null,new {@class="home",@style="padding: 10px 15px;"})
+}
+
+<table>
+    <tr>
+        <th>STT</th>
+        <th>LanguageName</th>
+        <th>LanguageKey</th>
+        <th></th>
+    </tr>
+    @{
+        var index = 1;
+    }
+    @if( Model != null )
+    {
+        foreach (var item in Model)
+        {
+            string bgclass = index % 2 == 0 ? "even" : "odd";
+            <tr class="@bgclass">
+                <td>
+                    @(index++)
+                </td>
+                 <td>
+                    @Html.DisplayFor(modelItem => item.LanguageName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LanguageKey)
+                </td>
+                <td class="containIcon"> 
+                    @Html.ActionLink(" ", "Edit", new {id = item.Id},  new { @class = "edit" })           
+                    @Html.ActionLink(" ", "Delete", new {id = item.Id}, new { @class = "delete",onclick="return confirm('Do you want to delete it?')" })
+                </td>
+            </tr>
+        }
+        if (ViewData["Errors"] != null)
+        {
+                <tr>
+                <td>@Html.Raw(ViewData["Errors"])</td>
+            </tr>
+        }
+    }
+</table>
+

@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "Setting";
+    var currentUserHelper = new CurrentUserHelper(Request);
+}
+@using MainProject.Core.Enums
+@model List<MainProject.Core.Setting>
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Thiết lập
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-home"></i> Trang chủ</a></li>
+            <li><a href="#">Cài đặt</a></li>
+            <li class="active">Thiết lập</li>
+        </ol>
+    </section>
+
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-body">
+                        <p>
+                            @Html.Raw(TempData["message"])
+                        </p>
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Từ khóa</th>
+                                    <th>Giá trị</th>
+                                    <th>Tác vụ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    int index = 1;
+                                    foreach (var item in Model)
+                                    {
+                                        <tr class="@(index % 2 == 0 ? "even" : "odd")">
+                                            <td>@(index++)</td>
+                                            <td>@item.Key</td>
+                                            <td style="word-break: break-all;">@item.Value</td>
+                                            <td>
+                                                @if (currentUserHelper.CheckHasPermissionOnFeature(EntityManageTypeCollection.ManageSettings, PermissionCollection.Create))
+                                                {
+                                                    <a href="/Admin/SettingAdmin/Edit/@item.Id" class="btn btn-default" title="Sửa">
+                                                        <i class="fa fa-edit"></i>
+                                                    </a>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

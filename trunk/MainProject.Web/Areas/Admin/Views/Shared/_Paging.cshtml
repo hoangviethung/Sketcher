@@ -1,0 +1,22 @@
+﻿@{
+    Layout = null;
+}
+@model MainProject.ServiceAdmin.Model.PagingViewModel
+
+@if (Model != null && Model.TotalPages > 1)
+{
+    var lst = new List<SelectListItem>();
+    for (int i = 1; i <= Model.TotalPages; i++)
+    {
+        lst.Add(new SelectListItem() { Text = i.ToString(), Value = i.ToString(), Selected = i == Model.CurrentPage });
+    }
+    
+    <span>Paging</span>
+    @Html.DropDownList("Page", lst, new { onchange = "ChangePage(this.value);" })
+}
+
+<script type="text/javascript">
+    function ChangePage(p) {
+        document.location = "@Model.BaseUrl" + p;
+    }
+</script>

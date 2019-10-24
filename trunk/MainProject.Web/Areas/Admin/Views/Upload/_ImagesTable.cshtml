@@ -1,0 +1,40 @@
+﻿@{
+    Layout = null;
+}
+@model MainProject.ServiceAdmin.Model.Upload.ImagesModel
+<div class="imageContainer" data-update-media-folder="/Admin/Upload/UpdateImage?folder=@Model.ImageFolder">
+@if (Model != null && Model.Images.Count > 0)
+{
+    <div class="imageContainer">
+        <table style="width: 100%;">
+            <tr>
+                <td>Hình ảnh</td>
+                <td>Tên hình</td>
+                <td>Link liên kết</td>
+                <td>&nbsp;</td>
+            </tr>
+            @foreach (var img in Model.Images)
+            {
+                <tr>
+                    <td class="imageBox">
+                        <a href="@Url.Content(img.Link)" target="_blank">
+                            @if (img.Link.EndsWith("mp4"))
+                            {
+                                <span>[Video]</span>
+                            }
+                            else if(img.Link.EndsWith("png") || img.Link.EndsWith("jpg") || img.Link.EndsWith("jpeg") || img.Link.EndsWith("gif") || img.Link.EndsWith("icon"))
+                            {
+                                <img src="@Url.Content(img.Link)" alt="Image" class="imagePreview" />
+                            }
+                        </a>
+                    </td>
+                    <td>@img.Name</td>
+                    <td class="AutoCopy">@img.Link</td>
+                    <td><a class="delImage" onclick="DeleteItem(event, '@img.Link')">Xóa</a></td>
+                </tr>
+            }
+        </table>
+    </div>
+
+}
+</div>

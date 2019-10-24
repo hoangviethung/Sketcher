@@ -1,0 +1,72 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28721.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainProject.Web", "MainProject.Web\MainProject.Web.csproj", "{9F69EB47-4203-4F5B-A3E5-2C39CCEEAE42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainProject.Core", "MainProject.Core\MainProject.Core.csproj", "{1D466D05-033C-4293-B582-3FB8A000E189}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainProject.Data", "MainProject.Data\MainProject.Data.csproj", "{4416CAF5-9C5F-46C0-83BB-E3D0DEC77A56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainProject.Framework", "MainProject.Framework\MainProject.Framework.csproj", "{9529FACB-802D-457A-8C3D-9D0724FDD27D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{D510FC12-625A-4E79-BC15-C98D0B1506F4}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainProject.Service", "MainProject.Service\MainProject.Service.csproj", "{D731FEAA-4E90-4965-9A23-12F68D8FF73C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainProject.ServiceAdmin", "MainProject.ServiceAdmin\MainProject.ServiceAdmin.csproj", "{7E14F2A4-FDE4-4DDA-B52A-98550EBBB2F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainProject.EPPlus", "MainProject.EPPlus\MainProject.EPPlus.csproj", "{8F3818EE-C6A4-4EC9-BBC0-3A0B10C689CB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9F69EB47-4203-4F5B-A3E5-2C39CCEEAE42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F69EB47-4203-4F5B-A3E5-2C39CCEEAE42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F69EB47-4203-4F5B-A3E5-2C39CCEEAE42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F69EB47-4203-4F5B-A3E5-2C39CCEEAE42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D466D05-033C-4293-B582-3FB8A000E189}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D466D05-033C-4293-B582-3FB8A000E189}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D466D05-033C-4293-B582-3FB8A000E189}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D466D05-033C-4293-B582-3FB8A000E189}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4416CAF5-9C5F-46C0-83BB-E3D0DEC77A56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4416CAF5-9C5F-46C0-83BB-E3D0DEC77A56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4416CAF5-9C5F-46C0-83BB-E3D0DEC77A56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4416CAF5-9C5F-46C0-83BB-E3D0DEC77A56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9529FACB-802D-457A-8C3D-9D0724FDD27D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9529FACB-802D-457A-8C3D-9D0724FDD27D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9529FACB-802D-457A-8C3D-9D0724FDD27D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9529FACB-802D-457A-8C3D-9D0724FDD27D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D731FEAA-4E90-4965-9A23-12F68D8FF73C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D731FEAA-4E90-4965-9A23-12F68D8FF73C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D731FEAA-4E90-4965-9A23-12F68D8FF73C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D731FEAA-4E90-4965-9A23-12F68D8FF73C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E14F2A4-FDE4-4DDA-B52A-98550EBBB2F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E14F2A4-FDE4-4DDA-B52A-98550EBBB2F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E14F2A4-FDE4-4DDA-B52A-98550EBBB2F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E14F2A4-FDE4-4DDA-B52A-98550EBBB2F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F3818EE-C6A4-4EC9-BBC0-3A0B10C689CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F3818EE-C6A4-4EC9-BBC0-3A0B10C689CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F3818EE-C6A4-4EC9-BBC0-3A0B10C689CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F3818EE-C6A4-4EC9-BBC0-3A0B10C689CB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2934481F-C7DB-46E7-BD27-33B66CE25A6E}
+	EndGlobalSection
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+EndGlobal

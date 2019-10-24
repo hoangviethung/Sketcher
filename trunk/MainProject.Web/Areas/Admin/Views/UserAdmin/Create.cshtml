@@ -1,0 +1,127 @@
+﻿@model MainProject.ServiceAdmin.Model.User.UserManageCreateViewModel
+@{
+    ViewBag.Title = "Thêm tài khoản";
+}
+<style>
+    .skin-blue-light .main-header .logo:hover .logo-mini {
+        background-color: #fff;
+        background: url(../../../../../Content/style_admin/images/vungtrang-06.png);
+    }
+
+    .select2-container--default .select2-selection--multiple {
+        border-color: #d2d6de;
+        border-radius: unset;
+    }
+
+    .select2-container--default.select2-container--focus .select2-selection--multiple {
+        border-color: #3c8dbc;
+    }
+
+    .select2-container--default .select2-results__option--highlighted[aria-selected] {
+        background-color: #3c8dbc;
+    }
+
+    .select2-container--default .select2-selection--multiple .select2-selection__choice {
+        background-color: #3c8dbc;
+        border-color: #367fa9;
+    }
+
+    .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+        color: rgba(255,255,255,0.7);
+    }
+
+        .select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
+            color: #fff;
+        }
+
+    input[type=checkbox], input[type=radio] {
+        width: 15px;
+        height: 15px;
+    }
+</style>
+<link href="~/Content/style_admin/bootstrap/css/bootstrap-tagsinput.css" rel="stylesheet" />
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Tài khoản quản trị</h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-home"></i>Trang chủ</a></li>
+            <li><a href="#">Tài khoản</a></li>
+            <li class="active">Tài khoản quản trị</li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <!-- left column -->
+            @*<div class="col-md-6">*@
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Thêm mới</h3>
+                </div><!-- /.box-header -->
+                <div class="box-header with-border">
+                    @Html.Raw(TempData["message"])
+                </div>
+                <!-- form start -->
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <strong style="color: red">@Html.ValidationSummary(true)</strong>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label>Tên tài khoản<span style="color: red">*</span></label>
+                            @Html.TextBoxFor(d => d.UserName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(d => d.UserName)
+                        </div>
+                        <div class="form-group">
+                            <label>Mật khẩu<span style="color: red">*</span></label>
+                            @Html.PasswordFor(d => d.Password, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(d => d.Password)
+                        </div>
+                        <div class="form-group">
+                            <label>Nhập lại mật khẩu<span style="color: red">*</span></label>
+                            @Html.PasswordFor(d => d.RePassword, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(d => d.RePassword)
+                        </div>
+                        <div class="form-group">
+                            <label>Email<span style="color: red">*</span></label>
+                            @Html.TextBoxFor(d => d.Email, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(d => d.Email)
+                        </div>
+                        <div class="form-group">
+                            @Html.EditorFor(d => d.IsActive)
+                            <label>Kích hoạt?</label>
+                        </div>
+                        <div class="form-group">
+                            <label>Quyền truy cập</label>
+                            @Html.DropDownListFor(d => d.RoleSelectedValues, Model.Roles,
+                                new
+                                     {
+                                        @class = "form-control select2 select2-hidden-accessible",
+                                        @data_placeholder = "Chọn quyền truy cập",
+                                        @style = "width: 100%;",
+                                        @tabindex = "-1",
+                                        @aria_hidden = true,
+                                        @multiple=""
+                                     })
+                            @Html.ValidationMessageFor(d => d.RoleSelectedValues)
+                        </div>
+                        <button type="submit" class="btn btn-primary">Tạo tài khoản</button>
+                        <button type="button" class="btn btn-danger" onclick="window.location = '/Admin/UserAdmin/Index';">Cancel</button>
+                    </div><!-- /.box-body -->
+                }
+            </div><!-- /.box -->
+            @*</div>*@
+        </div>   <!-- /.row -->
+    </section><!-- /.content -->
+</div><!-- /.content-wrapper -->
+
+
+<script>
+    $(function () {
+        $('.select2').select2();
+    })
+</script>

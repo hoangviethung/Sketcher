@@ -1,0 +1,136 @@
+﻿@model MainProject.ServiceAdmin.Model.Menu.MenuItemManageModel
+@{
+    ViewBag.Title = "Quản lý danh mục";
+}
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>Mục lục</h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-home"></i>Trang chủ</a></li>
+            <li><a href="#">Cài đặt</a></li>
+            <li class="active">Mục lục</li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="nav-tabs-custom">
+                <div class="tab-content">
+                    @using (Html.BeginForm("Manage", "MenuAdmin", FormMethod.Post, new { id = "menuManageForm" }))
+                    {
+                        <strong style="color: red">@Html.ValidationSummary(true)</strong>
+                        @Html.HiddenFor(x => x.Id)
+                        @Html.HiddenFor(x => x.LogHistoryId)
+
+                        if (Model.IsEdit)
+                        {
+                            @Html.HiddenFor(x => x.MenuSelectedValue)
+                            @Html.HiddenFor(x => x.LanguageSelectedValue)                                
+                        }
+
+                        <input type="hidden" id="IsEdit" name="IsEdit" value="@Model.IsEdit.ToString()" />
+                        <div class="box-body">
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <label>Ngôn ngữ</label>
+                                    @Html.DropDownListFor(d => d.LanguageSelectedValue, Model.LanguageSelectListItems, Model.IsEdit ? (object)new{
+                                                                        @disabled = "disabled",
+                                                                        @class = "form-control" } : 
+                                                                        (object)new { @class = "form-control", @onchange = "getMenusByLanguage()"
+                                    })
+                                    @Html.ValidationMessageFor(d => d.LanguageSelectedValue)
+                                </div>
+                                <label>Menu</label>
+                                @Html.DropDownListFor(d => d.MenuSelectedValue, Model.MenuSelectListItems, (Model.IsEdit) ? (object)new { @disabled = "disabled", @class = "form-control"@*, onchange = "ReBindParentSelectList();"*@ } : (object)new { onchange = "getMenuItems();", @class = "form-control" })
+                                @Html.ValidationMessageFor(d => d.MenuSelectedValue)
+                            </div>
+
+                            <div class="form-group">
+                                <label>Danh mục cha</label>
+                                @Html.DropDownListFor(d => d.ParentSelectedId, Model.Parents, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(d => d.ParentSelectedId)
+                            </div>
+                            <div class="form-group">
+                                <label>Tiêu đề<span style="color: red">*</span></label>
+                                @Html.TextBoxFor(d => d.Title, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(d => d.Title)
+                            </div>
+                            <div class="form-group">
+                                <label>Vị trí<span style="color: red">*</span></label>
+                                @Html.EditorFor(d => d.Order, new { htmlAttributes = new { @class = "form-control" }, })
+                                @Html.ValidationMessageFor(d => d.Order)
+                            </div>
+                            <div class="form-group">
+                                <label>Link</label>
+                                @Html.TextBoxFor(d => d.Link, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(d => d.Link)
+                            </div>
+                            @*<div class="form-group">
+                                <label>Link hình</label>
+                                @Html.TextBoxFor(d => d.ImageUrl, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(d => d.ImageUrl)
+                            </div>*@
+                            <div class="form-group">
+                                <label>Loại liên kết</label>
+                                @Html.DropDownListFor(d => d.LinkTargetSelected, Model.LinkTargetSelectListItems, new { @class = "form-control"})
+                                @Html.ValidationMessageFor(d => d.LinkTargetSelected)
+                            </div>
+                        </div>
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">Cập nhật</button>
+                            <button type="button" class="btn btn-danger" onclick="window.location = '/Admin/MenuAdmin/Index'">Cancel</button>
+                        </div>
+                    }
+                </div>
+                </div>
+        </div>
+    </section>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        getMenusByLanguage()
+    })
+
+    function getMenusByLanguage() {
+        var langId = $("#LanguageSelectedValue").val();
+        $.ajax({
+            url: "/Admin/AdminCommon/GetMenuByLanguage?langId=" + langId,
+            type: "GET",
+            beforeSend: function () {
+                $('#MenuSelectedValue').attr("disabled", true);
+                $('#MenuSelectedValue').html('<option>Đang tải...</option>')
+            }
+        }).done(function (result) {
+            $('#MenuSelectedValue').attr("disabled", false);
+            $('#MenuSelectedValue').children().remove();
+            $.each(result.Data, function (i, item) {
+                $("#MenuSelectedValue").append($('<option></option>').val(item.Value).html(item.Text).attr('selected', item.Selected));
+            });
+
+            getMenuItems();
+        }).fail(function (jqXHR, textStatus) {
+            alert("Request failed: " + textStatus);
+        });
+    }
+    function getMenuItems() {
+        var langId = $("#LanguageSelectedValue").val();
+        var menuId = $("#MenuSelectedValue").val();
+            
+        $.ajax({
+            url: "/Admin/AdminCommon/GetMenuItems?langId=" + langId + '&menuId=' + menuId + '&selectedValue=' + @Model.ParentSelectedId,
+            type: "GET",
+             beforeSend: function () {
+                $('#ParentSelectedId').attr("disabled", true);
+                $('#ParentSelectedId').html('<option>Đang tải...</option>')
+            }
+        }).done(function (result) {
+            $('#ParentSelectedId').attr("disabled", false);
+            $('#ParentSelectedId').children().remove();
+            $.each(result.Data, function (i, item) {
+                $("#ParentSelectedId").append($('<option></option>').val(item.Value).html(item.Text).attr('selected', item.Selected));
+            });
+        }).fail(function (jqXHR, textStatus) {
+            alert("Request failed: " + textStatus);
+        });
+    }
+</script>

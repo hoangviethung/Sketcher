@@ -1,0 +1,61 @@
+﻿@model MainProject.ServiceAdmin.Model.Region.CityManageViewModel
+@{
+    ViewBag.Title = "Chỉnh sửa Tỉnh - Thành phố";
+}
+
+<script>
+    $(function () {
+        $("#tabs").tabs();
+    });
+</script>
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Tỉnh - Thành phố</h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-home"></i>Trang chủ</a></li>
+            <li><a href="#">Liên hệ</a></li>
+            <li class="active">Tỉnh - Thành phố</li>
+            <li class="active">Chỉnh sửa</li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Chỉnh sửa Tỉnh - Thành phố</h3>
+                </div><!-- /.box-header -->
+                <div class="col-md-12">
+                    <!-- Custom Tabs -->
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tab_1" data-toggle="tab">Nội dung</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_1">
+                                @using (Html.BeginForm("CityEdit", "RegionAdmin", FormMethod.Post, new { id = "EditArticleFr" }))
+                                {
+                                    <div class="box-body">
+                                        @Html.ValidationSummary(true)
+                                        @Html.HiddenFor(x => x.Id)
+                                        <div class="form-group">
+                                            <label>Ảnh mặc định</label>
+                                            @Html.TextBoxFor(d => d.Name, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(d => d.Name)
+                                        </div>
+                                    </div>
+                                    <div class="box-footer">
+                                        <button type="submit" class="btn btn-primary">Cập nhật</button>
+                                        <button type="button" class="btn btn-danger" onclick="window.location = '/Admin/RegionAdmin/CityIndex';">Cancel</button>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

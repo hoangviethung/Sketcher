@@ -1,0 +1,103 @@
+﻿@using MainProject.ServiceAdmin.Model.Upload
+@model UploadImageManageViewModel
+@{
+    Layout = null;
+    ViewBag.Title = "Home Page";
+}
+<div class="copysuccess" style="opacity:0; bottom: auto!important;
+    position: fixed;
+    right: 24px;
+    top: 0px;
+    z-index: 10018;
+    background: #323232;
+    border-radius: 2px;
+    box-shadow: 0 6px 10px rgba(0,0,0,.14), 0 1px 18px rgba(0,0,0,.12), 0 3px 5px -1px rgba(0,0,0,.4);
+    color: #fff;
+    display: -ms-flexbox;
+    display: flex;
+    font: 14px/24px Roboto;
+    max-width: 568px;
+    min-width: 288px;
+    padding: 16px 24px;">Copy success</div>
+
+@Html.Partial("_ImagesTable", Model.Images)
+
+<h2>Tải lên hình ảnh</h2>
+
+<div>
+    <div id="fileupload" class="dropzone" data-message="Click here or drag files to upload">
+
+    </div>
+    <input type="hidden" value="@Url.Action("Files", "Upload",new { UrlFolder = Model.FolderName} )" id="action-url" />
+    <div class="progress" id="progress" style="display: none; height: 20px; margin-bottom: 0;">
+        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+        </div>
+    </div>
+    <div id="mrcmsfiles" class=""></div>
+    <input type="hidden" id="allowedFileTypes" value=".gif,.jpeg,.jpg,.png,.rar,.zip,.pdf,.mp3,.mp4,.wmv,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.avi,.mpg,.wav,.mov,.wma,.webm,.ogv,.mpeg,.flv,.7z,.txt,.csv,.html,.htm" />
+    <input type="hidden" id="maxFileSizeUpload" value="5" />
+</div>
+
+<!-- MrCMS -->
+<link href="@Url.Content("~/Content/style_admin/MrCMS/dropzone.css")" rel="stylesheet">
+<link href="@Url.Content("~/Content/style_admin/custom/css/ImageArea.css")" rel="stylesheet" />
+
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+<script src="@Url.Content("~/Content/style_admin/custom/js/jquery-migrate-1.2.1.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Content/style_admin/custom/js/jquery.validate.min.js")"></script>
+<script src="@Url.Content("~/Content/style_admin/custom/js/jquery.validate.unobtrusive.min.js")"></script>
+<script src="@Url.Content("~/Content/style_admin/custom/js/jquery.imgareaselect.js")"></script>
+
+<script src="@Url.Content("~/Content/style_admin/MrCMS/dropzone.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Content/style_admin/MrCMS/featherlight.js")"></script>
+<script src="@Url.Content("~/Content/style_admin/MrCMS/media-category.js")"></script>
+<script src="@Url.Content("~/Content/style_admin/MrCMS/media-uploader.js")"></script>
+<script src="@Url.Content("~/Content/style_admin/MrCMS/update-area.js")"></script>
+<script>
+    $(document).ready(function () {
+        $(document).on("click", ".AutoCopy", function () {
+            if (copy($(this).html()) == true) {
+                $(".copysuccess").css('opacity', 1);
+                setTimeout(function () {
+                    $(".copysuccess").css('opacity', 0);
+                }, 3000)
+            }
+        });
+    });
+
+    function DeleteItem(event, link) {
+        // Call ajax to delete image
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var response = JSON.parse(this.response);
+                if (response.Code == 200) {
+                    var e = event.target || event.srcElement;
+                    if (e.parentNode.parentNode.parentNode.childElementCount == 2) {
+                        e.parentNode.parentNode.parentNode.parentNode.removeChild(e.parentNode.parentNode.parentNode);
+                    }
+                    else {
+                        e.parentNode.parentNode.parentNode.removeChild(e.parentNode.parentNode);
+                    }
+                }
+                else {
+                    alert(response.Message);
+                }
+            }
+        };
+        xhttp.open("POST", "/delete-image", true);
+        xhttp.setRequestHeader("Content-type", "application/json");
+        xhttp.send(JSON.stringify({ "link": link }));
+
+    }
+
+    function copy(text) {
+        var input = document.createElement('input');
+        input.setAttribute('value', text);
+        document.body.appendChild(input);
+        input.select();
+        var result = document.execCommand('copy');
+        document.body.removeChild(input);
+        return result;
+    }
+</script>

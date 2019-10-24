@@ -1,0 +1,58 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+@model MainProject.Service.Model.StoreSystem.StoreSystemViewModel
+
+<main>
+    <section class="distribution-system">
+        <div class="container">
+            <h1><span>TÌM </span>CỬA HÀNG</h1>
+            <div class="row box-search-map">
+                <div class="col-lg-5">
+                    <div class="form-group">
+                        <input name="address" type="text" placeholder="Tìm địa chỉ">
+                    </div>
+                    <div class="form-group">
+                        @Html.DropDownList("CitySelectedValue", new List<SelectListItem>())
+                    </div>
+                    <div class="form-group">
+                        @Html.DropDownList("DistrictSelectedValue", new List<SelectListItem>())
+                    </div>
+                    <div class="box-filter">
+                        <h5>LỌC KẾT QUẢ</h5>
+                        <div class="form-group radio">
+                            <label for="car">
+                                Xe Ô Tô
+                                <input id="car" hidden type="checkbox" value="3" name="radio" checked="checked"><span class="checkmark"></span>
+                            </label>
+                            <label for="moto">
+                                Xe Máy
+                                <input id="moto" hidden type="checkbox" value="2" name="radio" checked="checked"><span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="show-filter">
+                        <ul class="list-address">
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div id="map"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+@section scripts {
+    <script src="~/Scripts/MainProject/RegionController.js"></script>
+    <script>
+        var inputLocations = [];
+        var markers = [];
+        var map = null;
+        $(function () {
+            RegionController.init();
+        })
+        inputLocations = RegionController.model.locations;
+    </script>
+}

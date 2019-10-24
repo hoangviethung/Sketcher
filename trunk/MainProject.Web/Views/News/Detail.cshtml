@@ -1,0 +1,48 @@
+﻿@using MainProject.Web.Models
+@model NewsViewModel
+@section styleList{
+    <link rel="stylesheet" href="~/Content/resources/style/stylelist/about/main.css">
+}
+<!-- news -->
+
+<div class="container vismis">
+    <div class="row">
+        <div class="col-9 wow fadeInLeftBig">
+            <div class="content content-news">
+                <h3>@Model.Item.CategoryName</h3>
+                <h4>@Html.Raw(Model.Item.Title)</h4>
+                <div class="content-detail-news">
+                    @Html.Raw(Model.Item.Body)
+                </div>
+            </div>
+            <div class="share-social">
+                <span><a href=""><img src="~/Content/resources/images/about/social01.png" alt=""></a></span>
+                <span><a href=""><img src="~/Content/resources/images/about/social02.png" alt=""></a></span>
+                <span><a href=""><img src="~/Content/resources/images/about/social03.png" alt=""></a></span>
+                <span><a href=""><img src="~/Content/resources/images/about/social04.png" alt=""></a></span>
+            </div>
+            <div class="related-news">
+                <h3>Related News</h3>
+                <div class="slide-related">
+                    @foreach (var item in Model.Items)
+                    {
+                        <div class="item">
+                            <div class="row">
+                                <div class="img-related col-5">
+                                    <img src="@item.ImageDefault" alt="">
+                                </div>
+                                <div class="content-related col-7">
+                                    <h3>@item.Title</h3>
+                                    <p>@Html.Raw(item.Description)</p>
+                                    <a href="@item.Link">Read more</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+        @Html.Action("RightContent", "Home")
+    </div>
+</div>

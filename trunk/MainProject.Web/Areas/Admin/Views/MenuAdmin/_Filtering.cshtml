@@ -1,0 +1,60 @@
+﻿@{
+    Layout = null;
+}
+@model MainProject.ServiceAdmin.Model.FilterViewModel
+
+@if (Model != null)
+{
+    if (Model.LanguageViewModel != null)
+    {
+        <div class="col-xs-2 nopadding">
+            <div class="form-group">
+                <label>Lọc theo ngôn ngữ</label>
+                @Html.DropDownList("filterLanguage", Model.LanguageViewModel.Languages, new { onchange = "changeMenu();", @class = "form-control" })
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <div class="form-group">
+                <label>Loại Menu</label>
+                @Html.DropDownList("filterFather", Model.FatherSelectModel.Fathers, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="col-xs-1 nopadding">
+            <div class="form-group" style="padding-top:25px;">
+                <button type="button" class="btn btn-block btn-primary btn-flat" onclick="Filter();">Lọc</button>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+
+        <script type="text/javascript">
+            function Filter() {
+                var cul = $("#filterLanguage")[0].value;
+                var fa = $("#filterFather")[0].value;
+                if (isNaN(fa)) fa = 0;
+                if (!isNaN(cul)) {
+                    document.location = "@Model.BaseUrl" + "languageSelectedId=" + cul + "&menuSelectedId=" + fa;
+                }
+            }
+
+            function changeMenu() {
+                var cul = $("#filterLanguage")[0].value;
+                $.ajax({
+                    url: "/Admin/AdminCommon/GetMenuByLanguage?langId=" + cul + "&selectedValue=" + @Model.FatherSelectModel.FatherSelectedValue,
+                    type: "GET",
+                    beforeSend: function () {
+                        $('#filterFather').attr("disabled", true);
+                        $('#filterFather').html('<option>Đang tải...</option>')
+                    }
+                }).done(function (result) {
+                    $('#filterFather').attr("disabled", false);
+                    $('#filterFather').children().remove();
+                    $.each(result.Data, function (i, item) {
+                        $("#filterFather").append($('<option></option>').val(item.Value).html(item.Text).attr('selected', item.Selected));
+                    });
+                }).fail(function (jqXHR, textStatus) {
+                    alert("Request failed: " + textStatus);
+                });
+            }
+        </script>
+    }
+}

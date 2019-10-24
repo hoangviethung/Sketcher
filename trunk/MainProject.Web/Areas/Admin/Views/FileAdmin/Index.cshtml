@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Quản lý Người tham gia";
+}
+@using MainProject.Core.Enums
+@using MainProject.Framework.Models
+@using MainProject.ServiceAdmin.Model
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Bảng xếp hạng</h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-home"></i> Trang chủ</a></li>
+            <li><a href="#">Đấu giá</a></li>
+            <li class="active">Bảng xếp hạng</li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-body">
+                        <p>
+                            @Html.Raw(TempData["message"])
+                        </p>
+                        <div class="form-group col-xs-2">
+                            <button type="button" name="exportexcel" class="btn bg-olive btn-block btn-primary btn-lg">
+                                <i class="fa fa-upload"></i>
+                                Export
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("button[name=exportexcel]").click(function () {
+            $.ajax({
+                url: "/Admin/FileAdmin/ExportExcel",
+                cache: false,
+                contentType: false,
+                type: 'post',
+                success: function (result) {
+                    window.location = result;
+                },
+                error: function (result) {
+                    alert('Có lỗi xảy ra, hãy thử lại!');
+                }
+            })
+        })
+    })
+</script>

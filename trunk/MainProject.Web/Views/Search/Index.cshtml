@@ -1,0 +1,83 @@
+﻿@using MainProject.Core.Enums
+@using MainProject.Framework.Helper
+@using MainProject.Framework.Models
+@section styleList{
+    <link rel="stylesheet" href="~/Content/resources/style/stylelist/about/main.css">
+}
+@{
+    ViewBag.Title = "Tìm kiếm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    @model MainProject.Service.ViewModels.SearchViewModel
+}
+
+<div class="container vismis">
+    <div class="row">
+        <div class="col-9 wow fadeInLeftBig">
+            <div class="content content-frieght">
+                <h3>Tìm kiếm</h3>
+            </div>
+            @if (Model.SearchObjects != null)
+            {
+                <div class="content content-news findlink">
+                    @foreach (var item in Model.SearchObjects)
+                    {
+                        <div class="detaillink">
+                            <div><a target="_blank" href="@item.Url">- http:/@item.Url</a></div>
+                            <div><p>@Html.Raw(item.Description)</p></div>
+                        </div>
+                    }
+
+                    <div class="phantrang">
+                        <ul>
+                            @Html.RenderPagingSite(Model.PagingModel, new PagingStyleModel() { CurrentItemStyle = "", DivContainerStyle = "", ItemStyle = "" })
+                        </ul>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div><p>Không tìm thấy kết quả cần tìm !</p></div>
+            }
+
+        </div>
+        <div class="col-3 wow fadeInRightBig">
+            <div class="popup">
+                <div class="img">
+                    <img src="Content/resources/images/about/ic_popup.png" alt="">
+                </div>
+                <div class="content-popup">
+                    <div class="no_back">
+                        <h4>Head Office</h4>
+                        <h3>Ho Chi Minh</h3>
+                        <h5>Công Ty Cổ Phần Giao Nhận Vận Tải Mỹ Á.</h5>
+                        <p><span><img src="resources/images/about/ico_01.png" alt=""></span>Số 31/34A Ung Văn Khiêm, Phường 25, Quận Bình Thạnh, TP HCM, Việt Nam.</p>
+                        <p><span><img src="resources/images/about/ico_02.png" alt=""></span>+ 028 3512 9759</p>
+                        <p><span><img src="resources/images/about/ico_03.png" alt=""></span>+ 028 3512 9759</p>
+                        <p><span><img src="resources/images/about/ico_04.png" alt=""></span>aslshipping@vnn.vn</p>
+                        <p><span><img src="resources/images/about/ico_04.png" alt=""></span>mdirector@asl-corp.com</p>
+                        <p><span><img src="resources/images/about/ico_05.png" alt=""></span>www.asl-corp.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="service-loop">
+                <h3>SERVICE LOGISTICS</h3>
+                <div class="content-loop">
+                    <p class="active"><a href="service-detail.html">Vận chuyển đường biển</a></p>
+                    <p><a href="service-detail.html">Vận chuyển hàng không</a></p>
+                    <p><a href="service-detail.html">Vận chuyển hàng lẻ</a></p>
+                    <p><a href="service-detail.html">Khai thuê hải quan</a></p>
+                    <p><a href="service-detail.html">Vận chuyển nội địa</a></p>
+                    <p><a href="service-detail.html">Dịch vụ giao nhận tích hợp 3PL</a></p>
+                    <p><a href="service-detail.html">Vận chuyển dự án công trình</a></p>
+                    <p><a href="service-detail.html">Vận chuyển đa phương thức</a></p>
+                    <p><a href="service-detail.html">Dịch vụ kho bãi</a></p>
+                    <p><a href="service-detail.html">Dịch vụ vận chuyển hàng đi Mỹ</a></p>
+                    <p><a href="service-detail.html">Dịch vụ vận chuyển container bồn</a></p>
+                    <p><a href="service-detail.html">Dịch vụ phân phối hàng TMĐT</a></p>
+                    <p><a href="service-detail.html">Vận chuyển hàng xuyên biên giới Campuchia, Lào</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

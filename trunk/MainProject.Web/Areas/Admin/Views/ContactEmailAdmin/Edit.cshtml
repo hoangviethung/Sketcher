@@ -1,0 +1,75 @@
+﻿@model MainProject.ServiceAdmin.Model.ContactEmail.ContactEmailManageModel
+@{
+    ViewBag.Title = "Chỉnh sửa Email liên hệ";
+}
+
+<script>
+    $(function () {
+        $("#tabs").tabs();
+    });
+</script>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Email</h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-home"></i>Trang chủ</a></li>
+            <li><a href="#">Nội dung</a></li>
+            <li class="active">Email liên hệ</li>
+            <li class="active">Chỉnh sửa</li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Chỉnh sửa Email</h3>
+                </div><!-- /.box-header -->
+                <div class="col-md-12">
+                    <!-- Custom Tabs -->
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tab_1" data-toggle="tab">Nội dung</a></li>
+                            <li><a href="#tab_2" data-toggle="tab">Hình ảnh</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_1">
+                                @using (Html.BeginForm("Edit", "ContactEmailAdmin", FormMethod.Post, new { id = "CreateArticleFr" }))
+                                {
+                                    <div class="box-body">
+                                        @Html.ValidationSummary(true)
+                                        @Html.HiddenFor(x => x.Id)
+                                        <div class="form-group">
+                                            <label>Ảnh mặc định</label>
+                                            @Html.TextBoxFor(d => d.Email, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(d => d.Email)
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Kích hoạt?</label><br />
+                                            @Html.EditorFor(d => d.IsActive)
+                                            @Html.ValidationMessageFor(d => d.IsActive)
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Là Email chính?</label><br />
+                                            @Html.EditorFor(d => d.IsMain)
+                                            @Html.ValidationMessageFor(d => d.IsMain)
+                                        </div>
+                                    </div><!-- /.box-body -->
+
+                                    <div class="box-footer">
+                                        <button type="submit" class="btn btn-primary">Xác nhận</button>
+                                        <button type="button" class="btn btn-danger" onclick="window.location = '/Admin/ContactEmailAdmin/Index';">Hủy bỏ</button>
+                                    </div>
+                                }
+                            </div><!-- /.tab-pane -->
+                        </div><!-- /.tab-content -->
+                    </div><!-- nav-tabs-custom -->
+                </div><!-- /.col -->
+            </div><!-- /.box -->
+        </div>   <!-- /.row -->
+    </section><!-- /.content -->
+</div><!-- /.content-wrapper -->

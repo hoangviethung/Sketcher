@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Chỉnh sửa thiết lập";
+}
+@model MainProject.ServiceAdmin.Model.Setting.SettingManageViewModel
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Thiết lập
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+            <li><a href="#">Forms</a></li>
+            <li class="active">General Elements</li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <!-- left column -->
+            @*<div class="col-md-6">*@
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Chỉnh sữa</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                @using (Html.BeginForm())
+                {
+                    <strong style="color: red">@Html.ValidationSummary(true)</strong>
+                    @Html.HiddenFor(d => d.Id)
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label>Từ khóa</label>
+                            @Html.TextBoxFor(d => d.Key, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.ValidationMessageFor(d => d.Key)
+                        </div>
+                        <div class="form-group">
+                            <label>Giá trị</label>
+                            @if (Model.Key == "EmailAccountPassword")
+                            {
+                                @Html.TextBoxFor(d => d.Value, new { @class = "form-control", @type = "password" })
+                                @Html.ValidationMessageFor(d => d.Value)
+                            }
+                            else if (Model.Key== "EmailToAdmin"||Model.Key== "EmailToCustomer")
+                            {
+                                @Html.TextAreaFor(d => d.Value, new { @style = "min-height:300px;", @class = "ckeditor" })
+                                @Html.ValidationMessageFor(d => d.Value)
+                            }
+                            else
+                            {
+                                    @Html.TextBoxFor(d => d.Value, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(d => d.Value)
+                                }
+                        </div>
+                    </div><!-- /.box-body -->
+
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">Cập nhật</button>&nbsp;&nbsp;
+                        <button type="submit" class="btn btn-dangerous" onclick="window.location = '/Admin/SettingAdm/Index';" >Hủy</button>
+                    </div>
+                }
+            </div><!-- /.box -->
+            @*</div>*@
+        </div>   <!-- /.row -->
+    </section>
+</div>

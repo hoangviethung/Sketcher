@@ -1,0 +1,8 @@
+﻿@using MainProject.Web.Models
+@model NewsViewModel
+@section styleList{
+    <link rel="stylesheet" href="~/Content/resources/style/stylelist/about/main.css">
+}
+<div id="grid-list">
+    @{ Html.RenderPartial("_AjaxNewsList", Model); }
+</div>

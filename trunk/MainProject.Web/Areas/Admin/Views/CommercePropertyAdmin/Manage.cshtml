@@ -1,0 +1,67 @@
+﻿@using MainProject.Core.Enums
+@model MainProject.ServiceAdmin.Model.CommerceProperty.PropertyManageModel
+@{
+    ViewBag.Title = "Quản lý Thuộc tính sản phẩm";
+}
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>Thuộc tính sản phẩm</h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-home"></i>Trang chủ</a></li>
+            <li><a href="#">Thương mại điện tử</a></li>
+            <li class="active">Thuộc tính sản phẩm</li>
+            <li class="active">Thao tác thuộc tính sản phẩm</li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="col-md-12">
+                    <!-- Custom Tabs -->
+                    <div class="nav-tabs-custom" id="tabs">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tab_1" data-toggle="tab">Nội dung</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_1">
+                                @using (Html.BeginForm("Manage", "CommercePropertyAdmin"))
+                                {
+                                    @Html.ValidationSummary(true)
+                                    @Html.HiddenFor(x => x.Id)
+                                    <div class="form-group">
+                                        <label>Tên thuộc tính<span style="color: red">*</span></label>
+                                        @Html.EditorFor(d => d.Name, new { htmlAttributes = new { @class = "form-control" }, })
+                                        @Html.ValidationMessageFor(d => d.Name)
+                                    </div>
+                                    @*<div class="form-group">
+                                            <label>Đơn vị<span style="color: red">*</span></label>
+                                            @Html.EditorFor(d => d.FriendlyName, new { htmlAttributes = new { @class = "form-control" }, })
+                                            @Html.ValidationMessageFor(d => d.FriendlyName)
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Ảnh hưởng giá</label><br />
+                                            @Html.EditorFor(d => d.IsPriceEffect)
+                                            @Html.ValidationMessageFor(d => d.IsPriceEffect)
+                                        </div>*@
+                                    <div class="form-group">
+                                        <label>Kiểu dữ liệu</label>
+                                        @Html.DropDownListFor(d => d.UnitTypeSelected, Model.UnitTypeItems, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(d => d.UnitTypeSelected)
+                                    </div>
+                                    <div class="box-footer">
+                                        <button class="btn btn-primary">Cập nhật</button>
+                                        <button type="button" class="btn btn-danger" onclick="window.location = '/Admin/CommercePropertyAdmin/Index';">Hủy</button>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+

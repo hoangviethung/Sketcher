@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "Chỉnh sửa tài nguyên";
+}
+@model MainProject.ServiceAdmin.Model.StringResource.StringResourceValueModel 
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Tài nguyên
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-home"></i> Trang chủ</a></li>
+            <li><a href="#">Tài nguyên</a></li>
+            <li class="active">Chỉnh sửa</li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Chỉnh sửa</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                @using (Html.BeginForm())
+                {
+                    <strong style="color: red">@Html.ValidationSummary(true)</strong>
+                    @Html.HiddenFor(d => d.Id)
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label>Từ khóa</label>
+                            @Html.TextBoxFor(d => d.KeyName, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.ValidationMessageFor(d => d.KeyName)
+                        </div>
+                        <div class="form-group">
+                            <label>Giá trị</label>
+                            @Html.TextBoxFor(d => d.Value, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(d => d.Value)
+                        </div>
+                    </div><!-- /.box-body -->
+
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">Cập nhật</button>
+                        <button type="submit" onclick="window.location = '/Admin/ResourceAdmin/Index';" class="btn btn-danger">Quay lại</button>
+                    </div>
+                }
+            </div><!-- /.box -->
+        </div>   <!-- /.row -->
+    </section><!-- /.content -->
+</div><!-- /.content-wrapper -->

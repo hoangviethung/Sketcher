@@ -1,0 +1,281 @@
+﻿@using MainProject.Core.Enums
+@model MainProject.ServiceAdmin.Model.Product.ProductManageModel
+@{
+    ViewBag.Title = "Thêm mới sản phẩm";
+}
+@section styles {
+    <link rel="stylesheet" href="~/Content/style_admin/dist/css/pickr.min.css">
+}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Sản phẩm</h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-home"></i>Trang chủ</a></li>
+            <li><a href="#">Thương mại điện tử</a></li>
+            <li class="active">Sản phẩm</li>
+            <li class="active">Thêm mới</li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Thêm sản phẩm</h3>
+                </div>
+                <div class="col-md-12">
+                    <!-- Custom Tabs -->
+                    <div class="nav-tabs-custom" id="tabs">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tab_1" data-toggle="tab">Nội dung</a></li>
+                            <li><a href="#tab_2" data-toggle="tab">SEO bài viết</a></li>
+                            <li><a href="#tab_3" data-toggle="tab">Hình ảnh</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_1">
+                                @using (Html.BeginForm("Edit", "ProductAdmin", FormMethod.Post, new { id = "EditProductFr" }))
+                                {
+                                    @Html.ValidationSummary(true)
+                                    @Html.HiddenFor(x => x.Id)
+                                    @Html.HiddenFor(x => x.ImageFolder)
+                                    @Html.HiddenFor(x => x.LogHistoryId)
+                                    @Html.HiddenFor(x => x.MetaTitle)
+                                    @Html.HiddenFor(x => x.MetaDescription)
+                                    @Html.HiddenFor(x => x.MetaKeywords)
+                                    <div class="box-body">
+                                        <div class="form-group" id="sub-commerce-category">
+                                            <label>Danh mục sản phẩm</label>
+                                            <select class="form-control select2 select2-hidden-accessible" name="SelectedCommerceCategoryIds"
+                                                    data-placeholder="Danh mục sản phẩm" style="width: 100%;" tabindex="-1" aria-hidden="true"
+                                                    data-val-required="Vui lòng chọn danh mục!" data-val="true" id="SelectedCommerceCategoryIds">
+                                                @foreach (var item in Model.CommerceCategories)
+                                                {
+                                                    <option value="@item.Value"
+                                                            @(Model.SelectedCommerceCategoryIds.Contains(long.Parse(item.Value)) ? "selected" : "")>
+                                                        @item.Text
+                                                    </option>
+                                                }
+                                            </select>
+
+                                            @Html.ValidationMessageFor(d => d.SelectedCommerceCategoryIds)
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div class="form-group">
+                                            <label>Đường dẫn sản phẩm <span style="color: red">*</span></label>
+                                            @Html.EditorFor(d => d.SeName, new { htmlAttributes = new { @class = "form-control" }, })
+                                            @Html.ValidationMessageFor(d => d.SeName)
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Tên sản phẩm <span style="color: red">*</span></label>
+                                            @Html.EditorFor(d => d.Name, new { htmlAttributes = new { @class = "form-control" }, })
+                                            @Html.ValidationMessageFor(d => d.Name)
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Ảnh mặc định</label>
+                                            @Html.EditorFor(d => d.ImageDefault, new { htmlAttributes = new { @class = "form-control" }, })
+                                            @Html.ValidationMessageFor(d => d.ImageDefault)
+                                        </div>
+                                        <div class="form-group col-md-6 nopadding">
+                                            <label>Cân nặng (gram) <span style="color:red">*</span></label>
+                                            @Html.TextBoxFor(d => d.Weight, new { @class = "form-control", @type = "number" })
+                                            @Html.ValidationMessageFor(d => d.Weight)
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Chiều dài (cm) <span style="color:red">*</span></label>
+                                            @Html.TextBoxFor(d => d.Length, new { @class = "form-control", @type = "number" })
+                                            @Html.ValidationMessageFor(d => d.Length)
+                                        </div>
+                                        <div class="form-group col-md-6 nopadding">
+                                            <label>Chiều rộng (cm) <span style="color:red">*</span></label>
+                                            @Html.TextBoxFor(d => d.Width, new { @class = "form-control", @type = "number" })
+                                            @Html.ValidationMessageFor(d => d.Width)
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Chiều cao (cm) <span style="color:red">*</span></label>
+                                            @Html.TextBoxFor(d => d.Height, new { @class = "form-control", @type = "number" })
+                                            @Html.ValidationMessageFor(d => d.Height)
+                                        </div>
+                                        <div class="form-group format-price col-md-6 nopadding">
+                                            <label>Giá tiền <p></p></label>
+                                            @Html.TextBoxFor(d => d.Price, new { @class = "form-control", @type = "number" })
+                                            @Html.ValidationMessageFor(d => d.Price)
+                                        </div>
+                                        <div class="form-group promotion-price format-price col-md-6" @(!Model.IsPromotion ? "hidden" : "")>
+                                            <label>Giá khuyến mãi <p></p></label>
+                                            @Html.TextBoxFor(d => d.PromotionPrice, new { @class = "form-control", @type = "number" })
+                                            @Html.ValidationMessageFor(d => d.PromotionPrice)
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div class="form-group col-md-4 nopadding">
+                                            <label>Khuyến mãi?</label> <br />
+                                            @Html.EditorFor(d => d.IsPromotion)
+                                            @Html.ValidationMessageFor(d => d.IsPromotion)
+                                        </div>
+                                        <div class="form-group col-md-4 nopadding">
+                                            <label>Sản phẩm nổi bật?</label> <br />
+                                            @Html.EditorFor(d => d.IsHot)
+                                            @Html.ValidationMessageFor(d => d.IsHot)
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label>Sản phẩm mới?</label> <br />
+                                            @Html.EditorFor(d => d.IsNew)
+                                            @Html.ValidationMessageFor(d => d.IsNew)
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Mô tả</label>
+                                            @Html.TextAreaFor(d => d.Description, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(d => d.Description)
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Thông số kỹ thuật</label>
+                                            @Html.TextAreaFor(d => d.Specification, new { @class = "ckeditor" })
+                                            @Html.ValidationMessageFor(d => d.Specification)
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Nội dung</label>
+                                            @Html.TextAreaFor(d => d.Body, new { @class = "ckeditor" })
+                                            @Html.ValidationMessageFor(d => d.Body)
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane product-property">
+                                        <label>Thuộc tính sản phẩm</label>
+                                        <div class="box-body nopadding">
+                                            <div class="form-group nopadding">
+                                                <table id="program_table" class="table table-bordered table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>STT</th>
+                                                            <th>Thuộc tính</th>
+                                                            <th>Giá trị</th>
+                                                            @*<th>Giá tiền (Mặc đinh là 0 nếu giá không thay đổi)</th>*@
+                                                            <th>
+                                                                <input type="button" class="btn btn-primary btnAddProperty" value="Thêm" />
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (var property in Model.Properties)
+                                                        {
+                                                            @Html.Partial("_Property", property)
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="box-footer">
+                                        <button class="btn btn-primary">Cập nhật</button>
+                                        <button type="button" class="btn btn-danger" onclick="window.location = '/Admin/ProductAdmin/Index';">Cancel</button>
+                                    </div>
+                                }
+                            </div>
+                            <div class="tab-pane" id="tab_2">
+                                <div class="form-group">
+                                    <label>MetaTitle</label><br />
+                                    @Html.EditorFor(d => d.MetaTitle, new { htmlAttributes = new { @class = "form-control" }, })
+                                    @Html.ValidationMessageFor(d => d.MetaTitle)
+                                </div>
+                                <div class="form-group">
+                                    <label>MetaDescription</label><br />
+                                    @Html.EditorFor(d => d.MetaDescription, new { htmlAttributes = new { @class = "form-control" }, })
+                                    @Html.ValidationMessageFor(d => d.MetaDescription)
+                                </div>
+                                <div class="form-group">
+                                    <label>MetaKeywords</label><br />
+                                    @Html.EditorFor(d => d.MetaKeywords, new { htmlAttributes = new { @class = "form-control" }, })
+                                    @Html.ValidationMessageFor(d => d.MetaKeywords)
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab_3">
+                                <iframe name="picturemanager" src="/admin/upload/images?folder=@Model.ImageFolder" style="width: 100%; height: 500px; border:none;"></iframe>
+                            </div><!-- /.tab-pane -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $('#tabs').tabs();
+        $('.select2').select2();
+        $("#Name").on('keyup', function () {
+            var str = $(this).val();
+            $("#SeName").val(change_alias(str));
+        });
+
+        $("#tab_2 #MetaTitle").on('keyup', function () {
+            $("#tab_1 #MetaTitle").val($(this).val());
+        });
+
+        $("#tab_2 #MetaDescription").on('keyup', function () {
+            $("#tab_1 #MetaDescription").val($(this).val());
+        });
+
+        $("#tab_2 #MetaKeywords").on('keyup', function () {
+            $("#tab_1 #MetaKeywords").val($(this).val());
+        });
+
+        $("#IsPromotion").click(function () {
+            if ($(this).attr("checked")) {
+                $(".promotion-price").show();
+            }
+            else {
+                $(".promotion-price").hide();
+            }
+        });
+
+        $(".format-price input[type='number']").on('keyup', function () {
+            $(this).parents(".form-group").find("label p").text("Kết quả hiển thị: " + formatMoney($(this).val()));
+        })
+        $(".format-price input[type='number']").trigger("keyup");
+    }),
+
+        // Create Media
+        $(document).on('click', ".product-property input[type=button]", function () {
+            // Array position
+            var position = $(this).parents("table").find("tbody tr").length;
+            var $tbody = $(this).parents("table").find("tbody");
+            var selectedIds = new Array("0");
+            $(this).parents("table").find("tbody tr").each(function (i) {
+                if ($(this).find("input[name='Properties[" + i + "].IsDeleted']").val() == false) {
+                    selectedIds.push($(this).find("input[name='Properties[" + i + "].Id']").val());
+                }
+            })
+            $.ajax({
+                url: "/Admin/ProductAdmin/CreateProperty",
+                data: { pos: position, 'selectedIds': encodeURIComponent(selectedIds) },
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                beforeSend: function () {
+                },
+                success: function (html) {
+                    $tbody.append(html);
+
+                    var form = $("#EditProductFr")
+                        .removeData("validator") /* added by the raw jquery.validate plugin */
+                        .removeData("unobtrusiveValidation");  /* added by the jquery unobtrusive plugin*/
+
+                    $.validator.unobtrusive.parse(form);
+                }
+            })
+        })
+
+    // Format money
+    function formatMoney(n, c, d, t) {
+        var c = isNaN(c = Math.abs(c)) ? 0 : c,
+            d = d == undefined ? "." : d,
+            t = t == undefined ? "," : t,
+            s = n < 0 ? "-" : "",
+            i = String(parseInt(n = Math.abs(Number(n) || 0).toFixed(c))),
+            j = (j = i.length) > 3 ? j % 3 : 0;
+
+        return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+    };
+</script>

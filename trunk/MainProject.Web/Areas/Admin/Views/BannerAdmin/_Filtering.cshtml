@@ -1,0 +1,67 @@
+﻿@{
+    /**/
+    Layout = null;
+}
+@model MainProject.ServiceAdmin.Model.FilterViewModel
+
+@if (Model != null)
+{
+    if (Model.LanguageViewModel != null)
+    {
+        <div class="col-xs-2">
+            <div class="form-group">
+                <label>Lọc theo ngôn ngữ</label>
+                @Html.DropDownList("filterLanguage", Model.LanguageViewModel.Languages, new { onchange = "changeCategoryByLanguage(this.value);", @class = "form-control" })
+            </div>
+        </div>
+    }
+    @*if (Model.SubSiteSelectModel != null)
+        {
+            <div class="col-xs-2">
+                <div class="form-group">
+                    <label>Đơn vị</label>
+                    @Html.DropDownList("filterSubSite", Model.SubSiteSelectModel.SubSites, new { @class = "form-control" })
+                </div>
+            </div>
+        }*@
+    <div class="col-xs-1">
+        <div class="form-group" style="padding-top:25px;">
+            <button type="button" class="btn btn-block btn-primary btn-flat" onclick="Filter();">Lọc</button>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+
+    <script type="text/javascript">
+        @*function Filter() {
+            var languageId = $("#filterLanguage")[0].value;
+            var subSiteId = $("#filterSubSite")[0].value;
+            if (!isNaN(languageId) || !isNaN(subSiteId)) {
+                document.location = "@Model.BaseUrl" + "languageId=" + languageId + "&subSiteId=" + subSiteId;
+            }
+        }*@
+
+         function Filter() {
+            var languageId = $("#filterLanguage")[0].value;
+            if (!isNaN(languageId) || !isNaN(subSiteId)) {
+                document.location = "@Model.BaseUrl" + "languageId=" + languageId;
+            }
+        }
+
+        function changeCategoryByLanguage(selectedValue) {
+            //var request = $.ajax({
+            //    url: "/Admin/AdminCommon/GetCategoryArticleByLanague?id=" + selectedValue,
+            //    type: "GET",
+            //});
+            //request.done(function (result) {
+            //    $('#filterFather').children().remove();
+            //    $("#filterFather").append($('<option></option>').val("0").html("All"));
+            //    $.each(result.Data, function (i, item) {
+            //        $("#filterFather").append($('<option></option>').val(item.Value).html(item.Text).attr('selected', item.Selected));
+            //    });
+            //});
+            //request.fail(function (jqXHR, textStatus) {
+            //    alert("Request failed: " + textStatus);
+            //});
+        }
+    </script>
+}

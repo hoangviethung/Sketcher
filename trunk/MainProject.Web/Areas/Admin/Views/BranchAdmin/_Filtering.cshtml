@@ -1,0 +1,58 @@
+﻿@model MainProject.ServiceAdmin.Model.FilterViewModel
+@{
+    Layout = null;
+}
+@if (Model != null)
+{
+    if (Model.LanguageViewModel != null)
+    {
+        <div class="col-xs-2 nopadding">
+            <div class="form-group">
+                <label>Tỉnh - Thành phố</label>
+                @Html.DropDownListFor(d => d.LanguageViewModel.LanguageSelectedValue, Model.LanguageViewModel.Languages, 
+                        new { onchange = "changeCity(this.value, 0);", @id = "filterCity", @class = "form-control" })
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <div class="form-group">
+                <label>Quận - Huyện</label>
+                @Html.DropDownListFor(d => d.FatherSelectModel.FatherSelectedValue, new List<SelectListItem>(), 
+                        new { @onchange = "changeDistrict(this.value)", @id = "filterDistrict", @class = "form-control" })
+            </div>
+        </div>
+        <div class="clearfix"></div>
+
+        <script type="text/javascript">
+            $(function () {
+                changeCity($("#filterCity").val(), @Model.FatherSelectModel.FatherSelectedValue)
+            })
+
+            function changeCity(city, district) {
+                if (isNaN(city)) city = 0;
+                if (isNaN(district)) district = 0;
+
+                $.ajax({
+                    url: "/get-district?cityId=" + city + "&id=" + district,
+                    type: "GET",
+                    beforeSend: function () {
+                        $('#filterDistrict').attr("disabled", true);
+                        $('#filterDistrict').html('<option>Đang tải...</option>')
+                    }
+                }).done(function (result) {
+                    $('#filterDistrict').attr("disabled", false);
+                    $('#filterDistrict').children().remove();
+                    $("#filterDistrict").append($('<option></option>').val('').html('Chọn Quận - Huyện'));
+                    $.each(result.Result, function (i, item) {
+                        $("#filterDistrict").append($('<option></option>').val(item.Value).html(item.Text).attr('selected', item.Selected));
+                    });
+                }).fail(function (jqXHR, textStatus) {
+                    alert("Request failed: " + textStatus);
+                });
+            }
+
+            function changeDistrict(district) {
+                window.location.href = '@Model.BaseUrl' + "city=" + $("#filterCity").val() + "&district=" + district;
+            }
+        </script>
+    }
+}

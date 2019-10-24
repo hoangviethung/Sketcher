@@ -1,0 +1,26 @@
+﻿@{ 
+    Layout = null;
+}
+@using MainProject.Core.Enums
+@model MainProject.Service.Model.Home.SubscribeModel
+
+<div class="register-form col-12">
+    <h4>Đăng ký để nhận thêm nhiều thông tin từ Riland</h4>
+    @using (Ajax.BeginForm("dang-ky-tu-van", new AjaxOptions() { HttpMethod = "POST", OnSuccess = "subscribeSuccess" }))
+    {
+        <div class="background"></div>
+        <input type="text" placeholder="Nhập địa chỉ email" />
+        <button>
+            XÁC NHẬN
+        </button>
+    }
+</div>
+
+<script>
+    function subscribeSuccess(response) {
+        alert(response.Message);
+        if (response.Code == 200) {
+            window.location.href = window.location;
+        }
+    }
+</script>

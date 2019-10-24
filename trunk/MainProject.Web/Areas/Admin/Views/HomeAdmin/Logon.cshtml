@@ -1,0 +1,40 @@
+﻿@model MainProject.ServiceAdmin.Model.User.UserLogon
+@{
+    ViewBag.Title = "Đăng nhập";
+    Layout = "~/Areas/Admin/Views/Shared/_LogOnLayout.cshtml";
+}
+<strong style="margin-top: 0px;margin-bottom: 0px;color: red">@Html.ValidationSummary(true)</strong>
+<p class="login-box-msg">Đăng nhập vào trang quản trị</p>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group has-feedback">
+        @*<label>@Html.Raw(TempData["message"])</label><br />*@
+        @if (TempData["message"] != null)
+        {
+            <label>@Html.Raw(TempData["message"])</label><br /> 
+        }
+    @Html.TextBoxFor(m => m.UserName,new {@class="form-control", @placeholder="Username"})
+    @Html.ValidationMessageFor(m => m.UserName)
+    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+    </div>
+    <div class="form-group has-feedback">
+    @Html.PasswordFor(m => m.Password,new {@class="form-control", @placeholder="Password"})
+    @Html.ValidationMessageFor(m => m.Password)
+    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+    </div>
+    <div class="row">
+    <div class="col-xs-8">
+        <div class="checkbox icheck">
+        <label>
+            <input type="checkbox"> Duy trì đăng nhập
+        </label>
+        </div>
+    </div><!-- /.col -->
+    <div class="col-xs-4">
+        <button type="submit" class="btn btn-primary btn-block btn-flat">Đăng Nhập</button>
+    </div><!-- /.col -->
+    </div>
+}
+
+<a href="@Url.Action("ForgetPass", "HomeAdmin", new { area = "Admin" })">Quên mật khẩu?</a><br>

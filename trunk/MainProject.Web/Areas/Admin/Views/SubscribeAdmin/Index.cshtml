@@ -1,0 +1,135 @@
+﻿@{
+    ViewBag.Title = "Quản lý Subscribe";
+    var currentUserHelper = new CurrentUserHelper(Request);
+}
+@using MainProject.Core.Enums
+@using MainProject.Framework.Models
+@using MainProject.ServiceAdmin.Model
+@model IndexViewModel<MainProject.Core.Subscribe>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>Quản lý Subcribe</h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-home"></i>Trang chủ</a></li>
+            <li><a href="#">Quản lý email</a></li>
+            <li class="active">Email đăng ký</li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-body">
+                        <p>
+                            @Html.Raw(TempData["message"])
+                        </p>
+                        <form action="/Admin/SubscribeAdmin/DeleteMultiItems" method="post">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>Ngày đăng kí</th>
+                                        <th>Email</th>
+                                        <th>Ghi Chú</th>
+                                        <th>Tác vụ</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model != null)
+                                    {
+                                        if (Model.ListItems != null)
+                                        {
+                                            int index = 1;
+                                            foreach (var item in Model.ListItems)
+                                            {
+                                                <tr class="@(index % 2 == 0 ? "even" : "odd")">
+                                                    <td>
+                                                        @(index++)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.CreateDate)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Email)
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" value="@item.Note" data-id="@item.Id" class="form-control" />
+                                                    </td>
+                                                    <td class="containIcon">
+                                                        @if (currentUserHelper.CheckHasPermissionOnFeature(EntityManageTypeCollection.ManageSubscribe, PermissionCollection.Edit))
+                                                        {
+                                                            <a href="#" data-id class="btn btn-default" title="Chỉnh sửa">
+                                                                <i class="fa fa-edit"></i>
+                                                            </a>
+                                                        }
+                                                        @if (currentUserHelper.CheckHasPermissionOnFeature(EntityManageTypeCollection.ManageSubscribe, PermissionCollection.Delete))
+                                                        {
+                                                            <span id="category-delete" class="btn bg-red" data-toggle="modal" data-target="#categorymodel-delete-confirmation" data-id="@item.Id">
+                                                                <i class="fa fa-trash-o"></i>
+                                                            </span>
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </form>
+                        <div class="dataTables_paginate">
+                            @Html.RenderPaging(Model.PagingViewModel, new PagingStyleModel() { CurrentItemStyle = "active", DivContainerStyle = "", ItemStyle = "" })
+                        </div>
+                    </div><!-- /.box-body -->
+                </div><!-- /.box -->
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </section><!-- /.content -->
+</div><!-- /.content-wrapper -->
+
+
+<div id="categorymodel-delete-confirmation" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="categorymodel-delete-confirmation-title" style="display: none; padding-right: 16px;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="categorymodel-delete-confirmation-title">Xác nhận</h4>
+            </div>
+            <form action="" method="post" novalidate="novalidate" id="popup-delete">
+                <div class="form-horizontal">
+                    <div class="modal-body">
+                        Bạn chắc chắn muốn xóa?
+                    </div>
+                    <div class="modal-footer">
+                        <span class="btn btn-default" data-dismiss="modal">Cancel</span>
+                        <button type="submit" class="btn btn-danger pull-right">
+                            Delete
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#category-delete").click(function () {
+            $("#popup-delete").attr("action", "/Admin/SubscribeAdmin/Delete?id=" + $(this).attr("data-id"));
+        })
+        $(".containIcon .btn-default").click(function () {
+            var note = $("input[data-id='" + $(this).attr("data-id") + "']").val();
+            $.ajax({
+                url: "/Admin/SubscribeAdmin/EditNote",
+                type: "POST",
+                contentType: "application/json",
+                data: { Note: note, Id: id },
+                success: function (response) {
+                    alert(response.Message);
+                }
+            });
+        })
+    });
+</script>

@@ -1,0 +1,30 @@
+﻿@model MainProject.ServiceAdmin.Model.User.ForgetPass
+@{
+    ViewBag.Title = "Lấy lại mật khẩu";
+    Layout = "~/Areas/Admin/Views/Shared/_LogOnLayout.cshtml";
+}
+
+<strong style="margin-top: 0px;margin-bottom: 0px;color: red">@Html.ValidationSummary(true)</strong>
+<p class="login-box-msg">Nhập thông tin để lấy lại tài khoản</p>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group has-feedback">
+        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "Username" })
+        @Html.ValidationMessageFor(m => m.UserName)
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+    </div>
+    <div class="form-group has-feedback">
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email" })
+        @Html.ValidationMessageFor(m => m.Email)
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+    </div>
+    <div class="row">
+        <div class="col-xs-6">
+            <a href="@Url.Action("Logon", "HomeAdmin", new { area = "Admin" })">Đăng nhập lại?</a><br>
+        </div><!-- /.col -->
+        <div class="col-xs-6">
+            <button type="submit" class="btn btn-primary btn-block btn-flat">Lấy lại mật khẩu</button>
+        </div><!-- /.col -->
+    </div>
+}

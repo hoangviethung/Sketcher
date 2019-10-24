@@ -1,0 +1,30 @@
+﻿@model MainProject.Web.Areas.Admin.Models.UserManage.UserItemViewModel
+@{
+    ViewBag.Title = "Quên mật khẩu";
+    Layout = "~/Areas/Admin/Views/Shared/_LogOnLayout.cshtml";
+}
+<div id="title">Quên mật khẩu</div>
+@Html.ValidationSummary(true)
+@using (Html.BeginForm())
+{
+    <div id="form">
+        <div class="">
+            Tài khoản
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(m => m.UserName)
+            @Html.ValidationMessageFor(m => m.UserName)
+        </div>
+
+        <div class="">
+            Hoặc Email
+        </div>
+        <div class="editor-field">
+            @Html.PasswordFor(m => m.Email)
+            @Html.ValidationMessageFor(m => m.Email)
+        </div>
+        <div class="w-buttons">
+            <input class="button" type="submit" value="Hoàn tất" />
+        </div>
+    </div>
+}

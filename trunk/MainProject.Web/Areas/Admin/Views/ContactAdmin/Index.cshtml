@@ -1,0 +1,114 @@
+﻿@{
+    ViewBag.Title = "Quản lý liên hệ";
+    var currentUserHelper = new CurrentUserHelper(Request);
+}
+@using MainProject.Core.Enums
+@using MainProject.Framework.Models
+@using MainProject.ServiceAdmin.Model
+@model IndexViewModel<MainProject.Core.Contact>
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Liên hệ</h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-home"></i> Trang chủ</a></li>
+            <li><a href="#">Nội dung</a></li>
+            <li class="active">Liên hệ</li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-body">
+                        <p>
+                            @Html.Raw(TempData["message"])
+                        </p>
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Tên</th>
+                                    <th>Điện thoại</th>
+                                    <th>Email</th>
+                                    <th>Ngày gửi</th>
+                                    <th>Tác vụ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model != null)
+                                {
+                                    if (Model.ListItems != null)
+                                    {
+                                        int index = 1;
+                                        foreach (var item in Model.ListItems)
+                                        {
+                                            <tr class="@(index % 2 == 0 ? "even" : "odd")">
+                                                <td>@(index++)</td>
+                                                <td>@item.FullName</td>
+                                                <td>@(item.PhoneNumber ?? "")</td>
+                                                <td>@item.Email</td>
+                                                <td>@item.CreatedDate.ToString("dd/MM/yyyy HH:mm")</td>
+                                                <td>
+                                                    @if (currentUserHelper.CheckHasPermissionOnFeature(EntityManageTypeCollection.ManageCategories, PermissionCollection.Edit))
+                                                    {
+                                                        <a href="/Admin/ContactAdmin/Detail?id=@item.Id" class="btn btn-default" title="Sửa">
+                                                            <i class="fa fa-edit"></i>
+                                                        </a>
+                                                    }
+                                                    @if (currentUserHelper.CheckHasPermissionOnFeature(EntityManageTypeCollection.ManageCategories, PermissionCollection.Delete))
+                                                    {
+                                                        <span id="category-delete" class="btn bg-red" data-toggle="modal" data-target="#categorymodel-delete-confirmation" data-id="@item.Id">
+                                                            <i class="fa fa-trash-o"></i>
+                                                        </span>
+                                                    }
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                        <div class="dataTables_paginate">
+                            @Html.RenderPagingAdmin(Model.PagingViewModel, new PagingStyleModel() { CurrentItemStyle = "active", DivContainerStyle = "", ItemStyle = "" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div id="categorymodel-delete-confirmation" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="categorymodel-delete-confirmation-title" style="display: none; padding-right: 16px;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="categorymodel-delete-confirmation-title">Are you sure?</h4>
+            </div>
+            <form action="" method="post" novalidate="novalidate" id="popup-delete">
+                <div class="form-horizontal">
+                    <div class="modal-body">
+                        Are you sure you want to delete this item?
+                    </div>
+                    <div class="modal-footer">
+                        <span class="btn btn-default" data-dismiss="modal">Cancel</span>
+                        <button type="submit" class="btn btn-danger pull-right">
+                            Delete
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(document).on("click", "#category-delete", function () {
+            $("#popup-delete").attr("action", "/Admin/ContactAdmin/Delete?id=" + $(this).attr("data-id"));
+        })
+    });
+</script>

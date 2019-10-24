@@ -1,0 +1,6 @@
+﻿@{
+    Layout = null;
+}
+@model MainProject.ServiceAdmin.Model.LanguageSelectModel
+
+@Html.DropDownListFor(d => d.LanguageSelectedValue, Model.Languages, new { onchange = "FilterLanguage(this.value);" })
