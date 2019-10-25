@@ -1,0 +1,98 @@
+.row
+	.col-12.mobile
+		.product-detail-info
+			h1 3CE RED RECIPE #214 SQUEEZING
+			p.price 300.000 VNĐ
+	.col-lg-auto
+		.product-detail-slider
+			.small-image
+				.swiper-container
+					.swiper-wrapper
+						.swiper-slide
+							.imgbox
+								img(src="./assets/product/p_1.png", alt="")
+						.swiper-slide
+							.imgbox
+								img(src="./assets/product/p_1.png", alt="")
+						.swiper-slide
+							.imgbox
+								img(src="./assets/product/p_1.png", alt="")
+						.swiper-slide
+							.imgbox
+								img(src="./assets/product/p_1.png", alt="")
+						.swiper-slide
+							.imgbox
+								img(src="./assets/product/p_1.png", alt="")
+			.big-image
+				.swiper-container
+					.swiper-wrapper
+						.swiper-slide
+							.imgbox
+								img(src="./assets/product/p_1.png", alt="")
+						.swiper-slide
+							.imgbox
+								img(src="./assets/product/p_1.png", alt="")
+						.swiper-slide
+							.imgbox
+								img(src="./assets/product/p_1.png", alt="")
+						.swiper-slide
+							.imgbox
+								img(src="./assets/product/p_1.png", alt="")
+						.swiper-slide
+							.imgbox
+								img(src="./assets/product/p_1.png", alt="")
+	.col-lg
+		.product-detail-info
+			.desktop
+				h1 3CE RED RECIPE #214 SQUEEZING
+				p.price 300.000 VNĐ
+			hr
+			.block-info
+				h2.block-title Màu
+				nav.color-list
+					a.item(href='#' data-bg='#E4322D')
+					a.item(href='#' data-bg='#3462AB')
+					a.item(href='#' data-bg='#E8CEB9')
+					a.item(href='#' data-bg='#F2F1DF')
+					a.item(href='#' data-bg='#EAE5EC')
+					a.item(href='#' data-bg='#E9DED8')
+					a.item(href='#' data-bg='#B2643D')
+					a.item(href='#' data-bg='#E57A00')
+					a.item(href='#' data-bg='#FFFFFF')
+					a.item(href='#' data-bg='#000000')
+					a.item(href='#' data-bg='#707070')
+					a.item(href='#' data-bg='#18412F')
+			.block-info
+				h2.block-title Size
+				nav.size-list
+					a.item(href='#') 35
+					a.item(href='#') 36
+					a.item(href='#') 37
+					a.item(href='#') 38
+					a.item.disabled 39
+					a.item.disabled 40
+hr
+.row
+	.col-lg-5.desktop
+		img(src='./assets/product/p_1.png')
+	.col-lg-7
+		.product-detail-specifications
+			h2 Thông tin chi tiết
+			p Phong cách thể thao tiên tiến và chi tiết bắt mắt trong giày Skechers Monster. Chất liệu da mềm mịn, tổng hợp, sợi nhỏ và vải lưới phía trên trong một đôi giày thể thao thể thao có dây buộc với các điểm nhấn và lớp phủ. Thiết kế đế giữa có họa tiết độc đáo, đế làm mát bằng bọt khí.
+			ul
+				li Da mềm mịn trubuck trên
+				li Lớp vải lưới
+				li Tổng hợp viền mịn
+				li Ren lên đào tạo thể thao và thiết kế sneaker đi bộ
+				li Khâu dấu
+				li Tấm phủ bên
+				li Tấm vải lưới màu tương phản cho hiệu quả làm mát
+				li Logo S bên
+hr
+.row
+	.col-12.product-detail-relative
+		.swiper-container
+			.swiper-wrapper
+				-for(let i=1;i<8;i++)
+					.swiper-slide
+						+productItem(i)

@@ -8,9 +8,15 @@ block banner,breadcrumb
 	include _components/_layout/_breadcrumb
 
 block main
-	.product-page-wrapper.pt-60
+	.product-page-wrapper
 		.container
 			.row
+				.col-12.mobile.product-page-nav-wrapper
+					.product-page-nav
+						h2 Women
+						.filter-toggle
+							span Filter
+							<svg xmlns="http://www.w3.org/2000/svg" width="13.107" height="8.628" viewBox="0 0 13.107 8.628"><g transform="translate(13.752 -0.475) rotate(90)"><path d="M3.229,13.752H.475L6.349,7.143.475.645H3.229L9.1,7.143Z" fill="#1d1d1d" fill-rule="evenodd"/></g></svg>
 				.col-lg-4.col-xl-3
 					include _components/product/filter
 				.col-lg-8.col-xl-9

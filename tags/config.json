@@ -1,25 +1,26 @@
 {
-	"build": false,
-	"filePath": [
-		"./src/sanpham.pug"
-	],
-	"vendor": {
-		"font": [
-			"bower_components/mdi/fonts/**",
-			"bower_components/font-awesome/webfonts/**",
-			"bower_components/linearicons/dist/web-font/fonts/**"
-		],
-		"js": [
-			"bower_components/object-fit-images/dist/ofi.browser.js",
-			"bower_components/lazysizes/lazysizes.js",
-			"_vendor/ls.unveilhooks.min.js",
-			"bower_components/jquery/dist/jquery.min.js",
-			"bower_components/swiper/dist/js/swiper.js",
-			"bower_components/fancybox/dist/jquery.fancybox.js"
-		],
-		"css": [
-			"bower_components/swiper/dist/css/swiper.css",
-			"bower_components/fancybox/dist/jquery.fancybox.css"
-		]
-	}
+  "build": true,
+  "filePath": [
+    "./src/sanpham-ct.pug"
+  ],
+  "vendor": {
+    "font": [
+      "bower_components/mdi/fonts/**",
+      "bower_components/font-awesome/webfonts/**",
+      "bower_components/linearicons/dist/web-font/fonts/**"
+    ],
+    "js": [
+      "vendors/polyfill.array.js",
+      "bower_components/object-fit-images/dist/ofi.browser.js",
+      "bower_components/lazysizes/lazysizes.js",
+      "_vendor/ls.unveilhooks.min.js",
+      "bower_components/jquery/dist/jquery.min.js",
+      "bower_components/swiper/dist/js/swiper.js",
+      "bower_components/fancybox/dist/jquery.fancybox.js"
+    ],
+    "css": [
+      "bower_components/swiper/dist/css/swiper.css",
+      "bower_components/fancybox/dist/jquery.fancybox.css"
+    ]
+  }
 }

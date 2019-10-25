@@ -3,6 +3,7 @@
 		position: relative;
 		padding-left: 40px;
 		cursor: pointer;
+		font-size: 18px;
 
 		&:before {
 			text-shadow: none;
@@ -29,6 +30,19 @@
 				content: '\f12c';
 				border: 1px solid map_get($mau, main);
 			}
+		}
+	}
+
+	@media (max-width: 1199px) {
+		label {
+			font-size: 16px;
+		}
+	}
+
+	@media (max-width: 1024px) {
+		label {
+			font-size: 14px;
+			padding-left: 25px;
 		}
 	}
 }

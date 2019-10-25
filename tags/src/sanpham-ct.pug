@@ -1,0 +1,13 @@
+extends _components/_layout/_layout.pug
+
+block var
+	- let title = 'Sản phẩm chi tiết'
+	- let bodyClass = 'product-detail-page'
+
+block banner,breadcrumb
+	include _components/_layout/_breadcrumb
+
+block main
+	.product-page-wrapper.pt-60
+		.container
+			include _components/product/detail

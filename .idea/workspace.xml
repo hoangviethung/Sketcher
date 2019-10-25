@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="350834db-6fcf-4a00-a73d-fd6400573f2c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/tags/src/_components/product/detail.pug" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tags/src/sanpham-ct.pug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tags/_dist/css/main.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/tags/_dist/css/main.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tags/_dist/css/main.min.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/tags/_dist/css/main.min.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tags/_dist/js/main.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/tags/_dist/js/main.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tags/_dist/js/main.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/tags/_dist/js/main.min.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tags/_dist/sanpham.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tags/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/tags/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tags/src/css/globals/_main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/tags/src/css/globals/_main.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tags/src/css/globals/grids.scss" beforeDir="false" afterPath="$PROJECT_DIR$/tags/src/css/globals/grid.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tags/src/css/pages/product.scss" beforeDir="false" afterPath="$PROJECT_DIR$/tags/src/css/pages/product.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tags/src/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/tags/src/js/main.js" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1Sg1h52ott8RfygKbzrtjG4rkEu" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="350834db-6fcf-4a00-a73d-fd6400573f2c" name="Default Changelist" comment="" />
+      <created>1571970540755</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1571970540755</updated>
+      <workItem from="1571970543965" duration="4101000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

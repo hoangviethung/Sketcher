@@ -9,20 +9,16 @@
 		max-width: 990px;
 	}
 
-	@media (min-width: 1200px) {
+	@media (min-width: 1201px) {
 		max-width: 1140px;
 	}
 
-	@media (min-width: 1440px) {
+	@media (min-width: 1441px) {
 		max-width: 1360px;
 	}
 
-	@media (min-width: 1600px) {
-		max-width: 1440px;
-	}
-
-	@media (min-width: 1800px) {
-		max-width: 1620px;
+	@media (min-width: 1601px) {
+		max-width: 1580px;
 	}
 }
 
@@ -68,8 +64,8 @@
 	margin-left: 0;
 }
 
-.no-gutters>.col,
-.no-gutters>[class*="col-"] {
+.no-gutters > .col,
+.no-gutters > [class*="col-"] {
 	padding-right: 0;
 	padding-left: 0;
 }

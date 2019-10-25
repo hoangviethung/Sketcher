@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Trang chủ</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700&amp;display=swap&amp;subset=vietnamese">
+		<style>
+			#loading {
+				-webkit-transition: .8s;
+				-o-transition: .8s;
+				position: fixed;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				z-index: 99999;
+				transition: .8s;
+				background: #fff;
+				width: 100%;
+				height: 100%
+			}
+			
+			#loading #progress {
+				-webkit-transition: .8s;
+				-o-transition: .8s;
+				display: none;
+				transition: .8s;
+				background: #000;
+				width: 0;
+				height: 1px
+			}
+			
+			#loading #progress, #loading .progstat-wrapper {
+				-webkit-transform: translateY(-50%);
+				-ms-transform: translateY(-50%);
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%)
+			}
+			
+			#loading .progstat-wrapper {
+				margin-top: 0;
+				width: 100%;
+				color: #000;
+				font-size: 14px;
+				font-weight: 300;
+				letter-spacing: 3px;
+				text-align: center
+			}
+			
+			#loading .logo-loader {
+				-webkit-transform: translate(-50%, -50%);
+				-ms-transform: translate(-50%, -50%);
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				margin-top: -100px;
+				width: 150px;
+				height: 150px
+			}
+		</style>
+		<script>
+			!function () {
+				function n(n) {
+					return document.getElementById(n)
+				}
+			
+				document.addEventListener("DOMContentLoaded", function () {
+					var e = n("loading"), t = n("progress"), o = n("progstat"), r = document.images, i = 0,
+						d = r.length;
+					if (0 == d) return u();
+			
+					function a() {
+						var n = 100 / d * (i += 1) << 0;
+						if (t.style.width = n, o.innerHTML = n, i === d) return u()
+					}
+			
+					function u() {
+						e.style.opacity = 0, setTimeout(function () {
+							e.style.display = "none";
+							var n = document.getElementById("loading");
+							n.parentNode.removeChild(n)
+						}, 1500)
+					}
+			
+					for (var c = 0; c < d; c++) {
+						var s = new Image;
+						s.onload = a, s.onerror = a, s.src = r[c].src
+					}
+				}, !1)
+			}();
+		</script>
+		<link rel="stylesheet" href="./css/core.min.css">
+		<link rel="stylesheet" href="./css/main.min.css">
+	</head>
+	<body>
+		<div id="loading">
+			<div class="logo-loader"><img src="./assets/loading.gif" alt=""></div>
+			<div class="progstat-wrapper">Loading:<span id="progstat">0</span>%</div>
+			<div id="progress"></div>
+		</div>
+		<div id="fb-root"></div>
+		<header>
+			<div class="container-fluid-custom">
+				<div class="row no-gutters">
+					<div class="mobile header-nav-toggle"><svg xmlns="http://www.w3.org/2000/svg" width="19.089" height="11.935" viewBox="0 0 19.089 11.935"><g id="Group_1" data-name="Group 1" transform="translate(-18 -8)"><rect id="Rectangle_125" data-name="Rectangle 125" width="19.089" height="1.934" rx="0.967" transform="translate(18 8)" fill="#fff"/><rect id="Rectangle_155" data-name="Rectangle 155" width="19.089" height="1.934" rx="0.967" transform="translate(18 13)" fill="#fff" opacity="0.72"/><rect id="Rectangle_156" data-name="Rectangle 156" width="19.089" height="1.934" rx="0.967" transform="translate(18 18)" fill="#fff" opacity="0.42"/></g></svg></div>
+					<div class="logo"><a href="/"><img src="./assets/logo.png" alt=""></a></div>
+					<nav class="header-nav">
+						<div class="nav-item"><a class="nav-link" href="sanpham.html">Men</a></div>
+						<div class="nav-item"><a class="nav-link" href="sanpham.html">Women</a></div>
+						<div class="nav-item"><a class="nav-link" href="sanpham.html">Boys</a></div>
+						<div class="nav-item"><a class="nav-link" href="sanpham.html">Girls</a></div>
+						<div class="nav-item"><a class="nav-link" href="sanpham.html">Bộ sưu tập</a></div>
+					</nav>
+					<div class="header-search">
+						<div class="icon-search mobile"><svg xmlns="http://www.w3.org/2000/svg" id="Group_13113" data-name="Group 13113" width="17.13" height="18.303" viewBox="0 0 17.13 18.303"><path id="Path_650" data-name="Path 650" d="M215.809,328.562l-.244-.263a.869.869,0,0,0-1.272,1.183l.244.262a.868.868,0,0,0,1.272-1.183Z" transform="translate(-198.912 -311.719)" fill="#f9f9f9"/><path id="Path_651" data-name="Path 651" d="M208.893,321.12a7.059,7.059,0,0,0,1.852-5.465h0a7.082,7.082,0,1,0-7.055,7.756c.223,0,.451-.01.678-.032a7.032,7.032,0,0,0,3.2-1.129l2.262,2.434a.868.868,0,0,0,1.272-1.182Zm-4.69.529a5.345,5.345,0,0,1-1.017-10.642c.172-.016.342-.024.511-.024a5.353,5.353,0,0,1,5.318,4.837h0A5.353,5.353,0,0,1,204.2,321.649Z" transform="translate(-196.614 -309.246)" fill="#f9f9f9"/></svg></div>
+						<form>
+							<input id="search" type="text" placeholder="Tìm kiếm">
+							<button><svg xmlns="http://www.w3.org/2000/svg" width="14.552" height="15.548" viewBox="0 0 14.552 15.548"><g id="Group_381" data-name="Group 381" transform="translate(0)"><path id="Path_650" data-name="Path 650" d="M215.546,328.481l-.207-.224a.738.738,0,0,0-1.081,1.005l.207.223a.738.738,0,0,0,1.081-1Z" transform="translate(-201.191 -314.173)"/><path id="Path_651" data-name="Path 651" d="M207.045,319.333a6,6,0,0,0,1.573-4.643h0a6.016,6.016,0,1,0-5.993,6.588c.19,0,.383-.009.576-.027a5.973,5.973,0,0,0,2.721-.959l1.921,2.068a.737.737,0,1,0,1.081-1Zm-3.984.449a4.541,4.541,0,0,1-.864-9.04c.146-.014.291-.021.434-.021a4.548,4.548,0,0,1,4.518,4.109h0A4.547,4.547,0,0,1,203.061,319.782Z" transform="translate(-196.614 -309.246)"/></g></svg></button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</header>
+		<main>
+			<div class="index-page" id="js-page-verify"></div>
+			<div class="home-banner">
+				<video id="player" autoplay muted loop playsinline>
+					<source src="./assets/vid/home.mp4">
+				</video>
+			</div>
+			<div class="index-1">
+				<div class="container-fluid-custom category-list">
+					<div class="row">
+						<div class="col-xl-3 col-6"><a class="category-item" href="#">
+								<h3>Men</h3><img src="./assets/home/h_1.jpg" alt=""></a></div>
+						<div class="col-xl-3 col-6"><a class="category-item" href="#">
+								<h3>Women</h3><img src="./assets/home/h_2.jpg" alt=""></a></div>
+						<div class="col-xl-3 col-6"><a class="category-item" href="#">
+								<h3>Girls</h3><img src="./assets/home/h_3.jpg" alt=""></a></div>
+						<div class="col-xl-3 col-6"><a class="category-item" href="#">
+								<h3>Boys</h3><img src="./assets/home/h_4.jpg" alt=""></a></div>
+					</div>
+				</div>
+			</div>
+			<div class="index-1 index-sub-banner">
+				<div class="container-fluid-custom category-banner">
+					<div class="swiper-container">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide"><a href="#"><img src="./assets/home/h_5.jpg" alt=""></a></div>
+							<div class="swiper-slide"><a href="#"><img src="./assets/home/h_5.jpg" alt=""></a></div>
+							<div class="swiper-slide"><a href="#"><img src="./assets/home/h_5.jpg" alt=""></a></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="index-2">
+				<div class="container-fluid-custom">
+					<h2 class="main-title center">Sản phẩm mới</h2>
+					<div class="new-product-list">
+						<div class="swiper-nav">
+							<div class="swiper-prev"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="41" viewBox="0 0 20 41"><path id="Path_1553" data-name="Path 1553" d="M13.269,0,0,14.7,13.585,29.4" transform="translate(0.5 0.5)" fill="none" stroke="#1c1c1c" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/></svg></div>
+							<div class="swiper-next"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="41" viewBox="0 0 20 41"><path id="Path_1552" data-name="Path 1552" d="M13.269,0,0,14.7,13.585,29.4" transform="translate(14.085 29.897) rotate(180)" fill="none" stroke="#1c1c1c" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/></svg></div>
+						</div>
+						<div class="swiper-container">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide"><a class="new-product-item" href="#">
+										<div class="img"><img src="./assets/product/p_1.png" alt=""></div>
+										<div class="info">
+											<h3>Energy - Pure Serenity</h3>
+											<p>2.900.000 vnđ</p>
+										</div></a></div>
+								<div class="swiper-slide"><a class="new-product-item" href="#">
+										<div class="img"><img src="./assets/product/p_2.png" alt=""></div>
+										<div class="info">
+											<h3>Solar Fuse - Valedge</h3>
+											<p>2.900.000 vnđ</p>
+										</div></a></div>
+								<div class="swiper-slide"><a class="new-product-item" href="#">
+										<div class="img"><img src="./assets/product/p_3.png" alt=""></div>
+										<div class="info">
+											<h3>Arctic-Tron - Zollow</h3>
+											<p>2.900.000 vnđ</p>
+										</div></a></div>
+								<div class="swiper-slide"><a class="new-product-item" href="#">
+										<div class="img"><img src="./assets/product/p_4.png" alt=""></div>
+										<div class="info">
+											<h3>Ice D'Lites - Snow Spark</h3>
+											<p>2.900.000 vnđ</p>
+										</div></a></div>
+								<div class="swiper-slide"><a class="new-product-item" href="#">
+										<div class="img"><img src="./assets/product/p_5.png" alt=""></div>
+										<div class="info">
+											<h3>Skechers Monster</h3>
+											<p>2.900.000 vnđ</p>
+										</div></a></div>
+								<div class="swiper-slide"><a class="new-product-item" href="#">
+										<div class="img"><img src="./assets/product/p_6.png" alt=""></div>
+										<div class="info">
+											<h3>D'Lites 3 - Joy Summer</h3>
+											<p>2.900.000 vnđ</p>
+										</div></a></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="index-3">
+				<div class="container-fluid-custom">
+					<h2 class="main-title">Bộ sưu tập</h2>
+					<div class="desktop">
+						<div class="row home-gallery-list">
+							<div class="col-lg-6"><a class="gallery-item" href="#">
+									<div class="img"><img src="./assets/gallery/g_1.jpg" alt=""></div>
+									<div class="info"><span>Xem chi tiết>></span></div></a></div>
+							<div class="col-lg-6"><a class="gallery-item" href="#">
+									<div class="img"><img src="./assets/gallery/g_2.jpg" alt=""></div>
+									<div class="info"><span>Xem chi tiết>></span></div></a></div>
+							<div class="col-lg-6"><a class="gallery-item" href="#">
+									<div class="img"><img src="./assets/gallery/g_3.jpg" alt=""></div>
+									<div class="info"><span>Xem chi tiết>></span></div></a></div>
+							<div class="col-lg-6"><a class="gallery-item" href="#">
+									<div class="img"><img src="./assets/gallery/g_4.jpg" alt=""></div>
+									<div class="info"><span>Xem chi tiết>></span></div></a></div>
+						</div>
+						<div class="row home-gallery-viewmore">
+							<div class="col-12"><a class="home-gallery-viewmore-button" href="#">Xem bộ sưu tập khác</a></div>
+						</div>
+					</div>
+					<div class="mobile">
+						<div class="row home-gallery-list mobile">
+							<div class="col-12"><a class="row" href="#">
+									<div class="col-8">
+										<div class="img-big"><img src="./assets/gallery/g_5.jpg" alt=""></div>
+									</div>
+									<div class="col-4">
+										<div class="img-small"><img src="./assets/gallery/g_9.png" alt="">
+											<div class="info">
+												<h3>skechers street cleats</h3>
+											</div>
+										</div>
+									</div></a><a class="row" href="#">
+									<div class="col-4">
+										<div class="img-small"><img src="./assets/gallery/g_10.png" alt="">
+											<div class="info">
+												<h3>skechers sport energy</h3>
+											</div>
+										</div>
+									</div>
+									<div class="col-8">
+										<div class="img-big"><img src="./assets/gallery/g_6.jpg" alt=""></div>
+									</div></a><a class="row" href="#">
+									<div class="col-8">
+										<div class="img-big"><img src="./assets/gallery/g_7.jpg" alt=""></div>
+									</div>
+									<div class="col-4">
+										<div class="img-small"><img src="./assets/gallery/g_11.png" alt="">
+											<div class="info">
+												<h3>skechers D'LITES 3.0</h3>
+											</div>
+										</div>
+									</div></a><a class="row" href="#">
+									<div class="col-4">
+										<div class="img-small"><img src="./assets/gallery/g_12.png" alt="">
+											<div class="info">
+												<h3>skechers go walk joy</h3>
+											</div>
+										</div>
+									</div>
+									<div class="col-8">
+										<div class="img-big"><img src="./assets/gallery/g_8.jpg" alt=""></div>
+									</div></a></div>
+						</div>
+						<div class="row home-gallery-viewmore">
+							<div class="col-12"><a class="home-gallery-viewmore-button" href="#">Xem thêm</a></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="index-4">
+				<h2 class="main-title center">Video sản phẩm</h2>
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide"><a class="img-wrapper" href="https://www.youtube.com/watch?v=LRdkUPmOL18" data-fancybox="vid_1">
+								<div class="play-button"><img src="./assets/icons/icon_play.png" alt=""></div>
+								<div class="img"><img src="./assets/home/h_6.jpg" alt=""></div></a>
+							<div class="info">
+								<p>Skechers Ice Lights commercial :30s</p>
+							</div>
+							<div class="button"><a class="btn btn-viewmore" href="#">Xem thêm</a></div>
+						</div>
+						<div class="swiper-slide"><a class="img-wrapper" href="https://www.youtube.com/watch?v=9PPbMHw77Lk" data-fancybox="vid_2">
+								<div class="play-button"><img src="./assets/icons/icon_play.png" alt=""></div>
+								<div class="img"><img src="./assets/home/h_6.jpg" alt=""></div></a>
+							<div class="info">
+								<p>Skechers Ice Lights commercial :30s</p>
+							</div>
+							<div class="button"><a class="btn btn-viewmore" href="#">Xem thêm</a></div>
+						</div>
+						<div class="swiper-slide"><a class="img-wrapper" href="https://www.youtube.com/watch?v=YsIcyJJBdGA" data-fancybox="vid_3">
+								<div class="play-button"><img src="./assets/icons/icon_play.png" alt=""></div>
+								<div class="img"><img src="./assets/home/h_6.jpg" alt=""></div></a>
+							<div class="info">
+								<p>Skechers Ice Lights commercial :30s</p>
+							</div>
+							<div class="button"><a class="btn btn-viewmore" href="#">Xem thêm</a></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<footer>
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-11">
+						<div class="row">
+							<div class="col-lg-3 col-xl desktop">
+								<h3>Về chúng tôi</h3>
+								<nav class="nav-list"><a href="#">Skechers.com</a><a href="#">Định vị cửa hàng</a><a href="#">Quảng cáo</a><a href="#">Liên hện đầu tư</a></nav>
+							</div>
+							<div class="col-lg-3 col-xl desktop">
+								<h3>Chính sách</h3>
+								<nav class="nav-list"><a href="#">Chính sách bảo mật</a><a href="#">Chính sách cookie</a><a href="#">Các điểu khoản và điều kiện</a><a href="#">Đạo luật minh bạc California</a></nav>
+							</div>
+							<div class="col-lg-2 col-xl desktop">
+								<h3>Sản phẩm</h3>
+								<nav class="nav-list"><a href="#">Women's Shoes</a><a href="#">Men's Shoes</a><a href="#">Girl's Shoes</a><a href="#">Boy's Shoes</a><a href="#">Bộ sưu tập</a></nav>
+							</div>
+							<div class="col-lg-4 col-xl">
+								<div class="desktop">
+									<h3>Liên kết</h3>
+									<nav class="nav-social"><a href="#"><img src="./assets/icons/icon_pinterest.svg" alt=""></a><a href="#"><img src="./assets/icons/icon_facebook.svg" alt=""></a><a href="#"><img src="./assets/icons/icon_twitter.svg" alt=""></a></nav>
+								</div>
+								<div class="mobile">
+									<nav class="nav-social"><a href="#"><img src="./assets/icons/icon_mobile_facebook.jpg" alt=""></a><a href="#"><img src="./assets/icons/icon_mobile_instagram.jpg" alt=""></a><a href="#"><img src="./assets/icons/icon_mobile_twitter.jpg" alt=""></a><a href="#"><img src="./assets/icons/icon_mobile_youtube.jpg" alt=""></a></nav>
+								</div>
+								<p>Đăng ký mail để nhận thêm thông tin khuyến mãi</p>
+								<form id="footer-subscribe">
+									<input type="text" placeholder="Nhập Email">
+									<button>Gửi<span class="mobile"> Email</span></button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="mobile copyright"><span>© 2019 Sketchervn. All rights reserved.</span></div>
+		</footer>
+		<div id="go-top"><svg xmlns="http://www.w3.org/2000/svg" width="31.279" height="40.032" viewBox="0 0 31.279 40.032"><g transform="translate(28.454 38.032) rotate(180)"><g transform="translate(0 0)"><line y2="34.32" transform="translate(12.742)" fill="none" stroke="#d51635" stroke-linecap="round" stroke-width="4"/><path d="M0,0,12.542,11.415,25.632,0" transform="translate(0 23.938)" fill="none" stroke="#d51635" stroke-linecap="round" stroke-width="4"/></g><g transform="translate(0 23.938)"><path d="M0,0,12.542,11.415,25.632,0" fill="none" stroke="#d51635" stroke-linecap="round" stroke-width="4"/></g></g></svg></div>
+		<script type="text/javascript" src="./js/core.min.js"></script>
+		<script type="text/javascript" src="./js/main.min.js"></script>
+	</body>
+</html>

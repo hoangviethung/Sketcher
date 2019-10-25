@@ -1,9 +1,3 @@
-const setHeightBannerVideo = () => {
-	if ($(window).width() >= 1025) {
-		$('.home-banner #player').height($(window).height() - 110)
-	}
-};
-
 const newProductSlider = () => {
 	return new Swiper('.index-2 .swiper-container', {
 		speed: 1200,
@@ -77,7 +71,6 @@ const toggleGoTopButton = () => {
 	}
 };
 
-
 const goTop = () => {
 	let goTopButton = document.getElementById('go-top')
 	goTopButton.addEventListener('click', () => {
@@ -89,10 +82,105 @@ const goTop = () => {
 };
 
 const setColorFilter = () => {
-	let colorArray = Array.from(document.querySelectorAll('.filter-wrapper .color-list .item'));
+	let colorArray = Array.from(document.querySelectorAll('nav.color-list .item'));
 	colorArray.forEach(item => {
 		item.style.backgroundColor = item.getAttribute('data-bg');
 	})
+};
+
+const productDetailSlider = () => {
+	const smallimageSlider = new Swiper('.product-detail-slider .small-image .swiper-container', {
+		init: false,
+		slidesPerView: 5,
+		direction: 'vertical',
+		spaceBetween: 5,
+		freeMode: true,
+		freeModeMomentum: true,
+		freeModeSticky: true,
+		observer: true,
+		observerParents: true,
+		speed: 900,
+		breakpoints: {
+			1440: {
+				slidesPerView: 4,
+			},
+			1200: {
+				slidesPerView: 5,
+				direction: "horizontal",
+			}
+		},
+		on: {
+			init: function () {
+				if (window.innerWidth < 1199) {
+					Array.from(document.querySelectorAll('.product-detail-slider .small-image .swiper-slide .imgbox')).forEach(item => {
+						item.style.height = (item.clientWidth + 2) + 'px';
+					})
+				}
+			},
+			resize: function () {
+				if (window.innerWidth < 1199) {
+					Array.from(document.querySelectorAll('.product-detail-slider .small-image .swiper-slide .imgbox')).forEach(item => {
+						item.style.height = item.clientWidth + 'px';
+					})
+				}
+				smallimageSlider.update();
+			}
+		}
+	});
+
+	const bigImagesSlider = new Swiper('.product-detail-slider .big-image .swiper-container', {
+		slidesPerView: 1,
+		watchSlidesVisibility: true,
+		observer: true,
+		observerParents: true,
+		speed: 900,
+		thumbs: {
+			swiper: smallimageSlider,
+		},
+		on: {
+			init: function () {
+				smallimageSlider.init();
+			},
+			resize: function () {
+				bigImagesSlider.update();
+			}
+		}
+	})
+};
+
+const sliderProductDetailRelative = () => {
+	return new Swiper('.product-detail-relative .swiper-container', {
+		slidesPerView: 4,
+		spaceBetween: 20,
+		speed: 900,
+		autoplay: {
+			delay: 3500,
+			disableOnInteraction: false,
+		},
+		nopeek: true,
+		onSlideChangeEnd: function (s) {
+			if (s.slides.length === s.activeIndex + 1) s.swipeTo(0);
+		},
+		breakpoints: {
+			1024: {
+				slidesPerView: 3,
+			},
+			768: {
+				slidesPerView: 2,
+			}
+		}
+	})
+};
+
+const toggleFilter = () => {
+	const toggleBtn = document.querySelector('.product-page-wrapper .filter-toggle');
+	const filter = document.querySelector('.product-page-wrapper .filter-wrapper');
+	if (toggleBtn) {
+		toggleBtn.addEventListener('click', () => {
+			console.log(1);
+			filter.classList.toggle('active');
+		})
+	}
 };
 
 // ==> Call functions here
@@ -105,6 +193,9 @@ document.addEventListener("DOMContentLoaded", () => {
 	homeVideoSlider();
 	goTop();
 	setColorFilter();
+	productDetailSlider();
+	sliderProductDetailRelative();
+	toggleFilter();
 });
 
 window.addEventListener('scroll', () => {

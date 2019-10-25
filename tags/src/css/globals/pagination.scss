@@ -44,14 +44,30 @@
 				border: 1px solid map_get($mau, main);
 			}
 		}
+	}
 
-		@media (max-width: 1199.98px) {
+	@media (max-width: 1199.98px) {
+		li {
+			flex: 0 0 40px;
+			max-width: 40px;
+			height: 30px;
+
 			a {
 				font-size: 16px;
 			}
 		}
+	}
 
-		@media (max-width: 767.98px) {
+	@media (max-width: 767.98px) {
+		.pagination-list {
+			justify-content: center;
+		}
+
+		li {
+			flex: 0 0 30px;
+			max-width: 30px;
+			height: 25px;
+
 			a {
 				font-size: 14px;
 			}
