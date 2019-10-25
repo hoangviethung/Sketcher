@@ -1,0 +1,21 @@
+.product-collection-slider.product-collection-slider-3
+	.container
+		h2.main-title.center CASUAL COLLECTION
+		.swiper-container-wrapepr
+			.swiper-prev
+				<svg xmlns="http://www.w3.org/2000/svg" width="18.31" height="36.027" viewBox="0 0 18.31 36.027"><path d="M14.348,0,0,15.894,14.69,31.789" transform="translate(1.5 2.119)" fill="none" stroke="#1c1c1c" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/><path class="stroke-hover" d="M14.348,0,0,15.894,14.69,31.789" transform="translate(1.5 2.119)" fill="none" stroke="#1a67ab" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/></svg>
+			.swiper-next
+				<svg xmlns="http://www.w3.org/2000/svg" width="18.31" height="36.027" viewBox="0 0 18.31 36.027"><path d="M14.348,0,0,15.894,14.69,31.789" transform="translate(16.81 33.908) rotate(180)" fill="none" stroke="#1c1c1c" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/><path class="stroke-hover" d="M14.348,0,0,15.894,14.69,31.789" transform="translate(16.81 33.908) rotate(180)" fill="none" stroke="#1a67ab" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/></svg>
+			.swiper-container
+				.swiper-wrapper
+					-for(let i=1;i<9;i++)
+					.swiper-slide
+						+productItem(i)
+				.swiper-pagination-custom
+.product-collection-navigation.product-collection-navigation-1
+	.container
+		.row
+			.col-md-6
+				+collectionItem('D-lites',1)
+			.col-md-6
+				+collectionItem('Sport-Active',2)
