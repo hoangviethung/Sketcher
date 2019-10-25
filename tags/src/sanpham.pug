@@ -1,0 +1,18 @@
+extends _components/_layout/_layout.pug
+
+block var
+	- let title = 'Sản phẩm'
+	- let bodyClass = 'product-page'
+
+block banner,breadcrumb
+	include _components/_layout/_breadcrumb
+
+block main
+	.product-page-wrapper.pt-60
+		.container
+			.row
+				.col-lg-4.col-xl-3
+					include _components/product/filter
+				.col-lg-8.col-xl-9
+					include _components/product/banner
+					include _components/product/list

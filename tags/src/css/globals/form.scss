@@ -1,0 +1,34 @@
+.form-check {
+	label {
+		position: relative;
+		padding-left: 40px;
+		cursor: pointer;
+
+		&:before {
+			text-shadow: none;
+			position: absolute;
+			width: 16px;
+			height: 16px;
+			transition: all .3s ease-in;
+			border: 1px solid darken(white, 15%);
+			content: '';
+			top: 2px;
+			left: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-family: 'Material Design Icons';
+		}
+	}
+
+	input[type='checkbox'] {
+		display: none;
+
+		&:checked ~ label {
+			&:before {
+				content: '\f12c';
+				border: 1px solid map_get($mau, main);
+			}
+		}
+	}
+}

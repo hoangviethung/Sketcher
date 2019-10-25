@@ -1,0 +1,130 @@
+include ../product/item
+block var
+
+doctype html
+
+html(lang="en")
+	head
+		title #{title}
+		meta(charset="UTF-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0, user-scalable=no")
+		meta(http-equiv="X-UA-Compatible", content="ie=edge")
+		link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700&display=swap&subset=vietnamese")
+		style.
+			#loading {
+				-webkit-transition: .8s;
+				-o-transition: .8s;
+				position: fixed;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				z-index: 99999;
+				transition: .8s;
+				background: #fff;
+				width: 100%;
+				height: 100%
+			}
+
+			#loading #progress {
+				-webkit-transition: .8s;
+				-o-transition: .8s;
+				display: none;
+				transition: .8s;
+				background: #000;
+				width: 0;
+				height: 1px
+			}
+
+			#loading #progress, #loading .progstat-wrapper {
+				-webkit-transform: translateY(-50%);
+				-ms-transform: translateY(-50%);
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%)
+			}
+
+			#loading .progstat-wrapper {
+				margin-top: 0;
+				width: 100%;
+				color: #000;
+				font-size: 14px;
+				font-weight: 300;
+				letter-spacing: 3px;
+				text-align: center
+			}
+
+			#loading .logo-loader {
+				-webkit-transform: translate(-50%, -50%);
+				-ms-transform: translate(-50%, -50%);
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				margin-top: -100px;
+				width: 150px;
+				height: 150px
+			}
+		script.
+			!function () {
+				function n(n) {
+					return document.getElementById(n)
+				}
+
+				document.addEventListener("DOMContentLoaded", function () {
+					var e = n("loading"), t = n("progress"), o = n("progstat"), r = document.images, i = 0,
+						d = r.length;
+					if (0 == d) return u();
+
+					function a() {
+						var n = 100 / d * (i += 1) << 0;
+						if (t.style.width = n, o.innerHTML = n, i === d) return u()
+					}
+
+					function u() {
+						e.style.opacity = 0, setTimeout(function () {
+							e.style.display = "none";
+							var n = document.getElementById("loading");
+							n.parentNode.removeChild(n)
+						}, 1500)
+					}
+
+					for (var c = 0; c < d; c++) {
+						var s = new Image;
+						s.onload = a, s.onerror = a, s.src = r[c].src
+					}
+				}, !1)
+			}();
+		link(rel="stylesheet", href="./css/core.min.css")
+		link(rel="stylesheet", href="./css/main.min.css")
+	body
+		#loading
+			.logo-loader
+				img(src="./assets/loading.gif", alt="")
+			.progstat-wrapper Loading:
+				span#progstat 0
+				| %
+			#progress
+		#fb-root
+		//- main content
+		block header
+			include _header.pug
+
+		main
+			block banner,breadcrumb
+			#js-page-verify(class=bodyClass)
+			block main
+
+		block footer
+			include _footer.pug
+
+		#go-top
+			<svg xmlns="http://www.w3.org/2000/svg" width="31.279" height="40.032" viewBox="0 0 31.279 40.032"><g transform="translate(28.454 38.032) rotate(180)"><g transform="translate(0 0)"><line y2="34.32" transform="translate(12.742)" fill="none" stroke="#d51635" stroke-linecap="round" stroke-width="4"/><path d="M0,0,12.542,11.415,25.632,0" transform="translate(0 23.938)" fill="none" stroke="#d51635" stroke-linecap="round" stroke-width="4"/></g><g transform="translate(0 23.938)"><path d="M0,0,12.542,11.415,25.632,0" fill="none" stroke="#d51635" stroke-linecap="round" stroke-width="4"/></g></g></svg>
+		//- end main content
+
+		//- include scripts
+		//- script(type="text/javascript", src="https://maps.googleapis.com/maps/api/js?&key=AIzaSyCHvmyTralDp2Y0m7zEiN185u1vtArcC5s&libraries=places")
+		//- script(type="text/javascript", src='https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.3')
+		block scripts
+		script(type="text/javascript", src="./js/core.min.js")
+		script(type="text/javascript", src="./js/main.min.js")

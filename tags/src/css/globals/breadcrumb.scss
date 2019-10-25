@@ -1,0 +1,27 @@
+.breadcrumb-wrapper {
+	.breadcrumb {
+		padding-left: 0;
+		list-style-type: none;
+		display: flex;
+
+		li {
+			display: flex;
+			align-items: center;
+
+			a {
+				display: block;
+				font-size: 16px;
+				padding: 18px 0;
+			}
+
+			+ li {
+				&:before {
+					margin: 0 5px;
+					content: '>';
+					font-size: 18px;
+					line-height: 1;
+				}
+			}
+		}
+	}
+}

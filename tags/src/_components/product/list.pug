@@ -1,0 +1,14 @@
+.product-page-list
+	.row
+		- for(i=1;i<9;i++)
+			.col-6.col-md-3.col-lg-4.col-xl-3
+				+productItem(i)
+		- for(i=1;i<9;i++)
+			.col-6.col-md-3.col-lg-4.col-xl-3
+				+productItem(i)
+		- for(i=1;i<9;i++)
+			.col-6.col-md-3.col-lg-4.col-xl-3
+				+productItem(i)
+	.row.pagination-wrapper
+		.col-12
+			include ../_layout/_pagination

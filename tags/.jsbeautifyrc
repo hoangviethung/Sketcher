@@ -1,0 +1,15 @@
+{
+  "indent_size": 4,
+  "indent_with_tabs": true,
+  "indent_inner_html": true,
+  "indent_scripts": "separate",
+  "beautify.language": {
+    "js": {
+      "type": ["javascript", "json", "typescript"],
+      "ext": ["js", "json", "ts"]
+    },
+    "css": ["css", "scss", "less"],
+    "html": ["htm", "html", "xml", "xsl"]
+  },
+  "beautify.ignore": ["*/.jsbeautifyrc", "/bower.json", "/package.json", "/package-lock.json"]
+}
