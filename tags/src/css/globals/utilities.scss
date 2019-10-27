@@ -116,13 +116,24 @@ main {
 		text-align: center;
 	}
 
-	@media (max-width: 1024.98px) {
+	&.blue {
+		color: map_get($mau, main);
+	}
+
+	@media (max-width: 1440px) {
+		font-size: 40px;
+	}
+
+	@media (max-width: 1199px) {
 		font-size: 32px;
 		margin-bottom: 20px;
 	}
+	@media (max-width: 1024px) {
+		font-size: 24px;
+	}
 
-	@media (max-width: 575.98px) {
-		font-size: 15px;
+	@media (max-width: 767px) {
+		font-size: 16px;
 		margin-bottom: 10px;
 	}
 }
@@ -162,6 +173,18 @@ main {
 
 	&.show {
 		opacity: 1;
+	}
+
+	svg {
+		width: 100%;
+	}
+
+	@media (max-width: 1024.98px) {
+		width: 50px;
+		height: 50px;
+		padding: 15px;
+		right: 20px;
+		bottom: 150px;
 	}
 }
 

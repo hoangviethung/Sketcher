@@ -1,5 +1,5 @@
-.product-collection-slider.product-collection-slider-3
-	.container
+.product-collection.product-collection-5
+	.container.product-collection-slider
 		h2.main-title.center CASUAL COLLECTION
 		.swiper-container-wrapepr
 			.swiper-prev
@@ -9,13 +9,12 @@
 			.swiper-container
 				.swiper-wrapper
 					-for(let i=1;i<9;i++)
-					.swiper-slide
-						+productItem(i)
+						.swiper-slide
+							+productItem(i)
 				.swiper-pagination-custom
-.product-collection-navigation.product-collection-navigation-1
-	.container
+	.container.product-collection-navigation
 		.row
-			.col-md-6
-				+collectionItem('D-lites',1)
-			.col-md-6
-				+collectionItem('Sport-Active',2)
+			.col-6
+				+collectionItem('Safety Toe',7)
+			.col-6
+				+collectionItem('Health Care',8)

@@ -183,6 +183,171 @@ const toggleFilter = () => {
 	}
 };
 
+const sliderProductCollections = () => {
+	const slider1 = new Swiper('.product-collection-1 .swiper-container', {
+		slidesPerView: 4,
+		speed: 1400,
+		loop: true,
+		spaceBetween: 20,
+		autoplay: {
+			delay: 3600,
+			disableOnInteraction: false,
+		},
+		pagination: {
+			el: '.product-collection-1 .swiper-container .swiper-pagination-custom',
+			type: 'bullets',
+			clickable: true,
+		},
+		navigation: {
+			prevEl: '.product-collection-1 .swiper-prev',
+			nextEl: '.product-collection-1 .swiper-next',
+		},
+		breakpoints: {
+			1200: {
+				slidesPerView: 3,
+			},
+			1025: {
+				slidesPerView: 2,
+			},
+			768: {
+				slidesPerView: 1,
+			}
+		}
+	});
+	const slider2 = new Swiper('.product-collection-2 .swiper-container', {
+		slidesPerView: 4,
+		speed: 1400,
+		loop: true,
+		spaceBetween: 20,
+		autoplay: {
+			delay: 3600,
+			disableOnInteraction: false,
+		},
+		pagination: {
+			el: '.product-collection-2 .swiper-container .swiper-pagination-custom',
+			type: 'bullets',
+			clickable: true,
+		},
+		navigation: {
+			prevEl: '.product-collection-2 .swiper-prev',
+			nextEl: '.product-collection-2 .swiper-next',
+		},
+		breakpoints: {
+			1200: {
+				slidesPerView: 3,
+			},
+			1025: {
+				slidesPerView: 2,
+				slidesPerGroup: 6,
+				slidesPerColumn: 2,
+			},
+			768: {
+				slidesPerView: 2,
+				slidesPerGroup: 4,
+				slidesPerColumn: 2,
+			}
+		}
+	});
+	const slider3 = new Swiper('.product-collection-3 .swiper-container', {
+		slidesPerView: 4,
+		speed: 1400,
+		loop: true,
+		spaceBetween: 20,
+		autoplay: {
+			delay: 3600,
+			disableOnInteraction: false,
+		},
+		pagination: {
+			el: '.product-collection-3 .swiper-container .swiper-pagination-custom',
+			type: 'bullets',
+			clickable: true,
+		},
+		navigation: {
+			prevEl: '.product-collection-3 .swiper-prev',
+			nextEl: '.product-collection-3 .swiper-next',
+		},
+		breakpoints: {
+			1200: {
+				slidesPerView: 3,
+			},
+			1025: {
+				slidesPerView: 2,
+				slidesPerGroup: 6,
+				slidesPerColumn: 2,
+			},
+			768: {
+				slidesPerView: 2,
+				slidesPerGroup: 4,
+				slidesPerColumn: 2,
+			}
+		}
+	});
+	const slider4 = new Swiper('.product-collection-4 .swiper-container', {
+		slidesPerView: 4,
+		speed: 1400,
+		loop: true,
+		spaceBetween: 20,
+		autoplay: {
+			delay: 3600,
+			disableOnInteraction: false,
+		},
+		pagination: {
+			el: '.product-collection-4 .swiper-container .swiper-pagination-custom',
+			type: 'bullets',
+			clickable: true,
+		},
+		navigation: {
+			prevEl: '.product-collection-4 .swiper-prev',
+			nextEl: '.product-collection-4 .swiper-next',
+		},
+		breakpoints: {
+			1200: {
+				slidesPerView: 3,
+			},
+			1025: {
+				slidesPerView: 2,
+			},
+			768: {
+				slidesPerView: 1,
+			}
+		}
+	});
+	const slider5 = new Swiper('.product-collection-5 .swiper-container', {
+		slidesPerView: 4,
+		speed: 1400,
+		loop: true,
+		spaceBetween: 20,
+		autoplay: {
+			delay: 3600,
+			disableOnInteraction: false,
+		},
+		pagination: {
+			el: '.product-collection-5 .swiper-container .swiper-pagination-custom',
+			type: 'bullets',
+			clickable: true,
+		},
+		navigation: {
+			prevEl: '.product-collection-5 .swiper-prev',
+			nextEl: '.product-collection-5 .swiper-next',
+		},
+		breakpoints: {
+			1200: {
+				slidesPerView: 3,
+			},
+			1025: {
+				slidesPerView: 2,
+				slidesPerGroup: 6,
+				slidesPerColumn: 2,
+			},
+			768: {
+				slidesPerView: 2,
+				slidesPerGroup: 4,
+				slidesPerColumn: 2,
+			}
+		}
+	});
+};
+
 // ==> Call functions here
 document.addEventListener("DOMContentLoaded", () => {
 	objectFitImages('.obj-fit-cover');
@@ -196,6 +361,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	productDetailSlider();
 	sliderProductDetailRelative();
 	toggleFilter();
+	sliderProductCollections();
 });
 
 window.addEventListener('scroll', () => {

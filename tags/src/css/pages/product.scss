@@ -414,3 +414,161 @@
 		}
 	}
 }
+
+.product-collection-slider {
+	padding: 60px 0;
+
+	.swiper-container-wrapepr {
+		padding: 0 100px;
+		position: relative;
+	}
+
+	.swiper-prev, .swiper-next {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		cursor: pointer;
+
+		.stroke-hover {
+			stroke-dasharray: 160;
+			stroke-dashoffset: 160;
+			stroke: map_get($mau, main);
+			transition: all 1s ease-in-out;
+		}
+
+		&:hover {
+			.stroke-hover {
+				stroke-dashoffset: 0;
+			}
+		}
+	}
+
+	.swiper-prev {
+		left: 20px;
+	}
+
+	.swiper-next {
+		right: 20px;
+	}
+
+	.swiper-pagination-custom {
+		display: flex;
+		height: 25px;
+		align-items: center;
+		justify-content: center;
+
+		.swiper-pagination-bullet {
+			background: #D8E0E3;
+			width: 12px;
+			height: 12px;
+			opacity: 1;
+			margin: 0 10px;
+			transition: all .3s ease-in;
+		}
+
+		.swiper-pagination-bullet-active {
+			background-color: map_get($mau, main);
+			box-shadow: 0 0 0 5px rgba(#D8E0E3, .45);
+		}
+	}
+
+	@media (max-width: 1199px) {
+		padding: 45px 0;
+
+		.swiper-container-wrapepr {
+			padding: 0 50px;
+		}
+	}
+
+	@media (max-width: 767px) {
+		padding: 30px 0;
+
+		.swiper-prev, .swiper-next {
+			.stroke-hover {
+				stroke-dashoffset: 0 !important;
+			}
+		}
+
+		.swiper-prev {
+			left: 10px;
+		}
+
+		.swiper-next {
+			right: 10px;
+		}
+
+		.swiper-container-wrapepr {
+			padding: 0 30px;
+		}
+	}
+}
+
+.product-collection-navigation {
+	padding-bottom: 60px;
+
+	@media (max-width: 1199px) {
+		padding-bottom: 45px;
+	}
+
+	@media (max-width: 767px) {
+		padding-bottom: 30px;
+		.row {
+			margin: 0 -5px;
+
+			.col-6 {
+				padding: 0 5px;
+			}
+		}
+	}
+}
+
+.product-collection {
+	&:nth-child(2n) {
+		.product-collection-item {
+			.info {
+				left: 0;
+				background: #ffffff;
+
+				@media (max-width: 767px) {
+					h3 {
+						color: #1c1c1c;
+					}
+				}
+			}
+		}
+	}
+
+	&:nth-child(2n+1) {
+		background-color: #F5F5F5;
+
+		.product-collection-item {
+			.info {
+				right: 0;
+
+				@media (max-width: 767px) {
+					h3 {
+						color: map_get($mau, main);
+					}
+				}
+			}
+		}
+	}
+
+	@media (max-width: 767px) {
+		&.product-collection-1 {
+			.product-collection-slider {
+				.swiper-pagination-custom {
+					display: none;
+				}
+			}
+		}
+
+		&.product-collection-2, &.product-collection-3, &.product-collection-5 {
+			.product-collection-slider {
+				.swiper-prev, .swiper-next {
+					display: none;
+				}
+			}
+		}
+	}
+}

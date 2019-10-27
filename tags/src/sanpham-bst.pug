@@ -1,0 +1,15 @@
+extends _components/_layout/_layout.pug
+
+block var
+	- let title = 'Sản phẩm - Bộ sưu tập'
+	- let bodyClass = 'product-collections-page'
+
+block banner,breadcrumb
+	include _components/product/banner
+
+block main
+	include _components/product/bst-1
+	include _components/product/bst-2
+	include _components/product/bst-3
+	include _components/product/bst-4
+	include _components/product/bst-5

@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Sản phẩm - Bộ sưu tập</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700&amp;display=swap&amp;subset=vietnamese">
+		<style>
+			#loading {
+				-webkit-transition: .8s;
+				-o-transition: .8s;
+				position: fixed;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				z-index: 99999;
+				transition: .8s;
+				background: #fff;
+				width: 100%;
+				height: 100%
+			}
+			
+			#loading #progress {
+				-webkit-transition: .8s;
+				-o-transition: .8s;
+				display: none;
+				transition: .8s;
+				background: #000;
+				width: 0;
+				height: 1px
+			}
+			
+			#loading #progress, #loading .progstat-wrapper {
+				-webkit-transform: translateY(-50%);
+				-ms-transform: translateY(-50%);
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%)
+			}
+			
+			#loading .progstat-wrapper {
+				margin-top: 0;
+				width: 100%;
+				color: #000;
+				font-size: 14px;
+				font-weight: 300;
+				letter-spacing: 3px;
+				text-align: center
+			}
+			
+			#loading .logo-loader {
+				-webkit-transform: translate(-50%, -50%);
+				-ms-transform: translate(-50%, -50%);
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				margin-top: -100px;
+				width: 150px;
+				height: 150px
+			}
+		</style>
+		<script>
+			!function () {
+				function n(n) {
+					return document.getElementById(n)
+				}
+			
+				document.addEventListener("DOMContentLoaded", function () {
+					var e = n("loading"), t = n("progress"), o = n("progstat"), r = document.images, i = 0,
+						d = r.length;
+					if (0 == d) return u();
+			
+					function a() {
+						var n = 100 / d * (i += 1) << 0;
+						if (t.style.width = n, o.innerHTML = n, i === d) return u()
+					}
+			
+					function u() {
+						e.style.opacity = 0, setTimeout(function () {
+							e.style.display = "none";
+							var n = document.getElementById("loading");
+							n.parentNode.removeChild(n)
+						}, 1500)
+					}
+			
+					for (var c = 0; c < d; c++) {
+						var s = new Image;
+						s.onload = a, s.onerror = a, s.src = r[c].src
+					}
+				}, !1)
+			}();
+		</script>
+		<link rel="stylesheet" href="./css/core.min.css">
+		<link rel="stylesheet" href="./css/main.min.css">
+	</head>
+	<body>
+		<div id="loading">
+			<div class="logo-loader"><img src="./assets/loading.gif" alt=""></div>
+			<div class="progstat-wrapper">Loading:<span id="progstat">0</span>%</div>
+			<div id="progress"></div>
+		</div>
+		<div id="fb-root"></div>
+		<header>
+			<div class="container-fluid-custom">
+				<div class="row no-gutters">
+					<div class="mobile header-nav-toggle"><svg xmlns="http://www.w3.org/2000/svg" width="19.089" height="11.935" viewBox="0 0 19.089 11.935"><g id="Group_1" data-name="Group 1" transform="translate(-18 -8)"><rect id="Rectangle_125" data-name="Rectangle 125" width="19.089" height="1.934" rx="0.967" transform="translate(18 8)" fill="#fff"/><rect id="Rectangle_155" data-name="Rectangle 155" width="19.089" height="1.934" rx="0.967" transform="translate(18 13)" fill="#fff" opacity="0.72"/><rect id="Rectangle_156" data-name="Rectangle 156" width="19.089" height="1.934" rx="0.967" transform="translate(18 18)" fill="#fff" opacity="0.42"/></g></svg></div>
+					<div class="logo"><a href="/"><img src="./assets/logo.png" alt=""></a></div>
+					<nav class="header-nav">
+						<div class="nav-item"><a class="nav-link" href="sanpham.html">Men</a></div>
+						<div class="nav-item"><a class="nav-link" href="sanpham.html">Women</a></div>
+						<div class="nav-item"><a class="nav-link" href="sanpham.html">Boys</a></div>
+						<div class="nav-item"><a class="nav-link" href="sanpham.html">Girls</a></div>
+						<div class="nav-item"><a class="nav-link" href="sanpham-bst.html">Bộ sưu tập</a></div>
+					</nav>
+					<div class="header-search">
+						<div class="icon-search mobile"><svg xmlns="http://www.w3.org/2000/svg" id="Group_13113" data-name="Group 13113" width="17.13" height="18.303" viewBox="0 0 17.13 18.303"><path id="Path_650" data-name="Path 650" d="M215.809,328.562l-.244-.263a.869.869,0,0,0-1.272,1.183l.244.262a.868.868,0,0,0,1.272-1.183Z" transform="translate(-198.912 -311.719)" fill="#f9f9f9"/><path id="Path_651" data-name="Path 651" d="M208.893,321.12a7.059,7.059,0,0,0,1.852-5.465h0a7.082,7.082,0,1,0-7.055,7.756c.223,0,.451-.01.678-.032a7.032,7.032,0,0,0,3.2-1.129l2.262,2.434a.868.868,0,0,0,1.272-1.182Zm-4.69.529a5.345,5.345,0,0,1-1.017-10.642c.172-.016.342-.024.511-.024a5.353,5.353,0,0,1,5.318,4.837h0A5.353,5.353,0,0,1,204.2,321.649Z" transform="translate(-196.614 -309.246)" fill="#f9f9f9"/></svg></div>
+						<form>
+							<input id="search" type="text" placeholder="Tìm kiếm">
+							<button><svg xmlns="http://www.w3.org/2000/svg" width="14.552" height="15.548" viewBox="0 0 14.552 15.548"><g id="Group_381" data-name="Group 381" transform="translate(0)"><path id="Path_650" data-name="Path 650" d="M215.546,328.481l-.207-.224a.738.738,0,0,0-1.081,1.005l.207.223a.738.738,0,0,0,1.081-1Z" transform="translate(-201.191 -314.173)"/><path id="Path_651" data-name="Path 651" d="M207.045,319.333a6,6,0,0,0,1.573-4.643h0a6.016,6.016,0,1,0-5.993,6.588c.19,0,.383-.009.576-.027a5.973,5.973,0,0,0,2.721-.959l1.921,2.068a.737.737,0,1,0,1.081-1Zm-3.984.449a4.541,4.541,0,0,1-.864-9.04c.146-.014.291-.021.434-.021a4.548,4.548,0,0,1,4.518,4.109h0A4.547,4.547,0,0,1,203.061,319.782Z" transform="translate(-196.614 -309.246)"/></g></svg></button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</header>
+		<main>
+			<div class="product-page-banner"><a href="#"><img src="./assets/banner/b_2.jpg"></a></div>
+			<div class="product-collections-page" id="js-page-verify"></div>
+			<div class="product-collection product-collection-1">
+				<div class="container product-collection-slider">
+					<h2 class="main-title center blue">SKECHERS PREMIUM HERITAGE</h2>
+					<div class="swiper-container-wrapepr">
+						<div class="swiper-prev"><svg xmlns="http://www.w3.org/2000/svg" width="18.31" height="36.027" viewBox="0 0 18.31 36.027"><path d="M14.348,0,0,15.894,14.69,31.789" transform="translate(1.5 2.119)" fill="none" stroke="#1c1c1c" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/><path class="stroke-hover" d="M14.348,0,0,15.894,14.69,31.789" transform="translate(1.5 2.119)" fill="none" stroke="#1a67ab" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/></svg></div>
+						<div class="swiper-next"><svg xmlns="http://www.w3.org/2000/svg" width="18.31" height="36.027" viewBox="0 0 18.31 36.027"><path d="M14.348,0,0,15.894,14.69,31.789" transform="translate(16.81 33.908) rotate(180)" fill="none" stroke="#1c1c1c" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/><path class="stroke-hover" d="M14.348,0,0,15.894,14.69,31.789" transform="translate(16.81 33.908) rotate(180)" fill="none" stroke="#1a67ab" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/></svg></div>
+						<div class="swiper-container">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<div class="product-item"><a href="sanpham-ct.html">
+											<div class="img"><img src="./assets/product/p_5.png" alt=""/></div>
+											<div class="info">
+												<h3>Energy - Pure Serenity</h3>
+												<p>2.900.000 vnđ</p>
+											</div></a></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="product-item"><a href="sanpham-ct.html">
+											<div class="img"><img src="./assets/product/p_4.png" alt=""/></div>
+											<div class="info">
+												<h3>Energy - Pure Serenity</h3>
+												<p>2.900.000 vnđ</p>
+											</div></a></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="product-item"><a href="sanpham-ct.html">
+											<div class="img"><img src="./assets/product/p_3.png" alt=""/></div>
+											<div class="info">
+												<h3>Energy - Pure Serenity</h3>
+												<p>2.900.000 vnđ</p>
+											</div></a></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="product-item"><a href="sanpham-ct.html">
+											<div class="img"><img src="./assets/product/p_2.png" alt=""/></div>
+											<div class="info">
+												<h3>Energy - Pure Serenity</h3>
+												<p>2.900.000 vnđ</p>
+											</div></a></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="product-item"><a href="sanpham-ct.html">
+											<div class="img"><img src="./assets/product/p_1.png" alt=""/></div>
+											<div class="info">
+												<h3>Energy - Pure Serenity</h3>
+												<p>2.900.000 vnđ</p>
+											</div></a></div>
+								</div>
+							</div>
+							<div class="swiper-pagination-custom"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="product-collection product-collection-2">
+				<div class="container product-collection-slider">
+					<h2 class="main-title center">CASUAL COLLECTION</h2>
+					<div class="swiper-container-wrapepr">
+						<div class="swiper-prev"><svg xmlns="http://www.w3.org/2000/svg" width="18.31" height="36.027" viewBox="0 0 18.31 36.027"><path d="M14.348,0,0,15.894,14.69,31.789" transform="translate(1.5 2.119)" fill="none" stroke="#1c1c1c" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/><path class="stroke-hover" d="M14.348,0,0,15.894,14.69,31.789" transform="translate(1.5 2.119)" fill="none" stroke="#1a67ab" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/></svg></div>
+						<div class="swiper-next"><svg xmlns="http://www.w3.org/2000/svg" width="18.31" height="36.027" viewBox="0 0 18.31 36.027"><path d="M14.348,0,0,15.894,14.69,31.789" transform="translate(16.81 33.908) rotate(180)" fill="none" stroke="#1c1c1c" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/><path class="stroke-hover" d="M14.348,0,0,15.894,14.69,31.789" transform="translate(16.81 33.908) rotate(180)" fill="none" stroke="#1a67ab" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/></svg></div>
+						<div class="swiper-container">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<div class="product-item"><a href="sanpham-ct.html">
+											<div class="img"><img src="./assets/product/p_1.png" alt=""/></div>
+											<div class="info">
+												<h3>Energy - Pure Serenity</h3>
+												<p>2.900.000 vnđ</p>
+											</div></a></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="product-item"><a href="sanpham-ct.html">
+											<div class="img"><img src="./assets/product/p_2.png" alt=""/></div>
+											<div class="info">
+												<h3>Energy - Pure Serenity</h3>
+												<p>2.900.000 vnđ</p>
+											</div></a></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="product-item"><a href="sanpham-ct.html">
+											<div class="img"><img src="./assets/product/p_3.png" alt=""/></div>
+											<div class="info">
+												<h3>Energy - Pure Serenity</h3>
+												<p>2.900.000 vnđ</p>
+											</div></a></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="product-item"><a href="sanpham-ct.html">
+											<div class="img"><img src="./assets/product/p_4.png" alt=""/></div>
+											<div class="info">
+												<h3>Energy - Pure Serenity</h3>
+												<p>2.900.000 vnđ</p>
+											</div></a></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="product-item"><a href="sanpham-ct.html">
+											<div class="img"><img src="./assets/product/p_5.png" alt=""/></div>
+											<div class="info">
+												<h3>Energy - Pure Serenity</h3>
+												<p>2.900.000 vnđ</p>
+											</div></a></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="product-item"><a href="sanpham-ct.html">
+											<div class="img"><img src="./assets/product/p_6.png" alt=""/></div>
+											<div class="info">
+												<h3>Energy - Pure Serenity</h3>
+												<p>2.900.000 vnđ</p>
+											</div></a></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="product-item"><a href="sanpham-ct.html">
+											<div class="img"><img src="./assets/product/p_7.png" alt=""/></div>
+											<div class="info">
+												<h3>Energy - Pure Serenity</h3>
+												<p>2.900.000 vnđ</p>
+											</div></a></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="product-item"><a href="sanpham-ct.html">
+											<div class="img"><img src="./assets/product/p_8.png" alt=""/></div>
+											<div class="info">
+												<h3>Energy - Pure Serenity</h3>
+												<p>2.900.000 vnđ</p>
+											</div></a></div>
+								</div>
+							</div>
+							<div class="swiper-pagination-custom"></div>
+						</div>
+					</div>
+				</div>
+				<div class="container product-collection-navigation">
+					<div class="row">
+						<div class="col-6">
+							<div class="product-collection-item"><a href="sanpham.html">
+									<div class="imgbox"><img src="./assets/collection/c_1.jpg"/></div>
+									<div class="info">
+										<h3>D-lites</h3>
+									</div></a></div>
+						</div>
+						<div class="col-6">
+							<div class="product-collection-item"><a href="sanpham.html">
+									<div class="imgbox"><img src="./assets/collection/c_2.jpg"/></div>
+									<div class="info">
+										<h3>Sport-Active</h3>
+									</div></a></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="product-collection product-collection-3">
+				<div class="container product-collection-slider">
+					<h2 class="main-title center">CASUAL COLLECTION</h2>
+					<div class="swiper-container-wrapepr">
+						<div class="swiper-prev"><svg xmlns="http://www.w3.org/2000/svg" width="18.31" height="36.027" viewBox="0 0 18.31 36.027"><path d="M14.348,0,0,15.894,14.69,31.789" transform="translate(1.5 2.119)" fill="none" stroke="#1c1c1c" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/><path class="stroke-hover" d="M14.348,0,0,15.894,14.69,31.789" transform="translate(1.5 2.119)" fill="none" stroke="#1a67ab" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/></svg></div>
+						<div class="swiper-next"><svg xmlns="http://www.w3.org/2000/svg" width="18.31" height="36.027" viewBox="0 0 18.31 36.027"><path d="M14.348,0,0,15.894,14.69,31.789" transform="translate(16.81 33.908) rotate(180)" fill="none" stroke="#1c1c1c" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/><path class="stroke-hover" d="M14.348,0,0,15.894,14.69,31.789" transform="translate(16.81 33.908) rotate(180)" fill="none" stroke="#1a67ab" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/></svg></div>
+						<div class="swiper-container">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<div class="product-item"><a href="sanpham-ct.html">
+											<div class="img"><img src="./assets/product/p_1.png" alt=""/></div>
+											<div class="info">
+												<h3>Energy - Pure Serenity</h3>
+												<p>2.900.000 vnđ</p>
+											</div></a></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="product-item"><a href="sanpham-ct.html">
+											<div class="img"><img src="./assets/product/p_2.png" alt=""/></div>
+											<div class="info">
+												<h3>Energy - Pure Serenity</h3>
+												<p>2.900.000 vnđ</p>
+											</div></a></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="product-item"><a href="sanpham-ct.html">
+											<div class="img"><img src="./assets/product/p_3.png" alt=""/></div>
+											<div class="info">
+												<h3>Energy - Pure Serenity</h3>
+												<p>2.900.000 vnđ</p>
+											</div></a></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="product-item"><a href="sanpham-ct.html">
+											<div class="img"><img src="./assets/product/p_4.png" alt=""/></div>
+											<div class="info">
+												<h3>Energy - Pure Serenity</h3>
+												<p>2.900.000 vnđ</p>
+											</div></a></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="product-item"><a href="sanpham-ct.html">
+											<div class="img"><img src="./assets/product/p_5.png" alt=""/></div>
+											<div class="info">
+												<h3>Energy - Pure Serenity</h3>
+												<p>2.900.000 vnđ</p>
+											</div></a></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="product-item"><a href="sanpham-ct.html">
+											<div class="img"><img src="./assets/product/p_6.png" alt=""/></div>
+											<div class="info">
+												<h3>Energy - Pure Serenity</h3>
+												<p>2.900.000 vnđ</p>
+											</div></a></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="product-item"><a href="sanpham-ct.html">
+											<div class="img"><img src="./assets/product/p_7.png" alt=""/></div>
+											<div class="info">
+												<h3>Energy - Pure Serenity</h3>
+												<p>2.900.000 vnđ</p>
+											</div></a></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="product-item"><a href="sanpham-ct.html">
+											<div class="img"><img src="./assets/product/p_8.png" alt=""/></div>
+											<div class="info">
+												<h3>Energy - Pure Serenity</h3>
+												<p>2.900.000 vnđ</p>
+											</div></a></div>
+								</div>
+							</div>
+							<div class="swiper-pagination-custom"></div>
+						</div>
+					</div>
+				</div>
+				<div class="container product-collection-navigation">
+					<div class="row">
+						<div class="col-6">
+							<div class="product-collection-item"><a href="sanpham.html">
+									<div class="imgbox"><img src="./assets/collection/c_3.jpg"/></div>
+									<div class="info">
+										<h3>Bobs</h3>
+									</div></a></div>
+						</div>
+						<div class="col-6">
+							<div class="product-collection-item"><a href="sanpham.html">
+									<div class="imgbox"><img src="./assets/collection/c_4.jpg"/></div>
+									<div class="info">
+										<h3>Relaxed Fit</h3>
+									</div></a></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="product-collection product-collection-4">
+				<div class="container product-collection-slider">
+					<h2 class="main-title center">CASUAL COLLECTION</h2>
+					<div class="swiper-container-wrapepr">
+						<div class="swiper-prev"><svg xmlns="http://www.w3.org/2000/svg" width="18.31" height="36.027" viewBox="0 0 18.31 36.027"><path d="M14.348,0,0,15.894,14.69,31.789" transform="translate(1.5 2.119)" fill="none" stroke="#1c1c1c" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/><path class="stroke-hover" d="M14.348,0,0,15.894,14.69,31.789" transform="translate(1.5 2.119)" fill="none" stroke="#1a67ab" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/></svg></div>
+						<div class="swiper-next"><svg xmlns="http://www.w3.org/2000/svg" width="18.31" height="36.027" viewBox="0 0 18.31 36.027"><path d="M14.348,0,0,15.894,14.69,31.789" transform="translate(16.81 33.908) rotate(180)" fill="none" stroke="#1c1c1c" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/><path class="stroke-hover" d="M14.348,0,0,15.894,14.69,31.789" transform="translate(16.81 33.908) rotate(180)" fill="none" stroke="#1a67ab" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/></svg></div>
+						<div class="swiper-container">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<div class="product-item"><a href="sanpham-ct.html">
+											<div class="img"><img src="./assets/product/p_1.png" alt=""/></div>
+											<div class="info">
+												<h3>Energy - Pure Serenity</h3>
+												<p>2.900.000 vnđ</p>
+											</div></a></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="product-item"><a href="sanpham-ct.html">
+											<div class="img"><img src="./assets/product/p_2.png" alt=""/></div>
+											<div class="info">
+												<h3>Energy - Pure Serenity</h3>
+												<p>2.900.000 vnđ</p>
+											</div></a></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="product-item"><a href="sanpham-ct.html">
+											<div class="img"><img src="./assets/product/p_3.png" alt=""/></div>
+											<div class="info">
+												<h3>Energy - Pure Serenity</h3>
+												<p>2.900.000 vnđ</p>
+											</div></a></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="product-item"><a href="sanpham-ct.html">
+											<div class="img"><img src="./assets/product/p_4.png" alt=""/></div>
+											<div class="info">
+												<h3>Energy - Pure Serenity</h3>
+												<p>2.900.000 vnđ</p>
+											</div></a></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="product-item"><a href="sanpham-ct.html">
+											<div class="img"><img src="./assets/product/p_5.png" alt=""/></div>
+											<div class="info">
+												<h3>Energy - Pure Serenity</h3>
+												<p>2.900.000 vnđ</p>
+											</div></a></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="product-item"><a href="sanpham-ct.html">
+											<div class="img"><img src="./assets/product/p_6.png" alt=""/></div>
+											<div class="info">
+												<h3>Energy - Pure Serenity</h3>
+												<p>2.900.000 vnđ</p>
+											</div></a></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="product-item"><a href="sanpham-ct.html">
+											<div class="img"><img src="./assets/product/p_7.png" alt=""/></div>
+											<div class="info">
+												<h3>Energy - Pure Serenity</h3>
+												<p>2.900.000 vnđ</p>
+											</div></a></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="product-item"><a href="sanpham-ct.html">
+											<div class="img"><img src="./assets/product/p_8.png" alt=""/></div>
+											<div class="info">
+												<h3>Energy - Pure Serenity</h3>
+												<p>2.900.000 vnđ</p>
+											</div></a></div>
+								</div>
+							</div>
+							<div class="swiper-pagination-custom"></div>
+						</div>
+					</div>
+				</div>
+				<div class="container product-collection-navigation">
+					<div class="row">
+						<div class="col-6">
+							<div class="product-collection-item"><a href="sanpham.html">
+									<div class="imgbox"><img src="./assets/collection/c_5.jpg"/></div>
+									<div class="info">
+										<h3>Apparel</h3>
+									</div></a></div>
+						</div>
+						<div class="col-6">
+							<div class="product-collection-item"><a href="sanpham.html">
+									<div class="imgbox"><img src="./assets/collection/c_6.jpg"/></div>
+									<div class="info">
+										<h3>Go Golf</h3>
+									</div></a></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="product-collection product-collection-5">
+				<div class="container product-collection-slider">
+					<h2 class="main-title center">CASUAL COLLECTION</h2>
+					<div class="swiper-container-wrapepr">
+						<div class="swiper-prev"><svg xmlns="http://www.w3.org/2000/svg" width="18.31" height="36.027" viewBox="0 0 18.31 36.027"><path d="M14.348,0,0,15.894,14.69,31.789" transform="translate(1.5 2.119)" fill="none" stroke="#1c1c1c" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/><path class="stroke-hover" d="M14.348,0,0,15.894,14.69,31.789" transform="translate(1.5 2.119)" fill="none" stroke="#1a67ab" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/></svg></div>
+						<div class="swiper-next"><svg xmlns="http://www.w3.org/2000/svg" width="18.31" height="36.027" viewBox="0 0 18.31 36.027"><path d="M14.348,0,0,15.894,14.69,31.789" transform="translate(16.81 33.908) rotate(180)" fill="none" stroke="#1c1c1c" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/><path class="stroke-hover" d="M14.348,0,0,15.894,14.69,31.789" transform="translate(16.81 33.908) rotate(180)" fill="none" stroke="#1a67ab" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/></svg></div>
+						<div class="swiper-container">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<div class="product-item"><a href="sanpham-ct.html">
+											<div class="img"><img src="./assets/product/p_1.png" alt=""/></div>
+											<div class="info">
+												<h3>Energy - Pure Serenity</h3>
+												<p>2.900.000 vnđ</p>
+											</div></a></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="product-item"><a href="sanpham-ct.html">
+											<div class="img"><img src="./assets/product/p_2.png" alt=""/></div>
+											<div class="info">
+												<h3>Energy - Pure Serenity</h3>
+												<p>2.900.000 vnđ</p>
+											</div></a></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="product-item"><a href="sanpham-ct.html">
+											<div class="img"><img src="./assets/product/p_3.png" alt=""/></div>
+											<div class="info">
+												<h3>Energy - Pure Serenity</h3>
+												<p>2.900.000 vnđ</p>
+											</div></a></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="product-item"><a href="sanpham-ct.html">
+											<div class="img"><img src="./assets/product/p_4.png" alt=""/></div>
+											<div class="info">
+												<h3>Energy - Pure Serenity</h3>
+												<p>2.900.000 vnđ</p>
+											</div></a></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="product-item"><a href="sanpham-ct.html">
+											<div class="img"><img src="./assets/product/p_5.png" alt=""/></div>
+											<div class="info">
+												<h3>Energy - Pure Serenity</h3>
+												<p>2.900.000 vnđ</p>
+											</div></a></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="product-item"><a href="sanpham-ct.html">
+											<div class="img"><img src="./assets/product/p_6.png" alt=""/></div>
+											<div class="info">
+												<h3>Energy - Pure Serenity</h3>
+												<p>2.900.000 vnđ</p>
+											</div></a></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="product-item"><a href="sanpham-ct.html">
+											<div class="img"><img src="./assets/product/p_7.png" alt=""/></div>
+											<div class="info">
+												<h3>Energy - Pure Serenity</h3>
+												<p>2.900.000 vnđ</p>
+											</div></a></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="product-item"><a href="sanpham-ct.html">
+											<div class="img"><img src="./assets/product/p_8.png" alt=""/></div>
+											<div class="info">
+												<h3>Energy - Pure Serenity</h3>
+												<p>2.900.000 vnđ</p>
+											</div></a></div>
+								</div>
+							</div>
+							<div class="swiper-pagination-custom"></div>
+						</div>
+					</div>
+				</div>
+				<div class="container product-collection-navigation">
+					<div class="row">
+						<div class="col-6">
+							<div class="product-collection-item"><a href="sanpham.html">
+									<div class="imgbox"><img src="./assets/collection/c_7.jpg"/></div>
+									<div class="info">
+										<h3>Safety Toe</h3>
+									</div></a></div>
+						</div>
+						<div class="col-6">
+							<div class="product-collection-item"><a href="sanpham.html">
+									<div class="imgbox"><img src="./assets/collection/c_8.jpg"/></div>
+									<div class="info">
+										<h3>Health Care</h3>
+									</div></a></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<footer>
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-11">
+						<div class="row">
+							<div class="col-lg-3 col-xl desktop">
+								<h3>Về chúng tôi</h3>
+								<nav class="nav-list"><a href="#">Skechers.com</a><a href="#">Định vị cửa hàng</a><a href="#">Quảng cáo</a><a href="#">Liên hện đầu tư</a></nav>
+							</div>
+							<div class="col-lg-3 col-xl desktop">
+								<h3>Chính sách</h3>
+								<nav class="nav-list"><a href="#">Chính sách bảo mật</a><a href="#">Chính sách cookie</a><a href="#">Các điểu khoản và điều kiện</a><a href="#">Đạo luật minh bạc California</a></nav>
+							</div>
+							<div class="col-lg-2 col-xl desktop">
+								<h3>Sản phẩm</h3>
+								<nav class="nav-list"><a href="#">Women's Shoes</a><a href="#">Men's Shoes</a><a href="#">Girl's Shoes</a><a href="#">Boy's Shoes</a><a href="#">Bộ sưu tập</a></nav>
+							</div>
+							<div class="col-lg-4 col-xl">
+								<div class="desktop">
+									<h3>Liên kết</h3>
+									<nav class="nav-social"><a href="#"><img src="./assets/icons/icon_pinterest.svg" alt=""></a><a href="#"><img src="./assets/icons/icon_facebook.svg" alt=""></a><a href="#"><img src="./assets/icons/icon_twitter.svg" alt=""></a></nav>
+								</div>
+								<div class="mobile">
+									<nav class="nav-social"><a href="#"><img src="./assets/icons/icon_mobile_facebook.jpg" alt=""></a><a href="#"><img src="./assets/icons/icon_mobile_instagram.jpg" alt=""></a><a href="#"><img src="./assets/icons/icon_mobile_twitter.jpg" alt=""></a><a href="#"><img src="./assets/icons/icon_mobile_youtube.jpg" alt=""></a></nav>
+								</div>
+								<p>Đăng ký mail để nhận thêm thông tin khuyến mãi</p>
+								<form id="footer-subscribe">
+									<input type="text" placeholder="Nhập Email">
+									<button>Gửi<span class="mobile"> Email</span></button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="mobile copyright"><span>© 2019 Sketchervn. All rights reserved.</span></div>
+		</footer>
+		<div id="go-top"><svg xmlns="http://www.w3.org/2000/svg" width="31.279" height="40.032" viewBox="0 0 31.279 40.032"><g transform="translate(28.454 38.032) rotate(180)"><g transform="translate(0 0)"><line y2="34.32" transform="translate(12.742)" fill="none" stroke="#d51635" stroke-linecap="round" stroke-width="4"/><path d="M0,0,12.542,11.415,25.632,0" transform="translate(0 23.938)" fill="none" stroke="#d51635" stroke-linecap="round" stroke-width="4"/></g><g transform="translate(0 23.938)"><path d="M0,0,12.542,11.415,25.632,0" fill="none" stroke="#d51635" stroke-linecap="round" stroke-width="4"/></g></g></svg></div>
+		<script type="text/javascript" src="./js/core.min.js"></script>
+		<script type="text/javascript" src="./js/main.min.js"></script>
+	</body>
+</html>
