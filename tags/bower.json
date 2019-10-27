@@ -19,6 +19,7 @@
     "fancybox": "3.5.7",
     "swiper": "4.5.0",
     "lazysizes": "5.1.0",
-    "object-fit-images": "*"
+    "object-fit-images": "*",
+    "mdi": "^4.5.95"
   }
 }

@@ -123,25 +123,27 @@ module.exports = () => {
 		};
 
 		const getLocationList = () => {
-			dealerLocatorList.innerHTML = '';
-			markers.forEach((marker, index) => {
-				if (map.getBounds().contains(marker.getPosition())) {
-					const newMarker = document.createElement('div');
-					newMarker.classList.add('dealer-locator-item');
-					newMarker.innerHTML = `
+			if (dealerLocatorList) {
+				dealerLocatorList.innerHTML = '';
+				markers.forEach((marker, index) => {
+					if (map.getBounds().contains(marker.getPosition())) {
+						const newMarker = document.createElement('div');
+						newMarker.classList.add('dealer-locator-item');
+						newMarker.innerHTML = `
 						<h3>${locations[index].name}</h3>
 						<p>${locations[index].address}</p>
 						<p>${locations[index].phone}</p>
 					`;
-					newMarker.setAttribute('marker-id', `${index}`);
-					newMarker.addEventListener('click', () => {
-						itemClicked = index;
-						const markerIndex = newMarker.getAttribute('marker-id');
-						google.maps.event.trigger(markers[markerIndex], 'click');
-					});
-					dealerLocatorList.appendChild(newMarker);
-				}
-			});
+						newMarker.setAttribute('marker-id', `${index}`);
+						newMarker.addEventListener('click', () => {
+							itemClicked = index;
+							const markerIndex = newMarker.getAttribute('marker-id');
+							google.maps.event.trigger(markers[markerIndex], 'click');
+						});
+						dealerLocatorList.appendChild(newMarker);
+					}
+				});
+			}
 		};
 
 		const initialize = () => {
@@ -150,14 +152,13 @@ module.exports = () => {
 			addMarkers();
 
 			let listener = google.maps.event.addListener(map, 'idle', () => {
-				if (map.getZoom() > 12) {
-					map.setZoom(12);
-					google.maps.event.removeListener(listener);
+				if (map.getZoom() > 16) {
+					map.setZoom(16);
 				}
+				google.maps.event.removeListener(listener);
 			});
-			if (dealerLocatorList) {
-				google.maps.event.addListener(map, 'bounds_changed', getLocationList);
-			}
+			
+			google.maps.event.addListener(map, 'bounds_changed', getLocationList);
 		};
 
 		google.maps.event.addDomListener(window, 'load', initialize);

@@ -5,9 +5,7 @@
   ],
   "vendor": {
     "font": [
-      "bower_components/mdi/fonts/**",
-      "bower_components/font-awesome/webfonts/**",
-      "bower_components/linearicons/dist/web-font/fonts/**"
+      "bower_components/mdi/fonts/**"
     ],
     "js": [
       "bower_components/jquery/dist/jquery.min.js",

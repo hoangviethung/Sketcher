@@ -2,65 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="350834db-6fcf-4a00-a73d-fd6400573f2c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tags/_dist/assets/collection/c_1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tags/_dist/assets/collection/c_2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tags/_dist/assets/collection/c_3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tags/_dist/assets/collection/c_4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tags/_dist/assets/collection/c_5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tags/_dist/assets/collection/c_6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tags/_dist/assets/collection/c_7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tags/_dist/assets/collection/c_8.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tags/_dist/sanpham-bst.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tags/src/_components/contact/c-1.pug" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tags/src/_components/dealerlocator/c-1.pug" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tags/src/assets/collection/c_1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tags/src/assets/collection/c_2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tags/src/assets/collection/c_3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tags/src/assets/collection/c_4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tags/src/assets/collection/c_5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tags/src/assets/collection/c_6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tags/src/assets/collection/c_7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tags/src/assets/collection/c_8.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tags/src/css/globals/svg-animate.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tags/src/css/pages/contact.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tags/src/css/pages/dealerlocator.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tags/src/cuahang.pug" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tags/src/js/map.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tags/src/lienhe.pug" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tags/vendors/map.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tags/_dist/assets/banner/b_2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/tags/_dist/assets/banner/b_2.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tags/_dist/css/main.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/tags/_dist/css/main.min.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tags/_dist/css/main.min.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/tags/_dist/css/main.min.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tags/_dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/tags/_dist/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tags/_dist/js/core.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/tags/_dist/js/core.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tags/_dist/js/main.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/tags/_dist/js/main.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tags/_dist/js/main.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/tags/_dist/js/main.min.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tags/_dist/sanpham-ct.html" beforeDir="false" afterPath="$PROJECT_DIR$/tags/_dist/sanpham-ct.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tags/_dist/sanpham.html" beforeDir="false" afterPath="$PROJECT_DIR$/tags/_dist/sanpham.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tags/bower.json" beforeDir="false" afterPath="$PROJECT_DIR$/tags/bower.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tags/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/tags/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tags/src/_components/_layout/_footer.pug" beforeDir="false" afterPath="$PROJECT_DIR$/tags/src/_components/_layout/_footer.pug" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tags/src/_components/_layout/_header.pug" beforeDir="false" afterPath="$PROJECT_DIR$/tags/src/_components/_layout/_header.pug" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tags/src/_components/_layout/_layout.pug" beforeDir="false" afterPath="$PROJECT_DIR$/tags/src/_components/_layout/_layout.pug" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tags/src/_components/index/i-3.pug" beforeDir="false" afterPath="$PROJECT_DIR$/tags/src/_components/index/i-3.pug" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tags/src/_components/product/bst-1.pug" beforeDir="false" afterPath="$PROJECT_DIR$/tags/src/_components/product/bst-1.pug" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tags/src/_components/product/bst-2.pug" beforeDir="false" afterPath="$PROJECT_DIR$/tags/src/_components/product/bst-2.pug" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tags/src/_components/product/bst-3.pug" beforeDir="false" afterPath="$PROJECT_DIR$/tags/src/_components/product/bst-3.pug" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tags/src/_components/product/bst-4.pug" beforeDir="false" afterPath="$PROJECT_DIR$/tags/src/_components/product/bst-4.pug" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tags/src/_components/product/bst-5.pug" beforeDir="false" afterPath="$PROJECT_DIR$/tags/src/_components/product/bst-5.pug" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tags/src/_components/product/collection-item.pug" beforeDir="false" afterPath="$PROJECT_DIR$/tags/src/_components/product/collection-item.pug" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tags/src/assets/banner/b_2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/tags/src/assets/banner/b_2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tags/src/css/globals/_main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/tags/src/css/globals/_main.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tags/src/css/globals/footer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/tags/src/css/globals/footer.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tags/src/css/globals/form.scss" beforeDir="false" afterPath="$PROJECT_DIR$/tags/src/css/globals/form.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tags/src/css/globals/header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/tags/src/css/globals/header.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tags/src/css/globals/product.scss" beforeDir="false" afterPath="$PROJECT_DIR$/tags/src/css/globals/product.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tags/src/css/globals/utilities.scss" beforeDir="false" afterPath="$PROJECT_DIR$/tags/src/css/globals/utilities.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tags/src/css/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/tags/src/css/main.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tags/src/css/pages/product.scss" beforeDir="false" afterPath="$PROJECT_DIR$/tags/src/css/pages/product.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tags/src/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/tags/src/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tags/src/sanpham-bst.pug" beforeDir="false" afterPath="$PROJECT_DIR$/tags/src/sanpham-bst.pug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tags/src/js/map.js" beforeDir="false" afterPath="$PROJECT_DIR$/tags/src/js/map.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -119,7 +69,7 @@
       <workItem from="1571998237820" duration="1365000" />
       <workItem from="1571999713280" duration="2541000" />
       <workItem from="1572087330196" duration="1444000" />
-      <workItem from="1572104933688" duration="31109000" />
+      <workItem from="1572104933688" duration="32638000" />
     </task>
     <servers />
   </component>

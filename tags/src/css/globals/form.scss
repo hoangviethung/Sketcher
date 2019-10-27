@@ -13,10 +13,11 @@
 			transition: all .3s ease-in;
 			border: 1px solid darken(white, 15%);
 			content: '';
-			top: 2px;
+			top: 4px;
 			left: 0;
 			display: flex;
 			justify-content: center;
+			font-size: 30px;
 			align-items: center;
 			font-family: 'Material Design Icons';
 		}
@@ -43,6 +44,10 @@
 		label {
 			font-size: 14px;
 			padding-left: 25px;
+
+			&:before {
+				top: 2px;
+			}
 		}
 	}
 }
