@@ -1,3 +1,13 @@
+import mapApi from './map';
+
+const checkScroll = () => {
+	if (window.scrollY > 0) {
+		document.querySelector('body').classList.add('scrolled');
+	} else {
+		document.querySelector('body').classList.remove('scrolled');
+	}
+};
+
 const newProductSlider = () => {
 	return new Swiper('.index-2 .swiper-container', {
 		speed: 1200,
@@ -351,6 +361,8 @@ const sliderProductCollections = () => {
 // ==> Call functions here
 document.addEventListener("DOMContentLoaded", () => {
 	objectFitImages('.obj-fit-cover');
+	mapApi();
+	checkScroll();
 	toggleGoTopButton();
 	// homeBanner();
 	newProductSlider();
@@ -365,5 +377,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 window.addEventListener('scroll', () => {
+	checkScroll();
 	toggleGoTopButton();
 });

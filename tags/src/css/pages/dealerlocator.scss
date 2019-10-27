@@ -1,0 +1,82 @@
+.dealer-locator-wrapper {
+	padding: 60px 0 110px 0;
+
+	.dealer-locator-finder {
+		width: 400px;
+	}
+
+	.dealer-locator-list {
+		height: 340px;
+
+		.title {
+			height: 50px;
+			font-size: 18px;
+			font-weight: 700;
+			color: #ffffff;
+			text-transform: uppercase;
+			display: flex;
+			align-items: center;
+			padding: 7px 15px;
+			background-color: map_get($mau, main);
+		}
+
+		.list {
+			overflow-y: auto;
+			height: 290px;
+
+			&::-webkit-scrollbar {
+				background: rgba(black, .1);
+				width: 5px;
+				padding: 5px 0;
+			}
+
+			&::-webkit-scrollbar-thumb {
+				background: map_get($mau, main);
+			}
+		}
+
+		.dealer-locator-item {
+			padding: 15px;
+			cursor: pointer;
+			font-size: 14px;
+
+			@media (min-width: 1025px) {
+				&:hover {
+					background: rgba(map_get($mau, main), .1);
+				}
+			}
+
+			h3 {
+				font-weight: 500;
+				text-transform: uppercase;
+			}
+
+			p {
+				font-weight: 300;
+				color: #707070;
+			}
+		}
+	}
+
+	#map {
+		height: 100%;
+		width: 100%;
+	}
+
+	@media (max-width: 1024px) {
+		padding: 40px 0;
+
+		.dealer-locator-finder {
+			width: 100%;
+			margin-bottom: 20px;
+
+			.dealer-locator-list {
+				border: 1px solid darken(white, 20%);
+			}
+		}
+
+		#map {
+			height: 600px;
+		}
+	}
+}

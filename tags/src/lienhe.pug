@@ -1,0 +1,24 @@
+extends _components/_layout/_layout.pug
+
+block var
+	- let title = 'Liên hệ'
+	- let bodyClass = 'contact-page'
+
+block banner,breadcrumb
+	include _components/_layout/_breadcrumb
+
+block main
+	include _components/contact/c-1
+
+block scripts
+	script.
+		var locationsInput = [
+			{
+				name: 'Skechers Nguyễn Trãi',
+				lat: 10.771652,
+				lng: 106.693169,
+				address: '55, Nguyễn Trãi, P.Bến Thành Q.1, Hồ Chí Minh, Việt Nam',
+				icon: './assets/icons/marker-icon.svg',
+				phone: '+84987654321'
+			}
+		]

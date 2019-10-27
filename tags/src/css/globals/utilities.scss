@@ -38,6 +38,15 @@ input[type="radio"] {
 	padding: 0;
 }
 
+html,
+body {
+	font-family: 'Roboto Condensed', sans-serif;
+}
+
+main {
+	transition: all .3s linear;
+}
+
 body.home-page {
 	@media (max-width: 1024.98px) {
 		main {
@@ -81,6 +90,18 @@ body.home-page {
 	}
 }
 
+body.scrolled {
+	@media (min-width: 1025px) {
+		header {
+			height: 60px;
+		}
+
+		main {
+			padding-top: 60px;
+		}
+	}
+}
+
 .mobile {
 	@media (min-width: 1025px) {
 		display: none;
@@ -91,11 +112,6 @@ body.home-page {
 	@media (max-width: 1024.98px) {
 		display: none;
 	}
-}
-
-html,
-body {
-	font-family: 'Roboto Condensed', sans-serif;
 }
 
 main {
@@ -136,21 +152,6 @@ main {
 		font-size: 16px;
 		margin-bottom: 10px;
 	}
-}
-
-.btn {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.btn-viewmore {
-	height: 70px;
-	width: 300px;
-	background: #D51635;
-	color: white;
-	text-transform: uppercase;
-	font-size: 24px;
 }
 
 #go-top {

@@ -29,6 +29,35 @@ footer {
 
 		a {
 			margin-right: 25px;
+
+			svg {
+				.icon {
+					fill: map_get($mau, main);;
+					stroke-dasharray: 120;
+					stroke-width: 1px;
+					stroke-dashoffset: 0;
+					stroke: map_get($mau, main);
+				}
+
+				.background {
+					stroke-dashoffset: -120;
+					stroke-dasharray: 120;
+					stroke: map_get($mau, main);
+					transition: all .5s linear;
+				}
+			}
+
+			&:hover {
+				svg {
+					.icon {
+						animation: iconSocial 1.2s linear;
+					}
+
+					.background {
+						stroke-dashoffset: 0;
+					}
+				}
+			}
 		}
 	}
 
@@ -64,6 +93,11 @@ footer {
 	@media (max-width: 1199px) {
 		padding-bottom: 30px;
 	}
+
+	@media (max-width: 1024px) {
+		background: #000000;
+	}
+
 	@media (max-width: 767px) {
 		padding-bottom: 0;
 	}

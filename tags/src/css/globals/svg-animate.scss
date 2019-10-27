@@ -1,0 +1,14 @@
+@keyframes iconSocial {
+	0% {
+		stroke-dashoffset: -120;
+		fill: white;
+	}
+	50% {
+		stroke-dashoffset: 0;
+		fill: white;
+	}
+	100% {
+		stroke-dashoffset: 0;
+		fill: map_get($mau, main);
+	}
+}

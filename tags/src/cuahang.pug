@@ -1,0 +1,56 @@
+extends _components/_layout/_layout.pug
+
+block var
+	- let title = 'Định vị cửa hàng'
+	- let bodyClass = 'dealer-locator-page'
+
+block banner,breadcrumb
+	include _components/_layout/_breadcrumb
+
+block main
+	include _components/dealerlocator/c-1
+
+block scripts
+	script.
+		var locationsInput = [
+			{
+				name: 'Skechers Lê Văn Sỹ',
+				lat: 10.792108,
+				lng: 106.672579,
+				address: '65, Lê Văn Sỹ, P.13, Q.Phú Nhuận, Hồ Chí Minh, Việt Nam',
+				icon: './assets/icons/marker-icon.svg',
+				phone: '+84987654321'
+			},
+			{
+				name: 'Skechers Nguyễn Trãi',
+				lat: 10.771652,
+				lng: 106.693169,
+				address: '55, Nguyễn Trãi, P.Bến Thành Q.1, Hồ Chí Minh, Việt Nam',
+				icon: './assets/icons/marker-icon.svg',
+				phone: '+84987654321'
+			},
+			{
+				name: 'Skechers Sư Vạn Hạnh',
+				lat: 10.772064,
+				lng: 106.670015,
+				address: '11, Sư Vạn Hạnh, P.12, Q.10, Hồ Chí Minh, Việt Nam',
+				icon: './assets/icons/marker-icon.svg',
+				phone: '+84987654321'
+			},
+			{
+				name: 'Skechers Cao Thắng',
+				lat: 10.770334,
+				lng: 106.683007,
+				address: '17A Cao Thắng, P.2, Q.3, Hồ Chí Minh, Việt Nam',
+				icon: './assets/icons/marker-icon.svg',
+				phone: '+84987654321'
+			},
+			{
+				name: 'Test',
+				lat: 21.007417,
+				lng: 105.841306,
+				address: '17A Cao Thắng, P.2, Q.3, Hồ Chí Minh, Việt Nam',
+				icon: './assets/icons/marker-icon.svg',
+				phone: '+84987654321'
+			}
+		]

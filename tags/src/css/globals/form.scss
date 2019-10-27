@@ -46,3 +46,100 @@
 		}
 	}
 }
+
+.form-group {
+	margin-bottom: 10px;
+
+	input[type='text'],
+	select,
+	textarea {
+		border: 1px solid #F5F5F5;
+		width: 100%;
+		font-size: 16px;
+		color: #707070;
+
+		&::placeholder {
+			font-size: 16px;
+			color: #707070;
+		}
+
+		&:focus {
+			border: 1px solid map_get($mau, main);
+		}
+	}
+
+	input[type='text'],
+	select {
+		height: 50px;
+		color: #707070;
+	}
+
+	textarea {
+		height: 225px;
+		resize: none;
+	}
+
+	@media (max-width: 1024px) {
+
+		input[type='text'], select, textarea {
+			font-size: 14px;
+
+			&::placeholder {
+				font-size: 14px;
+			}
+		}
+
+		input[type='text'], select {
+			height: 40px;
+		}
+
+		textarea {
+			height: 140px;
+		}
+	}
+}
+
+.btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.btn-viewmore {
+	height: 70px;
+	width: 300px;
+	background: #D51635;
+	color: white;
+	text-transform: uppercase;
+	font-size: 24px;
+}
+
+.btn-contact {
+	height: 50px;
+	width: 135px;
+	text-transform: uppercase;
+	font-size: 21px;
+	border: 1px solid darken(white, 15%);
+	background: white;
+
+	@media (min-width: 1025px) {
+		transition: all .3s ease-in;
+
+		&:hover {
+			box-shadow: 0 0 5px rgba(map_get($mau, main), .8);
+			background-color: map_get($mau, main);
+			color: white;
+			border: 1px solid map_get($mau, main);
+		}
+	}
+
+	@media (max-width: 1199px) {
+		height: 45px;
+		font-size: 18px;
+	}
+
+	@media (max-width: 767px) {
+		height: 40px;
+		font-size: 14px;
+	}
+}
