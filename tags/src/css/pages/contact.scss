@@ -123,4 +123,10 @@
 			font-size: 14px;
 		}
 	}
+
+	@media (max-width: 1024px) {
+		#map {
+			height: 190px
+		}
+	}
 }

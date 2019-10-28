@@ -152,8 +152,8 @@ module.exports = () => {
 			addMarkers();
 
 			let listener = google.maps.event.addListener(map, 'idle', () => {
-				if (map.getZoom() > 16) {
-					map.setZoom(16);
+				if (map.getZoom() > 12) {
+					map.setZoom(12);
 				}
 				google.maps.event.removeListener(listener);
 			});

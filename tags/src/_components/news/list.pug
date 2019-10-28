@@ -1,0 +1,12 @@
+.news-page-wrapper
+	.container
+		.row
+			.col-12.mobile-title
+				h2 Tin tức
+		.row
+			-for(let i=1; i<7; i++)
+				.col-md-6
+					+newsItem(i)
+		.row
+			.col-12
+				include ../_layout/_pagination.pug

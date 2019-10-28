@@ -1,10 +1,10 @@
 extends _components/_layout/_layout.pug
 
 block var
-	- let title = 'Tin tức'
-	- let bodyClass = 'news-page'
+	- let title = 'Tin tức chi tiết'
+	- let bodyClass = 'news-detail-page'
 
 block banner,breadcrumb
 	include _components/_layout/_breadcrumb
 block main
-	include _components/news/list
+	include _components/news/detail

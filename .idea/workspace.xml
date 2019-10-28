@@ -2,15 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="350834db-6fcf-4a00-a73d-fd6400573f2c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/tags/src/_components/news/detail.pug" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tags/src/_components/news/item.pug" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tags/src/_components/news/list.pug" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tags/src/css/globals/news.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tags/src/css/pages/news.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tags/src/tin-ct.pug" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tags/src/tin.pug" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tags/_dist/css/main.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/tags/_dist/css/main.min.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tags/_dist/css/main.min.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/tags/_dist/css/main.min.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tags/_dist/js/main.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/tags/_dist/js/main.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tags/_dist/js/main.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/tags/_dist/js/main.min.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tags/bower.json" beforeDir="false" afterPath="$PROJECT_DIR$/tags/bower.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tags/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/tags/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tags/src/css/globals/form.scss" beforeDir="false" afterPath="$PROJECT_DIR$/tags/src/css/globals/form.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tags/_dist/lienhe.html" beforeDir="false" afterPath="$PROJECT_DIR$/tags/_dist/lienhe.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tags/src/_components/_layout/_layout.pug" beforeDir="false" afterPath="$PROJECT_DIR$/tags/src/_components/_layout/_layout.pug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tags/src/_components/contact/c-1.pug" beforeDir="false" afterPath="$PROJECT_DIR$/tags/src/_components/contact/c-1.pug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tags/src/css/globals/_main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/tags/src/css/globals/_main.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tags/src/css/globals/utilities.scss" beforeDir="false" afterPath="$PROJECT_DIR$/tags/src/css/globals/utilities.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tags/src/css/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/tags/src/css/main.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tags/src/css/pages/contact.scss" beforeDir="false" afterPath="$PROJECT_DIR$/tags/src/css/pages/contact.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tags/src/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/tags/src/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tags/src/js/map.js" beforeDir="false" afterPath="$PROJECT_DIR$/tags/src/js/map.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tags/vendors/map.js" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,11 +48,12 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/tags/src/_components" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/tags/src" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Projects\Skechers\tags\src" />
       <recent name="D:\Projects\Skechers\tags\src\_components" />
     </key>
   </component>
@@ -69,7 +83,8 @@
       <workItem from="1571998237820" duration="1365000" />
       <workItem from="1571999713280" duration="2541000" />
       <workItem from="1572087330196" duration="1444000" />
-      <workItem from="1572104933688" duration="32638000" />
+      <workItem from="1572104933688" duration="32956000" />
+      <workItem from="1572188677580" duration="11314000" />
     </task>
     <servers />
   </component>

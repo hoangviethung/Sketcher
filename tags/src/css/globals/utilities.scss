@@ -202,3 +202,20 @@ main {
 		padding-bottom: 40px;
 	}
 }
+
+.mobile-title {
+	height: 50px;
+	display: flex;
+	align-items: center;
+	padding: 7px 10px;
+	text-transform: uppercase;
+
+	h2 {
+		color: map_get($mau, main);
+		font-size: 16px;
+	}
+
+	@media (max-width: 1024px) {
+		display: none!important;
+	}
+}

@@ -98,6 +98,16 @@ const setColorFilter = () => {
 	})
 };
 
+const setLinkSocialShare = () => {
+	const listSocialIcon = Array.from(document.querySelectorAll('.social-share .social-list a'));
+	listSocialIcon.forEach(item => {
+		const urlEncoded = encodeURIComponent(window.location.href);
+		const socialLink = item.getAttribute('href');
+		const finalUrl = socialLink + urlEncoded;
+		item.setAttribute('href', finalUrl);
+	})
+};
+
 const productDetailSlider = () => {
 	const smallimageSlider = new Swiper('.product-detail-slider .small-image .swiper-container', {
 		init: false,
@@ -374,6 +384,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	sliderProductDetailRelative();
 	toggleFilter();
 	sliderProductCollections();
+	setLinkSocialShare();
 });
 
 window.addEventListener('scroll', () => {
