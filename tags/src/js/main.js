@@ -1,4 +1,5 @@
-import mapApi from './map';
+import GGMapInit from './map';
+import Mapping from '../../vendors/mapping';
 
 const checkScroll = () => {
 	if (window.scrollY > 0) {
@@ -14,7 +15,7 @@ const newProductSlider = () => {
 		loop: true,
 		navigation: {
 			prevEl: '.index-2 .swiper-nav .swiper-prev',
-			nextEl: '.index-2 .swiper-nav .swiper-next'
+			nextEl: '.index-2 .swiper-nav .swiper-next',
 		},
 		slidesPerColumn: 2,
 		slidesPerView: 3,
@@ -23,7 +24,7 @@ const newProductSlider = () => {
 				slidesPerView: 2.25,
 				spaceBetween: 20,
 				slidesPerColumn: 1,
-			}
+			},
 		},
 	})
 };
@@ -41,7 +42,7 @@ const categoryBannerSlider = () => {
 		navigation: {
 			prevEl: '.index-1 .category-banner .swiper-container .swiper-prev',
 			nextEl: '.index-1 .category-banner .swiper-container .swiper-next',
-		}
+		},
 	})
 };
 
@@ -63,8 +64,8 @@ const homeVideoSlider = () => {
 			},
 			1200: {
 				spaceBetween: -100,
-			}
-		}
+			},
+		},
 	})
 };
 
@@ -82,7 +83,7 @@ const toggleGoTopButton = () => {
 };
 
 const goTop = () => {
-	let goTopButton = document.getElementById('go-top')
+	let goTopButton = document.getElementById('go-top');
 	goTopButton.addEventListener('click', () => {
 		window.scrollTo({
 			top: 0,
@@ -126,8 +127,8 @@ const productDetailSlider = () => {
 			},
 			1200: {
 				slidesPerView: 5,
-				direction: "horizontal",
-			}
+				direction: 'horizontal',
+			},
 		},
 		on: {
 			init: function () {
@@ -144,10 +145,10 @@ const productDetailSlider = () => {
 					})
 				}
 				smallimageSlider.update();
-			}
-		}
+			},
+		},
 	});
-
+	
 	const bigImagesSlider = new Swiper('.product-detail-slider .big-image .swiper-container', {
 		slidesPerView: 1,
 		watchSlidesVisibility: true,
@@ -163,8 +164,8 @@ const productDetailSlider = () => {
 			},
 			resize: function () {
 				bigImagesSlider.update();
-			}
-		}
+			},
+		},
 	})
 };
 
@@ -187,8 +188,8 @@ const sliderProductDetailRelative = () => {
 			},
 			768: {
 				slidesPerView: 2,
-			}
-		}
+			},
+		},
 	})
 };
 
@@ -231,8 +232,8 @@ const sliderProductCollections = () => {
 			},
 			768: {
 				slidesPerView: 1,
-			}
-		}
+			},
+		},
 	});
 	const slider2 = new Swiper('.product-collection-2 .swiper-container', {
 		slidesPerView: 4,
@@ -265,8 +266,8 @@ const sliderProductCollections = () => {
 				slidesPerView: 2,
 				slidesPerGroup: 4,
 				slidesPerColumn: 2,
-			}
-		}
+			},
+		},
 	});
 	const slider3 = new Swiper('.product-collection-3 .swiper-container', {
 		slidesPerView: 4,
@@ -299,8 +300,8 @@ const sliderProductCollections = () => {
 				slidesPerView: 2,
 				slidesPerGroup: 4,
 				slidesPerColumn: 2,
-			}
-		}
+			},
+		},
 	});
 	const slider4 = new Swiper('.product-collection-4 .swiper-container', {
 		slidesPerView: 4,
@@ -329,8 +330,8 @@ const sliderProductCollections = () => {
 			},
 			768: {
 				slidesPerView: 1,
-			}
-		}
+			},
+		},
 	});
 	const slider5 = new Swiper('.product-collection-5 .swiper-container', {
 		slidesPerView: 4,
@@ -363,22 +364,62 @@ const sliderProductCollections = () => {
 				slidesPerView: 2,
 				slidesPerGroup: 4,
 				slidesPerColumn: 2,
-			}
-		}
+			},
+		},
 	});
 };
 
+const moveHeaderElement = () => {
+	return new Mapping('header .header-language', {
+		mobileNode: 'header .header-nav',
+		mobileMethod: 'appendTo',
+		desktopNode: 'header .row.no-gutters',
+		desktopMethod: 'appendTo',
+	}).watch();
+};
+
+const header = () => {
+	const btnSearchToggle = document.querySelector('.icon-search');
+	const btnToggleHeaderNav = document.querySelector('header .header-nav-toggle');
+	const headerNav = document.querySelector('header .header-nav');
+	const btnCloseHeaderNav = document.createElement('div');
+	btnCloseHeaderNav.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="21.931" height="14.061" viewBox="0 0 21.931 14.061"><g transform="translate(79.931 -21) rotate(90)"><rect width="23.924" height="2.424" rx="1.212" transform="translate(21 78.718) rotate(-60)" fill="#fff"/><rect width="23.924" height="2.424" rx="1.212" transform="translate(23.1 58) rotate(60)" fill="#fff" opacity="0.72"/></g></svg>`;
+	btnCloseHeaderNav.classList.add('nav-item');
+	btnCloseHeaderNav.classList.add('header-nav-close');
+	btnCloseHeaderNav.addEventListener('click', () => {
+		headerNav.classList.remove('open');
+	});
+	let bp = window.matchMedia('(min-width: 1025px)');
+	let addBtn = (bp) => {
+		if (!bp.matches) {
+			document.querySelector('header .header-nav').prepend(btnCloseHeaderNav);
+		} else {
+			document.querySelector('.header-nav .header-nav-close').parentNode.removeChild(document.querySelector('.header-nav .header-nav-close'));
+		}
+	};
+	addBtn(bp);
+	bp.addListener(addBtn);
+	btnToggleHeaderNav.addEventListener('click', () => {
+		headerNav.classList.add('open');
+	});
+	btnSearchToggle.addEventListener('click', () => {
+		btnSearchToggle.parentNode.querySelector('form').classList.toggle('open');
+	})
+};
+
 // ==> Call functions here
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
 	objectFitImages('.obj-fit-cover');
-	mapApi();
+	GGMapInit();
+	moveHeaderElement();
+	goTop();
 	checkScroll();
+	header();
+	
+	homeVideoSlider();
 	toggleGoTopButton();
-	// homeBanner();
 	newProductSlider();
 	categoryBannerSlider();
-	homeVideoSlider();
-	goTop();
 	setColorFilter();
 	productDetailSlider();
 	sliderProductDetailRelative();

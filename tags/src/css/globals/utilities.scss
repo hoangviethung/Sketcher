@@ -15,7 +15,7 @@
 .blur-up {
 	filter: blur(10px);
 	transition: filter 1s;
-
+	
 	&.lazy-loaded {
 		filter: blur(0);
 	}
@@ -27,7 +27,7 @@ textarea {
 	padding: 7px 15px;
 	border: 1px solid darken(white, 12%);
 	transition: all .3s ease-out;
-
+	
 	&:focus {
 		border: 1px solid map-get($mau, main);
 	}
@@ -52,35 +52,35 @@ body.home-page {
 		main {
 			display: flex;
 			flex-wrap: wrap;
-
+			
 			.home-banner {
 				order: 1;
 				max-width: 100%;
 				flex: 0 0 100%;
 			}
-
+			
 			.index-1 {
 				order: 2;
 				max-width: 100%;
 				flex: 0 0 100%;
-
+				
 				&.index-sub-banner {
 					order: 4;
 				}
 			}
-
+			
 			.index-2 {
 				order: 3;
 				max-width: 100%;
 				flex: 0 0 100%;
 			}
-
+			
 			.index-3 {
 				order: 5;
 				max-width: 100%;
 				flex: 0 0 100%;
 			}
-
+			
 			.index-4 {
 				order: 6;
 				max-width: 100%;
@@ -95,7 +95,7 @@ body.scrolled {
 		header {
 			height: 60px;
 		}
-
+		
 		main {
 			padding-top: 60px;
 		}
@@ -104,19 +104,19 @@ body.scrolled {
 
 .mobile {
 	@media (min-width: 1025px) {
-		display: none!important;
+		display: none !important;
 	}
 }
 
 .desktop {
 	@media (max-width: 1024.98px) {
-		display: none!important;
+		display: none !important;
 	}
 }
 
 main {
 	padding-top: 110px;
-
+	
 	@media (max-width: 1024.98px) {
 		padding-top: 50px;
 	}
@@ -127,19 +127,19 @@ main {
 	font-weight: 700;
 	font-size: 50px;
 	margin-bottom: 30px;
-
+	
 	&.center {
 		text-align: center;
 	}
-
+	
 	&.blue {
 		color: map_get($mau, main);
 	}
-
+	
 	@media (max-width: 1440px) {
 		font-size: 40px;
 	}
-
+	
 	@media (max-width: 1199px) {
 		font-size: 32px;
 		margin-bottom: 20px;
@@ -147,7 +147,7 @@ main {
 	@media (max-width: 1024px) {
 		font-size: 24px;
 	}
-
+	
 	@media (max-width: 767px) {
 		font-size: 16px;
 		margin-bottom: 10px;
@@ -171,15 +171,15 @@ main {
 	display: none;
 	opacity: 0;
 	transition: all .3s ease-out;
-
+	
 	&.show {
 		opacity: 1;
 	}
-
+	
 	svg {
 		width: 100%;
 	}
-
+	
 	@media (max-width: 1024.98px) {
 		width: 50px;
 		height: 50px;
@@ -209,12 +209,12 @@ main {
 	align-items: center;
 	padding: 7px 10px;
 	text-transform: uppercase;
-
+	
 	h2 {
 		color: map_get($mau, main);
 		font-size: 16px;
 	}
-
+	
 	@media (min-width: 1024px) {
 		display: none !important;
 	}

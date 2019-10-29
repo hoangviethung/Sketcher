@@ -1,1 +1,74 @@
-﻿"use strict";!function(t,e){"function"==typeof define&&define.amd?define([],function(){return e(t)}):"object"==typeof exports?module.exports=e(t):t.Mapping=e(t)}("undefined"!=typeof global?global:"undefined"!=typeof window?window:this,function(t){var e={};return e.mapElements={html:"",department:"",destination:"",from:function(t){try{return this.department=document.querySelector(t),this.html=function(t){if(document.body.contains(t))return t.parentElement.removeChild(t);throw"Element is not found"}(this.department),this}catch(t){}},to:function(t){try{return this.destination=document.querySelector(t),this}catch(t){}},use:function(t){try{switch(t){case"appendTo":this.destination.append(this.html);break;case"prependTo":this.destination.prepend(this.html);break;case"insertBefore":this.destination.parentElement.insertBefore(this.html,this.destination);break;case"insertAfter":e=this.html,(n=this.destination).parentNode.insertBefore(e,n.nextSibling)}}catch(t){}var e,n}},e});
+class Mapping {
+	mobileNode;
+	desktopNode;
+	mobileMethod;
+	desktopMethod;
+	bpListener;
+	selectorNode;
+	
+	constructor(selector, option) {
+		this.selector = selector;
+		this.mobileMethod = option.mobileMethod;
+		this.mobileNode = option.mobileNode;
+		this.desktopMethod = option.desktopMethod;
+		this.desktopNode = option.desktopNode;
+		this.breakpoint = option.breakpoint ? option.breakpoint : 1025;
+		this.selectorNode = document.querySelector(this.selector);
+	};
+	
+	method(destinationSelector) {
+		const destinationNode = document.querySelector(destinationSelector);
+		const _this = this;
+		return {
+			insertBefore() {
+				destinationNode.parentNode.insertBefore(_this.selectorNode, destinationNode.previousSibling);
+			},
+			insertAfter() {
+				destinationNode.parentNode.insertBefore(_this.selectorNode, destinationNode.nextSibling);
+			},
+			appendTo() {
+				destinationNode.appendChild(_this.selectorNode);
+			},
+			prependTo() {
+				destinationNode.prepend(_this.selectorNode);
+			},
+		};
+	};
+	
+	run(method, destinationSelector) {
+		if (method === 'insertBefore') {
+			return this.method(destinationSelector).insertBefore();
+		}
+		if (method === 'insertAfter') {
+			return this.method(destinationSelector).insertAfter();
+		}
+		if (method === 'appendTo') {
+			return this.method(destinationSelector).appendTo();
+		}
+		if (method === 'prependTo') {
+			return this.method(destinationSelector).prependTo();
+		}
+	};
+	
+	watch() {
+		this.bpListener = window.matchMedia(`(min-width: ${this.breakpoint}px)`);
+		const checkWindowSize = (bp) => {
+			if (bp.matches) {
+				this.run(this.desktopMethod, this.desktopNode);
+			} else {
+				this.run(this.mobileMethod, this.mobileNode);
+			}
+		};
+		if (!this.selectorNode) {
+			return (() => {
+				console.log('Selector not found');
+			})();
+		}
+		return (() => {
+			checkWindowSize(this.bpListener);
+			this.bpListener.addListener(checkWindowSize);
+		})();
+	};
+}
+
+export default Mapping;

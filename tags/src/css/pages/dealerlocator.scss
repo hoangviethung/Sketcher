@@ -64,19 +64,24 @@
 	}
 
 	@media (max-width: 1024px) {
-		padding: 40px 0;
+		padding: 0;
 
 		.dealer-locator-finder {
 			width: 100%;
-			margin-bottom: 20px;
-
-			.dealer-locator-list {
-				border: 1px solid darken(white, 20%);
-			}
+			margin-bottom: 10px;
+		}
+		
+		.dealer-locator-list {
+			border: 1px solid darken(white, 20%);
+			margin-bottom: 10px;
 		}
 
 		#map {
 			height: 600px;
+		}
+		
+		.col-map{
+			padding: 0;
 		}
 	}
 }
