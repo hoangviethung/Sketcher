@@ -104,13 +104,13 @@ body.scrolled {
 
 .mobile {
 	@media (min-width: 1025px) {
-		display: none;
+		display: none!important;
 	}
 }
 
 .desktop {
 	@media (max-width: 1024.98px) {
-		display: none;
+		display: none!important;
 	}
 }
 
@@ -215,7 +215,7 @@ main {
 		font-size: 16px;
 	}
 
-	@media (max-width: 1024px) {
-		display: none!important;
+	@media (min-width: 1024px) {
+		display: none !important;
 	}
 }

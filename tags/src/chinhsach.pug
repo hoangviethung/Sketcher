@@ -1,0 +1,11 @@
+extends _components/_layout/_layout.pug
+
+block var
+	- let title = 'Chính sách bảo mật'
+	- let bodyClass = 'policy-page'
+
+block banner,breadcrumb
+	include _components/_layout/_breadcrumb
+
+block main
+	include _components/policy/p-1
