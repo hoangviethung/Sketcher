@@ -1,5 +1,6 @@
 import GGMapInit from './map';
-import Mapping from '../../vendors/mapping';
+import Mapping from './mapping';
+import Loading from './loading';
 
 const checkScroll = () => {
 	if (window.scrollY > 0) {
@@ -374,7 +375,7 @@ const moveHeaderElement = () => {
 		mobileMethod: 'appendTo',
 		desktopNode: 'header .row.no-gutters',
 		desktopMethod: 'appendTo',
-	}).watch();
+	});
 };
 
 const header = () => {
@@ -423,7 +424,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	goTop();
 	checkScroll();
 	header();
-	
 	homeVideoSlider();
 	toggleGoTopButton();
 	newProductSlider();

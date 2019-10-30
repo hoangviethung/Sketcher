@@ -1,3 +1,5 @@
+import Polyfill from '../../vendors/polyfill';
+
 class Mapping {
 	mobileNode;
 	desktopNode;
@@ -14,6 +16,7 @@ class Mapping {
 		this.desktopNode = option.desktopNode;
 		this.breakpoint = option.breakpoint ? option.breakpoint : 1025;
 		this.selectorNode = document.querySelector(this.selector);
+		this.watch();
 	};
 	
 	method(destinationSelector) {
