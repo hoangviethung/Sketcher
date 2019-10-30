@@ -390,6 +390,7 @@ const header = () => {
 		headerNav.classList.remove('open');
 	});
 	let bp = window.matchMedia('(min-width: 1025px)');
+	document.querySelector('header .header-nav').prepend(btnCloseHeaderNav);
 	let addBtn = (bp) => {
 		if (!bp.matches) {
 			document.querySelector('header .header-nav').prepend(btnCloseHeaderNav);
@@ -401,15 +402,23 @@ const header = () => {
 	bp.addListener(addBtn);
 	btnToggleHeaderNav.addEventListener('click', () => {
 		headerNav.classList.add('open');
+		btnSearchToggle.parentNode.querySelector('form').classList.remove('open');
 	});
 	btnSearchToggle.addEventListener('click', () => {
+		headerNav.classList.remove('open');
 		btnSearchToggle.parentNode.querySelector('form').classList.toggle('open');
 	})
+};
+
+const addClassBody = () => {
+	const check = document.getElementById('js-page-verify');
+	document.querySelector('body').classList.add(check.getAttribute('class'));
 };
 
 // ==> Call functions here
 document.addEventListener('DOMContentLoaded', () => {
 	objectFitImages('.obj-fit-cover');
+	addClassBody();
 	GGMapInit();
 	moveHeaderElement();
 	goTop();

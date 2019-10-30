@@ -1,6 +1,6 @@
 .news-detail-wrapper
 	.container
-		.img
+		.content
 			img(src='./assets/news/n_1.jpg')
 			time January 14, 2019
 			h1 Skechers Honors Manhattan Beach with Two Downtown Mosaics from Acclaimed Artist
@@ -50,3 +50,9 @@
 					</g>
 					</g>
 					</svg>
+
+		.row.news-related
+			.col-lg-6
+				+newsItem(5)
+			.col-lg-6
+				+newsItem(3)
