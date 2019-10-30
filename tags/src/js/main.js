@@ -198,7 +198,6 @@ const toggleFilter = () => {
 	const filter = document.querySelector('.product-page-wrapper .filter-wrapper');
 	if (toggleBtn) {
 		toggleBtn.addEventListener('click', () => {
-			console.log(1);
 			filter.classList.toggle('active');
 		})
 	}
