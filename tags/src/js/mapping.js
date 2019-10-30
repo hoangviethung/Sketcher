@@ -1,5 +1,3 @@
-import Polyfill from '../../vendors/polyfill';
-
 class Mapping {
 	mobileNode;
 	desktopNode;

@@ -1,6 +1,6 @@
-import GGMapInit from './map';
-import Mapping from './mapping';
 import Loading from './loading';
+import Mapping from './mapping';
+import GGMapInit from './map';
 
 const checkScroll = () => {
 	if (window.scrollY > 0) {

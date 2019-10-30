@@ -1,6 +1,7 @@
 include ../product/item
 include ../product/collection-item
 include ../news/item
+
 block var
 
 doctype html
@@ -15,6 +16,7 @@ html(lang="en")
 		link(rel="stylesheet", href="./css/core.min.css")
 		link(rel="stylesheet", href="./css/main.min.css")
 	body
+		#fb-root
 		#loading
 			.logo-loader
 				img(src="./assets/loading.gif", alt="")
@@ -22,7 +24,6 @@ html(lang="en")
 				span#progstat 0
 				| %
 			#progress
-		#fb-root
 		//- main content
 		block header
 			include _header.pug
