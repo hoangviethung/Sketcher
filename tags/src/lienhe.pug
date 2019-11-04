@@ -8,11 +8,15 @@ block banner,breadcrumb
 	include _components/_layout/_breadcrumb
 
 block main
+	.nav.container.map-select
+		select#map_select
+			option(value="locationsInput") Nội địa
+			option(value="locationsInput_2") Nước ngoài
 	include _components/contact/c-1
 
 block scripts
 	script.
-		var locationsInput = [
+		var locationsInput= [
 			{
 				name: 'Skechers Nguyễn Trãi',
 				lat: 10.771652,
