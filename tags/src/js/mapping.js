@@ -5,7 +5,7 @@ class Mapping {
 	desktopMethod;
 	bpListener;
 	selectorNode;
-	
+
 	constructor(selector, option) {
 		this.selector = selector;
 		this.mobileMethod = option.mobileMethod;
@@ -16,7 +16,7 @@ class Mapping {
 		this.selectorNode = document.querySelector(this.selector);
 		this.watch();
 	};
-	
+
 	method(destinationSelector) {
 		const destinationNode = document.querySelector(destinationSelector);
 		const _this = this;
@@ -35,7 +35,7 @@ class Mapping {
 			},
 		};
 	};
-	
+
 	run(method, destinationSelector) {
 		if (method === 'insertBefore') {
 			return this.method(destinationSelector).insertBefore();
@@ -50,7 +50,7 @@ class Mapping {
 			return this.method(destinationSelector).prependTo();
 		}
 	};
-	
+
 	watch() {
 		this.bpListener = window.matchMedia(`(min-width: ${this.breakpoint}px)`);
 		const checkWindowSize = (bp) => {
