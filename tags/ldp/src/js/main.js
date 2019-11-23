@@ -21,12 +21,7 @@ const ajaxPaginationProduct = () => {
 			url: url,
 			type: 'GET',
 			success: function(res) {
-				if (res.Code === 200) {
-					$('.block-product').html($(res).find('.block-product'));
-					window.history.pushState({}, res.Title, url);
-				} else {
-					alert(res.Message)
-				}
+				$('.block-product').html($(res).find('.block-product').html());
 			}
 		})
 	})
@@ -44,17 +39,13 @@ const ajaxSelectProvince = () => {
 			},
 			type: 'POST',
 			success: function(res) {
-				if (res.Code === 200) {
-					$('.block-branch').html($(res).find('.block-branch'));
-					const currentUrl = new URL(window.location.href);
-					const search = window.location.search;
-					const params = new URLSearchParams(search)
-					params.set('provinceid', provinceId);
-					currentUrl.search = params.toString();
-					window.history.pushState(null, '', currentUrl.toString());
-				} else {
-					alert(res.Message)
-				}
+				$('.block-branch').html($(res).find('.block-branch').html());
+				const currentUrl = new URL(window.location.href);
+				const search = window.location.search;
+				const params = new URLSearchParams(search)
+				params.set('provinceid', provinceId);
+				currentUrl.search = params.toString();
+				window.history.pushState(null, '', currentUrl.toString());
 			}
 		})
 	})
