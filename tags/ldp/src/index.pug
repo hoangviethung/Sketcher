@@ -6,4 +6,33 @@ block var
 
 block banner,breadcrumb
 block main
+	section.block-product
+		.container
+			h2.main-title Sản phẩm khuyến mãi
+			.row
+				-for(let i = 1; i < 25; i++)
+					+productItem(i)
+			.row
+				.col-12
+					+pagination
+	section.block-branch
+		.container
+			.row
+				.col-12
+					select#province-select(name="province" data-url="/test")
+						option Chọn tỉnh thành
+						option(value='1') Hồ Chí Minh
+						option(value='2') Hà Nội
+						option(value='3') Đà Nẵng
+				.col-12
+					.branch-item
+						h3 branch 1
+					.branch-item
+						h3 branch 2
+					.branch-item
+						h3 branch 3
+					.branch-item
+						h3 branch 4
+					.branch-item
+						h3 branch 5
 block scripts

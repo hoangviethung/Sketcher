@@ -1,0 +1,19 @@
+mixin pagination
+	.pagination
+		ul.pagination-list
+			li.pagination-prev
+				a(href="#")
+					<svg xmlns="http://www.w3.org/2000/svg" width="8.371" height="14.521" viewBox="0 0 8.371 14.521"><path d="M4.641,0,0,5.141l4.752,5.141" transform="translate(1.5 2.119)" fill="none" stroke="#1c1c1c" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/></svg>
+			li.pagination-item
+				a(href="http://localhost:8000/product?page=1") 1
+			li.pagination-item
+				a(href="http://localhost:8000/product?page=2") 2
+			li.pagination-item.active
+				a(href="http://localhost:8000/product?page=3") 3
+			li.pagination-dots
+				a(href="#") ...
+			li.pagination-item
+				a(href="http://localhost:8000/product?page=126") 126
+			li.pagination-next
+				a(href="#")
+					<svg xmlns="http://www.w3.org/2000/svg" width="8.371" height="14.521" viewBox="0 0 8.371 14.521"><path d="M4.641,0,0,5.141l4.752,5.141" transform="translate(1.5 2.119)" fill="none" stroke="#1c1c1c" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/></svg>
