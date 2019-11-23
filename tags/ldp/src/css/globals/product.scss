@@ -20,7 +20,36 @@
 		}
 
 		p {
-			color: #707070;
+			display: flex;
+			justify-content: space-around;
+
+			del {
+				color: #707070;
+				margin: 0 8px;
+			}
+
+			span {
+				color: #D80202;
+				margin: 0 8px;
+			}
+
+			@media (max-width: 768px) {
+				flex-wrap: wrap;
+
+				del {
+					order: 2,
+				}
+
+				span {
+					order: 1,
+				}
+
+				del,
+				span {
+					flex: 0 0 100%;
+					max-width: 100%;
+				}
+			}
 		}
 	}
 
@@ -34,6 +63,7 @@
 		.img {
 			padding: 0 10px;
 		}
+
 		.info {
 			padding: 0 10px;
 			font-size: 14px;

@@ -1,0 +1,14 @@
+header {
+	.row {
+		height: 110px;
+		align-content: center;
+
+		@media (max-width: 1199.98px) {
+			height: 85px;
+		}
+
+		@media (max-width: 768px) {
+			height: 60px;
+		}
+	}
+}

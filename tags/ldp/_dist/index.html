@@ -5,6 +5,7 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700&amp;display=swap&amp;subset=vietnamese">
 		<link rel="stylesheet" href="./css/core.min.css">
 		<link rel="stylesheet" href="./css/main.min.css">
 	</head>
@@ -15,155 +16,279 @@
 			<div class="progstat-wrapper">Loading:<span id="progstat">0</span>%</div>
 			<div id="progress"></div>
 		</div>
+		<header>
+			<div class="container">
+				<div class="row row-center">
+					<div class="logo"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="271" height="24" viewBox="0 0 271 24"><defs><pattern id="a" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 520 46"><image width="520" height="46" xlink:href="data:image/png;base64,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"/></pattern></defs><rect width="271" height="24" fill="url(#a)"/></svg></a></div>
+				</div>
+			</div>
+		</header>
 		<main>
+			<div class="ldp-banner">
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide"><a class="slide-inner" href="#" style="background-image: url(./assets/banner.jpg)"><img src="./assets/banner.jpg" alt=""></a></div>
+						<div class="swiper-slide"><a class="slide-inner" href="#" style="background-image: url(./assets/banner.jpg)"><img src="./assets/banner.jpg" alt=""></a></div>
+						<div class="swiper-slide"><a class="slide-inner" href="#" style="background-image: url(./assets/banner.jpg)"><img src="./assets/banner.jpg" alt=""></a></div>
+					</div>
+				</div>
+			</div>
+			<section class="block-hot-product">
+				<div class="container">
+					<h2 class="main-title text-center">Sản phẩm bán chạy</h2>
+					<div class="row">
+						<div class="col-6 col-md-3 block-hot-product-item"><a href="#"><img src="./assets/hot_product_1.jpg" alt=""></a></div>
+						<div class="col-6 col-md-3 block-hot-product-item"><a href="#"><img src="./assets/hot_product_2.jpg" alt=""></a></div>
+						<div class="col-6 col-md-3 block-hot-product-item"><a href="#"><img src="./assets/hot_product_3.jpg" alt=""></a></div>
+						<div class="col-6 col-md-3 block-hot-product-item"><a href="#"><img src="./assets/hot_product_4.jpg" alt=""></a></div>
+					</div>
+					<div class="banner"><a href="#"><img src="./assets/banner_2.jpg" alt=""></a></div>
+				</div>
+			</section>
 			<section class="block-product">
 				<div class="container">
-					<h2 class="main-title">Sản phẩm khuyến mãi</h2>
+					<h2 class="main-title text-center">Sản phẩm khuyến mãi</h2>
 					<div class="row">
-						<div class="product-item"><a href="sanpham-ct.html">
-								<div class="img"><img src="./assets/product/p_1.png" alt=""/></div>
-								<div class="info">
-									<h3>Energy - Pure Serenity</h3>
-									<p>2.900.000 vnđ</p>
-								</div></a></div>
-						<div class="product-item"><a href="sanpham-ct.html">
-								<div class="img"><img src="./assets/product/p_2.png" alt=""/></div>
-								<div class="info">
-									<h3>Energy - Pure Serenity</h3>
-									<p>2.900.000 vnđ</p>
-								</div></a></div>
-						<div class="product-item"><a href="sanpham-ct.html">
-								<div class="img"><img src="./assets/product/p_3.png" alt=""/></div>
-								<div class="info">
-									<h3>Energy - Pure Serenity</h3>
-									<p>2.900.000 vnđ</p>
-								</div></a></div>
-						<div class="product-item"><a href="sanpham-ct.html">
-								<div class="img"><img src="./assets/product/p_4.png" alt=""/></div>
-								<div class="info">
-									<h3>Energy - Pure Serenity</h3>
-									<p>2.900.000 vnđ</p>
-								</div></a></div>
-						<div class="product-item"><a href="sanpham-ct.html">
-								<div class="img"><img src="./assets/product/p_5.png" alt=""/></div>
-								<div class="info">
-									<h3>Energy - Pure Serenity</h3>
-									<p>2.900.000 vnđ</p>
-								</div></a></div>
-						<div class="product-item"><a href="sanpham-ct.html">
-								<div class="img"><img src="./assets/product/p_6.png" alt=""/></div>
-								<div class="info">
-									<h3>Energy - Pure Serenity</h3>
-									<p>2.900.000 vnđ</p>
-								</div></a></div>
-						<div class="product-item"><a href="sanpham-ct.html">
-								<div class="img"><img src="./assets/product/p_7.png" alt=""/></div>
-								<div class="info">
-									<h3>Energy - Pure Serenity</h3>
-									<p>2.900.000 vnđ</p>
-								</div></a></div>
-						<div class="product-item"><a href="sanpham-ct.html">
-								<div class="img"><img src="./assets/product/p_8.png" alt=""/></div>
-								<div class="info">
-									<h3>Energy - Pure Serenity</h3>
-									<p>2.900.000 vnđ</p>
-								</div></a></div>
-						<div class="product-item"><a href="sanpham-ct.html">
-								<div class="img"><img src="./assets/product/p_9.png" alt=""/></div>
-								<div class="info">
-									<h3>Energy - Pure Serenity</h3>
-									<p>2.900.000 vnđ</p>
-								</div></a></div>
-						<div class="product-item"><a href="sanpham-ct.html">
-								<div class="img"><img src="./assets/product/p_10.png" alt=""/></div>
-								<div class="info">
-									<h3>Energy - Pure Serenity</h3>
-									<p>2.900.000 vnđ</p>
-								</div></a></div>
-						<div class="product-item"><a href="sanpham-ct.html">
-								<div class="img"><img src="./assets/product/p_11.png" alt=""/></div>
-								<div class="info">
-									<h3>Energy - Pure Serenity</h3>
-									<p>2.900.000 vnđ</p>
-								</div></a></div>
-						<div class="product-item"><a href="sanpham-ct.html">
-								<div class="img"><img src="./assets/product/p_12.png" alt=""/></div>
-								<div class="info">
-									<h3>Energy - Pure Serenity</h3>
-									<p>2.900.000 vnđ</p>
-								</div></a></div>
-						<div class="product-item"><a href="sanpham-ct.html">
-								<div class="img"><img src="./assets/product/p_13.png" alt=""/></div>
-								<div class="info">
-									<h3>Energy - Pure Serenity</h3>
-									<p>2.900.000 vnđ</p>
-								</div></a></div>
-						<div class="product-item"><a href="sanpham-ct.html">
-								<div class="img"><img src="./assets/product/p_14.png" alt=""/></div>
-								<div class="info">
-									<h3>Energy - Pure Serenity</h3>
-									<p>2.900.000 vnđ</p>
-								</div></a></div>
-						<div class="product-item"><a href="sanpham-ct.html">
-								<div class="img"><img src="./assets/product/p_15.png" alt=""/></div>
-								<div class="info">
-									<h3>Energy - Pure Serenity</h3>
-									<p>2.900.000 vnđ</p>
-								</div></a></div>
-						<div class="product-item"><a href="sanpham-ct.html">
-								<div class="img"><img src="./assets/product/p_16.png" alt=""/></div>
-								<div class="info">
-									<h3>Energy - Pure Serenity</h3>
-									<p>2.900.000 vnđ</p>
-								</div></a></div>
-						<div class="product-item"><a href="sanpham-ct.html">
-								<div class="img"><img src="./assets/product/p_17.png" alt=""/></div>
-								<div class="info">
-									<h3>Energy - Pure Serenity</h3>
-									<p>2.900.000 vnđ</p>
-								</div></a></div>
-						<div class="product-item"><a href="sanpham-ct.html">
-								<div class="img"><img src="./assets/product/p_18.png" alt=""/></div>
-								<div class="info">
-									<h3>Energy - Pure Serenity</h3>
-									<p>2.900.000 vnđ</p>
-								</div></a></div>
-						<div class="product-item"><a href="sanpham-ct.html">
-								<div class="img"><img src="./assets/product/p_19.png" alt=""/></div>
-								<div class="info">
-									<h3>Energy - Pure Serenity</h3>
-									<p>2.900.000 vnđ</p>
-								</div></a></div>
-						<div class="product-item"><a href="sanpham-ct.html">
-								<div class="img"><img src="./assets/product/p_20.png" alt=""/></div>
-								<div class="info">
-									<h3>Energy - Pure Serenity</h3>
-									<p>2.900.000 vnđ</p>
-								</div></a></div>
-						<div class="product-item"><a href="sanpham-ct.html">
-								<div class="img"><img src="./assets/product/p_21.png" alt=""/></div>
-								<div class="info">
-									<h3>Energy - Pure Serenity</h3>
-									<p>2.900.000 vnđ</p>
-								</div></a></div>
-						<div class="product-item"><a href="sanpham-ct.html">
-								<div class="img"><img src="./assets/product/p_22.png" alt=""/></div>
-								<div class="info">
-									<h3>Energy - Pure Serenity</h3>
-									<p>2.900.000 vnđ</p>
-								</div></a></div>
-						<div class="product-item"><a href="sanpham-ct.html">
-								<div class="img"><img src="./assets/product/p_23.png" alt=""/></div>
-								<div class="info">
-									<h3>Energy - Pure Serenity</h3>
-									<p>2.900.000 vnđ</p>
-								</div></a></div>
-						<div class="product-item"><a href="sanpham-ct.html">
-								<div class="img"><img src="./assets/product/p_24.png" alt=""/></div>
-								<div class="info">
-									<h3>Energy - Pure Serenity</h3>
-									<p>2.900.000 vnđ</p>
-								</div></a></div>
+						<div class="col-6 col-md-4 col-lg-3">
+							<div class="product-item"><a href="sanpham-ct.html">
+									<div class="img"><img src="./assets/product/p_1.jpg" alt=""></div>
+									<div class="info">
+										<h3>Energy - Pure Serenity</h3>
+										<p> 
+											<del>3.200.00 vnđ</del><span>2.900.000 vnđ</span>
+										</p>
+									</div></a></div>
+						</div>
+						<div class="col-6 col-md-4 col-lg-3">
+							<div class="product-item"><a href="sanpham-ct.html">
+									<div class="img"><img src="./assets/product/p_2.jpg" alt=""></div>
+									<div class="info">
+										<h3>Energy - Pure Serenity</h3>
+										<p> 
+											<del>3.200.00 vnđ</del><span>2.900.000 vnđ</span>
+										</p>
+									</div></a></div>
+						</div>
+						<div class="col-6 col-md-4 col-lg-3">
+							<div class="product-item"><a href="sanpham-ct.html">
+									<div class="img"><img src="./assets/product/p_3.jpg" alt=""></div>
+									<div class="info">
+										<h3>Energy - Pure Serenity</h3>
+										<p> 
+											<del>3.200.00 vnđ</del><span>2.900.000 vnđ</span>
+										</p>
+									</div></a></div>
+						</div>
+						<div class="col-6 col-md-4 col-lg-3">
+							<div class="product-item"><a href="sanpham-ct.html">
+									<div class="img"><img src="./assets/product/p_4.jpg" alt=""></div>
+									<div class="info">
+										<h3>Energy - Pure Serenity</h3>
+										<p> 
+											<del>3.200.00 vnđ</del><span>2.900.000 vnđ</span>
+										</p>
+									</div></a></div>
+						</div>
+						<div class="col-6 col-md-4 col-lg-3">
+							<div class="product-item"><a href="sanpham-ct.html">
+									<div class="img"><img src="./assets/product/p_5.jpg" alt=""></div>
+									<div class="info">
+										<h3>Energy - Pure Serenity</h3>
+										<p> 
+											<del>3.200.00 vnđ</del><span>2.900.000 vnđ</span>
+										</p>
+									</div></a></div>
+						</div>
+						<div class="col-6 col-md-4 col-lg-3">
+							<div class="product-item"><a href="sanpham-ct.html">
+									<div class="img"><img src="./assets/product/p_6.jpg" alt=""></div>
+									<div class="info">
+										<h3>Energy - Pure Serenity</h3>
+										<p> 
+											<del>3.200.00 vnđ</del><span>2.900.000 vnđ</span>
+										</p>
+									</div></a></div>
+						</div>
+						<div class="col-6 col-md-4 col-lg-3">
+							<div class="product-item"><a href="sanpham-ct.html">
+									<div class="img"><img src="./assets/product/p_7.jpg" alt=""></div>
+									<div class="info">
+										<h3>Energy - Pure Serenity</h3>
+										<p> 
+											<del>3.200.00 vnđ</del><span>2.900.000 vnđ</span>
+										</p>
+									</div></a></div>
+						</div>
+						<div class="col-6 col-md-4 col-lg-3">
+							<div class="product-item"><a href="sanpham-ct.html">
+									<div class="img"><img src="./assets/product/p_8.jpg" alt=""></div>
+									<div class="info">
+										<h3>Energy - Pure Serenity</h3>
+										<p> 
+											<del>3.200.00 vnđ</del><span>2.900.000 vnđ</span>
+										</p>
+									</div></a></div>
+						</div>
+						<div class="col-6 col-md-4 col-lg-3">
+							<div class="product-item"><a href="sanpham-ct.html">
+									<div class="img"><img src="./assets/product/p_9.jpg" alt=""></div>
+									<div class="info">
+										<h3>Energy - Pure Serenity</h3>
+										<p> 
+											<del>3.200.00 vnđ</del><span>2.900.000 vnđ</span>
+										</p>
+									</div></a></div>
+						</div>
+						<div class="col-6 col-md-4 col-lg-3">
+							<div class="product-item"><a href="sanpham-ct.html">
+									<div class="img"><img src="./assets/product/p_10.jpg" alt=""></div>
+									<div class="info">
+										<h3>Energy - Pure Serenity</h3>
+										<p> 
+											<del>3.200.00 vnđ</del><span>2.900.000 vnđ</span>
+										</p>
+									</div></a></div>
+						</div>
+						<div class="col-6 col-md-4 col-lg-3">
+							<div class="product-item"><a href="sanpham-ct.html">
+									<div class="img"><img src="./assets/product/p_11.jpg" alt=""></div>
+									<div class="info">
+										<h3>Energy - Pure Serenity</h3>
+										<p> 
+											<del>3.200.00 vnđ</del><span>2.900.000 vnđ</span>
+										</p>
+									</div></a></div>
+						</div>
+						<div class="col-6 col-md-4 col-lg-3">
+							<div class="product-item"><a href="sanpham-ct.html">
+									<div class="img"><img src="./assets/product/p_12.jpg" alt=""></div>
+									<div class="info">
+										<h3>Energy - Pure Serenity</h3>
+										<p> 
+											<del>3.200.00 vnđ</del><span>2.900.000 vnđ</span>
+										</p>
+									</div></a></div>
+						</div>
+						<div class="col-6 col-md-4 col-lg-3">
+							<div class="product-item"><a href="sanpham-ct.html">
+									<div class="img"><img src="./assets/product/p_13.jpg" alt=""></div>
+									<div class="info">
+										<h3>Energy - Pure Serenity</h3>
+										<p> 
+											<del>3.200.00 vnđ</del><span>2.900.000 vnđ</span>
+										</p>
+									</div></a></div>
+						</div>
+						<div class="col-6 col-md-4 col-lg-3">
+							<div class="product-item"><a href="sanpham-ct.html">
+									<div class="img"><img src="./assets/product/p_14.jpg" alt=""></div>
+									<div class="info">
+										<h3>Energy - Pure Serenity</h3>
+										<p> 
+											<del>3.200.00 vnđ</del><span>2.900.000 vnđ</span>
+										</p>
+									</div></a></div>
+						</div>
+						<div class="col-6 col-md-4 col-lg-3">
+							<div class="product-item"><a href="sanpham-ct.html">
+									<div class="img"><img src="./assets/product/p_15.jpg" alt=""></div>
+									<div class="info">
+										<h3>Energy - Pure Serenity</h3>
+										<p> 
+											<del>3.200.00 vnđ</del><span>2.900.000 vnđ</span>
+										</p>
+									</div></a></div>
+						</div>
+						<div class="col-6 col-md-4 col-lg-3">
+							<div class="product-item"><a href="sanpham-ct.html">
+									<div class="img"><img src="./assets/product/p_16.jpg" alt=""></div>
+									<div class="info">
+										<h3>Energy - Pure Serenity</h3>
+										<p> 
+											<del>3.200.00 vnđ</del><span>2.900.000 vnđ</span>
+										</p>
+									</div></a></div>
+						</div>
+						<div class="col-6 col-md-4 col-lg-3">
+							<div class="product-item"><a href="sanpham-ct.html">
+									<div class="img"><img src="./assets/product/p_17.jpg" alt=""></div>
+									<div class="info">
+										<h3>Energy - Pure Serenity</h3>
+										<p> 
+											<del>3.200.00 vnđ</del><span>2.900.000 vnđ</span>
+										</p>
+									</div></a></div>
+						</div>
+						<div class="col-6 col-md-4 col-lg-3">
+							<div class="product-item"><a href="sanpham-ct.html">
+									<div class="img"><img src="./assets/product/p_18.jpg" alt=""></div>
+									<div class="info">
+										<h3>Energy - Pure Serenity</h3>
+										<p> 
+											<del>3.200.00 vnđ</del><span>2.900.000 vnđ</span>
+										</p>
+									</div></a></div>
+						</div>
+						<div class="col-6 col-md-4 col-lg-3">
+							<div class="product-item"><a href="sanpham-ct.html">
+									<div class="img"><img src="./assets/product/p_19.jpg" alt=""></div>
+									<div class="info">
+										<h3>Energy - Pure Serenity</h3>
+										<p> 
+											<del>3.200.00 vnđ</del><span>2.900.000 vnđ</span>
+										</p>
+									</div></a></div>
+						</div>
+						<div class="col-6 col-md-4 col-lg-3">
+							<div class="product-item"><a href="sanpham-ct.html">
+									<div class="img"><img src="./assets/product/p_20.jpg" alt=""></div>
+									<div class="info">
+										<h3>Energy - Pure Serenity</h3>
+										<p> 
+											<del>3.200.00 vnđ</del><span>2.900.000 vnđ</span>
+										</p>
+									</div></a></div>
+						</div>
+						<div class="col-6 col-md-4 col-lg-3">
+							<div class="product-item"><a href="sanpham-ct.html">
+									<div class="img"><img src="./assets/product/p_21.jpg" alt=""></div>
+									<div class="info">
+										<h3>Energy - Pure Serenity</h3>
+										<p> 
+											<del>3.200.00 vnđ</del><span>2.900.000 vnđ</span>
+										</p>
+									</div></a></div>
+						</div>
+						<div class="col-6 col-md-4 col-lg-3">
+							<div class="product-item"><a href="sanpham-ct.html">
+									<div class="img"><img src="./assets/product/p_22.jpg" alt=""></div>
+									<div class="info">
+										<h3>Energy - Pure Serenity</h3>
+										<p> 
+											<del>3.200.00 vnđ</del><span>2.900.000 vnđ</span>
+										</p>
+									</div></a></div>
+						</div>
+						<div class="col-6 col-md-4 col-lg-3">
+							<div class="product-item"><a href="sanpham-ct.html">
+									<div class="img"><img src="./assets/product/p_23.jpg" alt=""></div>
+									<div class="info">
+										<h3>Energy - Pure Serenity</h3>
+										<p> 
+											<del>3.200.00 vnđ</del><span>2.900.000 vnđ</span>
+										</p>
+									</div></a></div>
+						</div>
+						<div class="col-6 col-md-4 col-lg-3">
+							<div class="product-item"><a href="sanpham-ct.html">
+									<div class="img"><img src="./assets/product/p_24.jpg" alt=""></div>
+									<div class="info">
+										<h3>Energy - Pure Serenity</h3>
+										<p> 
+											<del>3.200.00 vnđ</del><span>2.900.000 vnđ</span>
+										</p>
+									</div></a></div>
+						</div>
 					</div>
 					<div class="row">
 						<div class="col-12">
@@ -182,10 +307,12 @@
 					</div>
 				</div>
 			</section>
+			<div class="ldp-banner-2"><a href="#"><img src="./assets/banner_2.jpg" alt=""></a></div>
 			<section class="block-branch">
 				<div class="container">
-					<div class="row">
-						<div class="col-12">
+					<div class="block-title">
+						<h2 class="main-title">Hệ thống đang sale</h2>
+						<div class="province-select"><span>Lọc tỉnh thành</span>
 							<select id="province-select" name="province" data-url="/test">
 								<option>Chọn tỉnh thành</option>
 								<option value="1">Hồ Chí Minh</option>
@@ -193,21 +320,111 @@
 								<option value="3">Đà Nẵng</option>
 							</select>
 						</div>
+					</div>
+					<div class="row no-gutters">
+						<div class="col-lg-6">
+							<div class="branch-item">
+								<div class="logo"><img src="./assets/logo.svg" alt=""></div>
+								<div class="name">
+									<h3>Skechers Aeon Binh Tân</h3>
+								</div>
+								<div class="direction"><a href="http://maps.google.com/?q=10.8443976,106.6618196" target="_blank">Chỉ đường</a></div>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="branch-item">
+								<div class="logo"><img src="./assets/logo.svg" alt=""></div>
+								<div class="name">
+									<h3>Skechers Aeon Binh Tân</h3>
+								</div>
+								<div class="direction"><a href="http://maps.google.com/?q=10.8443976,106.6618196" target="_blank">Chỉ đường</a></div>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="branch-item">
+								<div class="logo"><img src="./assets/logo.svg" alt=""></div>
+								<div class="name">
+									<h3>Skechers Aeon Binh Tân</h3>
+								</div>
+								<div class="direction"><a href="http://maps.google.com/?q=10.8443976,106.6618196" target="_blank">Chỉ đường</a></div>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="branch-item">
+								<div class="logo"><img src="./assets/logo.svg" alt=""></div>
+								<div class="name">
+									<h3>Skechers Aeon Binh Tân</h3>
+								</div>
+								<div class="direction"><a href="http://maps.google.com/?q=10.8443976,106.6618196" target="_blank">Chỉ đường</a></div>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="branch-item">
+								<div class="logo"><img src="./assets/logo.svg" alt=""></div>
+								<div class="name">
+									<h3>Skechers Aeon Binh Tân</h3>
+								</div>
+								<div class="direction"><a href="http://maps.google.com/?q=10.8443976,106.6618196" target="_blank">Chỉ đường</a></div>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="branch-item">
+								<div class="logo"><img src="./assets/logo.svg" alt=""></div>
+								<div class="name">
+									<h3>Skechers Aeon Binh Tân</h3>
+								</div>
+								<div class="direction"><a href="http://maps.google.com/?q=10.8443976,106.6618196" target="_blank">Chỉ đường</a></div>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="branch-item">
+								<div class="logo"><img src="./assets/logo.svg" alt=""></div>
+								<div class="name">
+									<h3>Skechers Aeon Binh Tân</h3>
+								</div>
+								<div class="direction"><a href="http://maps.google.com/?q=10.8443976,106.6618196" target="_blank">Chỉ đường</a></div>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="branch-item">
+								<div class="logo"><img src="./assets/logo.svg" alt=""></div>
+								<div class="name">
+									<h3>Skechers Aeon Binh Tân</h3>
+								</div>
+								<div class="direction"><a href="http://maps.google.com/?q=10.8443976,106.6618196" target="_blank">Chỉ đường</a></div>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="branch-item">
+								<div class="logo"><img src="./assets/logo.svg" alt=""></div>
+								<div class="name">
+									<h3>Skechers Aeon Binh Tân</h3>
+								</div>
+								<div class="direction"><a href="http://maps.google.com/?q=10.8443976,106.6618196" target="_blank">Chỉ đường</a></div>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="branch-item">
+								<div class="logo"><img src="./assets/logo.svg" alt=""></div>
+								<div class="name">
+									<h3>Skechers Aeon Binh Tân</h3>
+								</div>
+								<div class="direction"><a href="http://maps.google.com/?q=10.8443976,106.6618196" target="_blank">Chỉ đường</a></div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
 						<div class="col-12">
-							<div class="branch-item">
-								<h3>branch 1</h3>
-							</div>
-							<div class="branch-item">
-								<h3>branch 2</h3>
-							</div>
-							<div class="branch-item">
-								<h3>branch 3</h3>
-							</div>
-							<div class="branch-item">
-								<h3>branch 4</h3>
-							</div>
-							<div class="branch-item">
-								<h3>branch 5</h3>
+							<div class="pagination">
+								<ul class="pagination-list">
+									<li class="pagination-prev"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="8.371" height="14.521" viewBox="0 0 8.371 14.521"><path d="M4.641,0,0,5.141l4.752,5.141" transform="translate(1.5 2.119)" fill="none" stroke="#1c1c1c" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/></svg></a></li>
+									<li class="pagination-item"><a href="http://localhost:8000/product?page=1">1</a></li>
+									<li class="pagination-item"><a href="http://localhost:8000/product?page=2">2</a></li>
+									<li class="pagination-item active"><a href="http://localhost:8000/product?page=3">3</a></li>
+									<li class="pagination-dots"><a href="#">...</a></li>
+									<li class="pagination-item"><a href="http://localhost:8000/product?page=126">126</a></li>
+									<li class="pagination-next"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="8.371" height="14.521" viewBox="0 0 8.371 14.521"><path d="M4.641,0,0,5.141l4.752,5.141" transform="translate(1.5 2.119)" fill="none" stroke="#1c1c1c" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/></svg></a></li>
+								</ul>
 							</div>
 						</div>
 					</div>
@@ -215,6 +432,51 @@
 			</section>
 			<div class="index-page" id="js-page-verify" hidden></div>
 		</main>
+		<footer>
+			<div class="container">
+				<div class="row">
+					<div class="copyright">
+						<p>Copyright © 2019 SKECHERS VIETNAM, Inc.</p>
+						<p>Privacy Policy Cookies Policy Terms of Use</p>
+					</div>
+					<div class="social-link">
+						<p>Chia sẻ liên kết</p>
+						<nav><a href="#">
+								<svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38">
+									<g transform="translate(-1259 -5915)">
+										<g class="background" transform="translate(1259 5915)" fill="#fff" stroke="#bcbcbc" stroke-width="0.5">
+											<circle cx="19" cy="19" r="19" stroke="none"></circle>
+											<circle cx="19" cy="19" r="18.75" fill="none"></circle>
+										</g>
+										<g transform="translate(1270.69 5925.253)">
+											<path class="icon" d="M1497.666,87.079c-1.237-.1-1.757-.709-2.727-1.3-.533,2.8-1.185,5.479-3.115,6.88-.6-4.228.875-7.4,1.557-10.774-1.165-1.96.14-5.905,2.6-4.933,3.022,1.2-2.617,7.288,1.168,8.049,3.953.794,5.566-6.858,3.115-9.347-3.541-3.594-10.308-.082-9.476,5.062.2,1.258,1.5,1.639.519,3.375-2.266-.5-2.943-2.29-2.855-4.673.14-3.9,3.505-6.632,6.88-7.011,4.268-.478,8.274,1.568,8.827,5.582.622,4.532-1.927,9.439-6.491,9.087Zm0,0" transform="translate(-1488.442 -72.341)" fill="#3462ab"></path>
+										</g>
+									</g>
+								</svg></a><a href="#">
+								<svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38">
+									<g transform="translate(-1323 -5915)">
+										<g class="background" transform="translate(1323 5915)" fill="#fff" stroke="#bcbcbc" stroke-width="0.5">
+											<circle cx="19" cy="19" r="19" stroke="none"></circle>
+											<circle cx="19" cy="19" r="18.75" fill="none"></circle>
+										</g>
+										<path class="icon" d="M1097.119,76.557h-2.887v9.291h-4.28V76.557h-2.035V72.92h2.035V70.566a4.013,4.013,0,0,1,4.318-4.318l3.171.014v3.53h-2.3a.871.871,0,0,0-.908.991v2.141h3.261Zm.5.109" transform="translate(249.006 5859.006)" fill="#3462ab"></path>
+									</g>
+								</svg></a><a href="#">
+								<svg xmlns="http://www.w3.org/2000/svg" width="39" height="38" viewBox="0 0 39 38">
+									<g transform="translate(-1387 -5915)">
+										<g class="background" transform="translate(1387 5915)" fill="#fff" stroke="#bcbcbc" stroke-width="0.5">
+											<ellipse cx="19.5" cy="19" rx="19.5" ry="19" stroke="none"></ellipse>
+											<ellipse cx="19.5" cy="19" rx="19.25" ry="18.75" fill="none"></ellipse>
+										</g>
+										<g transform="translate(1397.122 5926.46)">
+											<path class="icon" d="M1238.582,68.956a7.856,7.856,0,0,1-2.261.62,3.95,3.95,0,0,0,1.731-2.177,7.885,7.885,0,0,1-2.5.955,3.94,3.94,0,0,0-6.709,3.591,11.176,11.176,0,0,1-8.114-4.114,3.94,3.94,0,0,0,1.218,5.256,3.92,3.92,0,0,1-1.783-.493c0,.017,0,.033,0,.05a3.939,3.939,0,0,0,3.158,3.86,3.943,3.943,0,0,1-1.778.068,3.941,3.941,0,0,0,3.678,2.734,7.946,7.946,0,0,1-5.828,1.63,11.2,11.2,0,0,0,17.236-9.432q0-.256-.012-.509a8,8,0,0,0,1.965-2.038Zm0,0" transform="translate(-1219.393 -67.11)" fill="#3462ab"></path>
+										</g>
+									</g>
+								</svg></a></nav>
+					</div>
+				</div>
+			</div>
+		</footer>
 		<script type="text/javascript" src="./js/core.min.js"></script>
 		<script type="text/javascript" src="./js/main.min.js"></script>
 	</body>

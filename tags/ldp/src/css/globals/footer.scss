@@ -1,0 +1,126 @@
+@keyframes iconSocial {
+	0% {
+		stroke-dashoffset: -120;
+		fill: white;
+	}
+
+	50% {
+		stroke-dashoffset: 0;
+		fill: white;
+	}
+
+	100% {
+		stroke-dashoffset: 0;
+		fill: map_get($mau, main);
+	}
+}
+
+footer {
+	background-image: url('../assets/background_footer.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+
+	.row {
+		align-items: center;
+		padding-top: 30px;
+		padding-bottom: 30px;
+
+		@media (min-width: 769px) {
+			min-height: 235px;
+		}
+	}
+
+	.copyright {
+		padding: 0 10px;
+
+		p {
+			font-size: 18px;
+			color: #707070;
+
+			@media (max-width: 1199.98px) {
+				font-size: 16px;
+			}
+
+			@media (max-width: 768px) {
+				font-size: 14px;
+			}
+		}
+
+		@media (max-width: 768px) {
+			flex: 0 0 100%;
+			max-width: 100%;
+			text-align: center;
+			margin-bottom: 20px;
+		}
+	}
+
+	.social-link {
+		margin-left: auto;
+		padding: 0 10px;
+
+		p {
+			font-size: 18px;
+			margin-bottom: 10px;
+			color: #707070;
+
+			@media (max-width: 1199.98px) {
+				font-size: 16px;
+			}
+
+			@media (max-width: 768px) {
+				font-size: 14px;
+			}
+		}
+
+		nav {
+			display: flex;
+
+			a {
+				+a {
+					margin-left: 25px;
+				}
+
+				svg {
+					.icon {
+						fill: map_get($mau, main);
+						;
+						stroke-dasharray: 120;
+						stroke-width: 1px;
+						stroke-dashoffset: 0;
+						stroke: map_get($mau, main);
+					}
+
+					.background {
+						stroke-dashoffset: -120;
+						stroke-dasharray: 120;
+						stroke: map_get($mau, main);
+						transition: all .5s linear;
+					}
+				}
+
+				&:hover {
+					svg {
+						.icon {
+							animation: iconSocial 1.2s linear;
+						}
+
+						.background {
+							stroke-dashoffset: 0;
+						}
+					}
+				}
+			}
+		}
+
+		@media (max-width: 768px) {
+			flex: 0 0 100%;
+			max-width: 100%;
+			text-align: center;
+
+			nav {
+				justify-content: center;
+			}
+		}
+	}
+}

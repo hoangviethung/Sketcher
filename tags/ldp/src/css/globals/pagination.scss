@@ -1,6 +1,6 @@
 .pagination {
 	padding-top: 40px;
-	
+
 	.pagination-list {
 		padding-left: 0;
 		list-style-type: none;
@@ -39,11 +39,12 @@
 			align-items: center;
 		}
 
-		&.active, &:hover {
+		&.active,
+		&:hover {
 			a {
 				background: #DCDCDC;
 				color: map_get($mau, main);
-				border: 1px solid map_get($mau, main);
+				border: 1px solid lighten(#707070, 10%);
 			}
 		}
 	}
@@ -60,7 +61,7 @@
 		}
 	}
 
-	@media (max-width: 767.98px) {
+	@media (max-width: 768px) {
 		.pagination-list {
 			justify-content: center;
 		}

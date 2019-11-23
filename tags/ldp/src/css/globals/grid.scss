@@ -1,33 +1,31 @@
 .container {
 	width: 100%;
-	padding-right: 15px;
-	padding-left: 15px;
+	padding-right: 10px;
+	padding-left: 10px;
 	margin-right: auto;
 	margin-left: auto;
-}
 
-@media (min-width: 1025px) {
-	.container {
+	@media (min-width: 1025px) {
 		max-width: 990px;
 	}
-}
 
-@media (min-width: 1201px) {
-	.container {
+	@media (min-width: 1201px) {
 		max-width: 1140px;
 	}
-}
 
-@media (min-width: 1441px) {
-	.container {
+	@media (min-width: 1441px) {
 		max-width: 1360px;
+	}
+
+	@media (min-width: 1601px) {
+		max-width: 1580px;
 	}
 }
 
 .container-fluid {
 	width: 100%;
-	padding-right: 15px;
-	padding-left: 15px;
+	padding-right: 10px;
+	padding-left: 10px;
 	margin-right: auto;
 	margin-left: auto;
 }
@@ -35,8 +33,8 @@
 .row {
 	display: flex;
 	flex-wrap: wrap;
-	margin-right: -15px;
-	margin-left: -15px;
+	margin-right: -10px;
+	margin-left: -10px;
 	display: -ms-flexbox;
 	-ms-flex-wrap: wrap;
 }
@@ -124,8 +122,8 @@
 .col-xl-auto {
 	position: relative;
 	width: 100%;
-	padding-right: 15px;
-	padding-left: 15px;
+	padding-right: 10px;
+	padding-left: 10px;
 }
 
 .col {

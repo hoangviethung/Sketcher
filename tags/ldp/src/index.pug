@@ -5,34 +5,153 @@ block var
 	- let bodyClass = 'index-page'
 
 block banner,breadcrumb
+	.ldp-banner
+		.swiper-container
+			.swiper-wrapper
+				.swiper-slide
+					a.slide-inner(href="#" style="background-image: url(./assets/banner.jpg)")
+						img(src="./assets/banner.jpg", alt="")
+				.swiper-slide
+					a.slide-inner(href="#" style="background-image: url(./assets/banner.jpg)")
+						img(src="./assets/banner.jpg", alt="")
+				.swiper-slide
+					a.slide-inner(href="#" style="background-image: url(./assets/banner.jpg)")
+						img(src="./assets/banner.jpg", alt="")
 block main
+	section.block-hot-product
+		.container
+			h2.main-title.text-center Sản phẩm bán chạy
+			.row
+				.col-6.col-md-3.block-hot-product-item
+					a(href="#")
+						img(src="./assets/hot_product_1.jpg", alt="")
+				.col-6.col-md-3.block-hot-product-item
+					a(href="#")
+						img(src="./assets/hot_product_2.jpg", alt="")
+				.col-6.col-md-3.block-hot-product-item
+					a(href="#")
+						img(src="./assets/hot_product_3.jpg", alt="")
+				.col-6.col-md-3.block-hot-product-item
+					a(href="#")
+						img(src="./assets/hot_product_4.jpg", alt="")
+			.banner
+				a(href="#")
+					img(src="./assets/banner_2.jpg", alt="")
 	section.block-product
 		.container
-			h2.main-title Sản phẩm khuyến mãi
+			h2.main-title.text-center Sản phẩm khuyến mãi
 			.row
 				-for(let i = 1; i < 25; i++)
-					+productItem(i)
+					.col-6.col-md-4.col-lg-3
+						.product-item
+							a(href='sanpham-ct.html')
+								.img
+									img(src="./assets/product/p_" + i + ".jpg", alt="")
+								.info
+									h3 Energy - Pure Serenity
+									p 
+										del 3.200.00 vnđ
+										span 2.900.000 vnđ
 			.row
 				.col-12
 					+pagination
+	.ldp-banner-2
+		a(href="#")
+			img(src="./assets/banner_2.jpg", alt="")
 	section.block-branch
 		.container
-			.row
-				.col-12
+			.block-title
+				h2.main-title Hệ thống đang sale
+				.province-select
+					span Lọc tỉnh thành
 					select#province-select(name="province" data-url="/test")
 						option Chọn tỉnh thành
 						option(value='1') Hồ Chí Minh
 						option(value='2') Hà Nội
 						option(value='3') Đà Nẵng
+			.row.no-gutters
+				.col-lg-6
+					.branch-item
+						.logo
+							img(src="./assets/logo.svg", alt="")
+						.name
+							h3 Skechers Aeon Binh Tân
+						.direction
+							a(href="http://maps.google.com/?q=10.8443976,106.6618196" target="_blank") Chỉ đường
+				.col-lg-6
+					.branch-item
+						.logo
+							img(src="./assets/logo.svg", alt="")
+						.name
+							h3 Skechers Aeon Binh Tân
+						.direction
+							a(href="http://maps.google.com/?q=10.8443976,106.6618196" target="_blank") Chỉ đường
+				.col-lg-6
+					.branch-item
+						.logo
+							img(src="./assets/logo.svg", alt="")
+						.name
+							h3 Skechers Aeon Binh Tân
+						.direction
+							a(href="http://maps.google.com/?q=10.8443976,106.6618196" target="_blank") Chỉ đường
+				.col-lg-6
+					.branch-item
+						.logo
+							img(src="./assets/logo.svg", alt="")
+						.name
+							h3 Skechers Aeon Binh Tân
+						.direction
+							a(href="http://maps.google.com/?q=10.8443976,106.6618196" target="_blank") Chỉ đường
+				.col-lg-6
+					.branch-item
+						.logo
+							img(src="./assets/logo.svg", alt="")
+						.name
+							h3 Skechers Aeon Binh Tân
+						.direction
+							a(href="http://maps.google.com/?q=10.8443976,106.6618196" target="_blank") Chỉ đường
+				.col-lg-6
+					.branch-item
+						.logo
+							img(src="./assets/logo.svg", alt="")
+						.name
+							h3 Skechers Aeon Binh Tân
+						.direction
+							a(href="http://maps.google.com/?q=10.8443976,106.6618196" target="_blank") Chỉ đường
+				.col-lg-6
+					.branch-item
+						.logo
+							img(src="./assets/logo.svg", alt="")
+						.name
+							h3 Skechers Aeon Binh Tân
+						.direction
+							a(href="http://maps.google.com/?q=10.8443976,106.6618196" target="_blank") Chỉ đường
+				.col-lg-6
+					.branch-item
+						.logo
+							img(src="./assets/logo.svg", alt="")
+						.name
+							h3 Skechers Aeon Binh Tân
+						.direction
+							a(href="http://maps.google.com/?q=10.8443976,106.6618196" target="_blank") Chỉ đường
+				.col-lg-6
+					.branch-item
+						.logo
+							img(src="./assets/logo.svg", alt="")
+						.name
+							h3 Skechers Aeon Binh Tân
+						.direction
+							a(href="http://maps.google.com/?q=10.8443976,106.6618196" target="_blank") Chỉ đường
+				.col-lg-6
+					.branch-item
+						.logo
+							img(src="./assets/logo.svg", alt="")
+						.name
+							h3 Skechers Aeon Binh Tân
+						.direction
+							a(href="http://maps.google.com/?q=10.8443976,106.6618196" target="_blank") Chỉ đường
+
+			.row
 				.col-12
-					.branch-item
-						h3 branch 1
-					.branch-item
-						h3 branch 2
-					.branch-item
-						h3 branch 3
-					.branch-item
-						h3 branch 4
-					.branch-item
-						h3 branch 5
+					+pagination
 block scripts
