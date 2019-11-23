@@ -21,7 +21,7 @@ const ajaxPaginationProduct = () => {
 			url: url,
 			type: 'GET',
 			success: function(res) {
-				$('.block-product').html($(res).find('.block-product').html());
+				$('.block-product').html($(res).html());
 			}
 		})
 	})
@@ -39,7 +39,7 @@ const ajaxSelectProvince = () => {
 			},
 			type: 'POST',
 			success: function(res) {
-				$('.block-branch').html($(res).find('.block-branch').html());
+				$('.block-branch').html($(res).html());
 				const currentUrl = new URL(window.location.href);
 				const search = window.location.search;
 				const params = new URLSearchParams(search)
