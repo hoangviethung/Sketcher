@@ -14,7 +14,7 @@ trunk/MainProject.ServiceAdmin/obj/
 trunk/MainProject.Web/bin/
 trunk/MainProject.Web/obj/
 
-tags/node_modules
-tags/bower_components
-tags/.idea
-tags/.vscode
+tags/**/**/node_modules
+tags/**/**/bower_components
+tags/**/**/.idea
+tags/**/**/.vscode

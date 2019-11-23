@@ -1,0 +1,21 @@
+{
+	"build": true,
+	"filePath": [
+		"./src/about.pug"
+	],
+	"vendor": {
+		"font": [
+			"src/fonts/**",
+			"bower_components/mdi/fonts/**"
+		],
+		"js": [
+			"bower_components/object-fit-images/dist/ofi.browser.js",
+			"bower_components/lazysizes/lazysizes.js",
+			"bower_components/lazysizes/plugins/unveilhooks/ls.unveilhooks.js",
+			"bower_components/swiper/dist/js/swiper.js"
+		],
+		"css": [
+			"bower_components/swiper/dist/css/swiper.css"
+		]
+	}
+}
