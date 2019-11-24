@@ -18,6 +18,20 @@ const ajaxPaginationProduct = () => {
 	})
 }
 
+const ajaxPaginationBranch = () => {
+	$('body').on('click', '.block-branch .pagination-list li', function(e) {
+		e.preventDefault();
+		const url = $(this).find('a').attr('href');
+		$.ajax({
+			url: url,
+			type: 'GET',
+			success: function(res) {
+				$('.block-branch').html($(res).html());
+			}
+		})
+	})
+}
+
 const ajaxSelectProvince = () => {
 	$('body').on('change', '#province-select', function() {
 		const provinceId = $(this).val();
@@ -101,6 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	objectFitImages('.ofcv');
 	objectFitImages('.ofct');
 	ajaxPaginationProduct();
+	ajaxPaginationBranch();
 	ajaxSelectProvince();
 	LandinPageSlider();
 	new WOW({
