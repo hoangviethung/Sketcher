@@ -106,9 +106,18 @@ const LandinPageSlider = () => {
 	let swiper = new Swiper('.ldp-banner .swiper-container', swiperOptions)
 }
 
-// const WoWJS = () => {
-// 	return 
-// }
+const WoWJS = () => {
+	return new WOW({
+		boxClass: 'wow', // animated element css class (default is wow)
+		animateClass: 'animated', // animation css class (default is animated)
+		offset: 250, // distance to the element when triggering the animation (default is 0)
+		callback: function(box) {
+			// the callback is fired every time an animation is started
+			// the argument that is passed in is the DOM node being animated
+		},
+	}).init();
+}
+
 // ==> Call functions here
 document.addEventListener('DOMContentLoaded', () => {
 	Loading();
@@ -118,13 +127,5 @@ document.addEventListener('DOMContentLoaded', () => {
 	ajaxPaginationBranch();
 	ajaxSelectProvince();
 	LandinPageSlider();
-	new WOW({
-		boxClass: 'wow', // animated element css class (default is wow)
-		animateClass: 'animated', // animation css class (default is animated)
-		offset: 250, // distance to the element when triggering the animation (default is 0)
-		callback: function(box) {
-			// the callback is fired every time an animation is started
-			// the argument that is passed in is the DOM node being animated
-		},
-	}).init();
+	WoWJS();
 });
