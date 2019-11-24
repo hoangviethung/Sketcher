@@ -18,17 +18,17 @@
 		}
 	}
 
-	// .block-hot-product-item {
-	// 	&:hover {
-	// 		a {
-	// 			box-shadow: 0 0 8px rgba(black, .2);
+	.block-hot-product-item {
+		&:hover {
+			a {
+				box-shadow: 0 0 8px rgba(black, .2);
 
-	// 			img {
-	// 				transform: scale(1.1);
-	// 			}
-	// 		}
-	// 	}
-	// }
+				img {
+					transform: scale(1.1);
+				}
+			}
+		}
+	}
 
 	.banner {
 		margin-top: 60px;
