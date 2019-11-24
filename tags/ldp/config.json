@@ -18,7 +18,7 @@
 		],
 		"css": [
 			"bower_components/swiper/dist/css/swiper.css",
-			"bower_components/animate.css/animate.css"
+			"bower_components/wow/css/libs/animate.css"
 		]
 	}
 }

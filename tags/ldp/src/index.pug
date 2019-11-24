@@ -20,26 +20,26 @@ block banner,breadcrumb
 block main
 	section.block-hot-product
 		.container
-			h2.main-title.text-center Sản phẩm bán chạy
+			h2.main-title.text-center.wow.fadeInUp Sản phẩm bán chạy
 			.row
-				.col-6.col-md-3.block-hot-product-item
+				.col-6.col-md-3.block-hot-product-item.wow.fadeInUp(data-wow-delay="0.15s")
 					a(href="#")
 						img(src="./assets/hot_product_1.jpg", alt="")
-				.col-6.col-md-3.block-hot-product-item
+				.col-6.col-md-3.block-hot-product-item.wow.fadeInUp(data-wow-delay="0.25s")
 					a(href="#")
 						img(src="./assets/hot_product_2.jpg", alt="")
-				.col-6.col-md-3.block-hot-product-item
+				.col-6.col-md-3.block-hot-product-item.wow.fadeInUp(data-wow-delay=".35s")
 					a(href="#")
 						img(src="./assets/hot_product_3.jpg", alt="")
-				.col-6.col-md-3.block-hot-product-item
+				.col-6.col-md-3.block-hot-product-item.wow.fadeInUp(data-wow-delay="0.45s")
 					a(href="#")
 						img(src="./assets/hot_product_4.jpg", alt="")
-			.banner
+			.banner.wow.fadeInUp
 				a(href="#")
 					img(src="./assets/banner_2.jpg", alt="")
 	section.block-product
 		.container
-			h2.main-title.text-center Sản phẩm khuyến mãi
+			h2.main-title.text-center.wow.fadeInUp Sản phẩm khuyến mãi
 			.row
 				-for(let i = 1; i < 25; i++)
 					.col-6.col-md-4.col-lg-3
@@ -55,21 +55,21 @@ block main
 			.row
 				.col-12
 					+pagination
-	.ldp-banner-2
+	.ldp-banner-2.wow.fadeInUp
 		a(href="#")
-			img(src="./assets/banner_2.jpg", alt="")
+			img(src="./assets/banner_3.jpg", alt="")
 	section.block-branch
 		.container
 			.block-title
-				h2.main-title Hệ thống đang sale
+				h2.main-title.wow.fadeInUp Hệ thống đang sale
 				.province-select
-					span Lọc tỉnh thành
-					select#province-select(name="province" data-url="/test")
+					span.wow.fadeInUp(data-wow-delay="0.1s") Lọc tỉnh thành
+					select#province-select.wow.fadeInUp(data-wow-delay="0.2s" name="province" data-url="/test")
 						option Chọn tỉnh thành
 						option(value='1') Hồ Chí Minh
 						option(value='2') Hà Nội
 						option(value='3') Đà Nẵng
-			.row.no-gutters
+			.row.no-gutters.wow.fadeInUp
 				.col-lg-6
 					.branch-item
 						.logo
