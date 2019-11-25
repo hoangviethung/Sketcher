@@ -11,12 +11,6 @@ const ajaxPaginationProduct = () => {
 		$.ajax({
 			url: url,
 			type: 'GET',
-			beforeSend: function(res) {
-				$('.block-product .container').addClass('ajax-loading');
-			},
-			complete: function(res) {
-				$('.block-product .container').removeClass('ajax-loading');
-			},
 			success: function(res) {
 				$('.block-product .container').html($(res).find('.container').html());
 			}
