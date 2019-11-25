@@ -43,7 +43,7 @@
 		&:hover {
 			a {
 				background: #DCDCDC;
-				color: map_get($mau, main);
+				color: map_get($mau, main)!important;
 				border: 1px solid lighten(#707070, 10%);
 			}
 		}
