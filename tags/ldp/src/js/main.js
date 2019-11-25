@@ -12,9 +12,15 @@ const ajaxPaginationProduct = () => {
 			url: url,
 			type: 'GET',
 			success: function(res) {
+				$('body').css({
+					'overflow': 'hidden'
+				})
 				$('.block-product .container').html($(res).find('.container').html());
+			},
+			complete: function(res) {
+				$('body').removeAttr('style');
 			}
-		})
+		});
 	})
 }
 
@@ -112,6 +118,29 @@ const LandinPageSlider = () => {
 	let swiper = new Swiper('.ldp-banner .swiper-container', swiperOptions)
 }
 
+const toggleGoTopButton = () => {
+	let currentScroll = document.querySelector("body").clientHeight - window.innerHeight;
+	if (window.scrollY > 700 || window.scrollY === currentScroll) {
+		document.getElementById("go-top").style.display = "flex";
+		setTimeout(() => {
+			document.getElementById("go-top").classList.add("show");
+		}, 0);
+	} else {
+		document.getElementById("go-top").style.display = "none";
+		document.getElementById("go-top").classList.remove("show");
+	}
+}
+
+const goTop = () => {
+	let goTopButton = document.getElementById("go-top");
+	goTopButton.addEventListener("click", () => {
+		window.scrollTo({
+			top: 0,
+			behavior: "smooth"
+		});
+	});
+}
+
 const customFancybox = () => {
 	$('[data-fancybox]').fancybox({
 		hash: false,
@@ -132,13 +161,19 @@ const WoWJS = () => {
 
 // ==> Call functions here
 document.addEventListener('DOMContentLoaded', () => {
-	Loading();
-	customFancybox();
 	objectFitImages('.ofcv');
 	objectFitImages('.ofct');
+	Loading();
+	customFancybox();
+	toggleGoTopButton();
+	goTop();
 	ajaxPaginationProduct();
 	ajaxPaginationBranch();
 	ajaxSelectProvince();
 	LandinPageSlider();
 	WoWJS();
 });
+
+window.addEventListener('scroll', () => {
+	toggleGoTopButton();
+})

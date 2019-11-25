@@ -71,9 +71,8 @@ const homeVideoSlider = () => {
 };
 
 const toggleGoTopButton = () => {
-	let currentScroll =
-		document.querySelector("body").clientHeight - window.innerHeight;
-	if (window.scrollY > 700 || window.scrollY === currentScroll) {
+	let currentScroll = document.querySelector("body").clientHeight - window.innerHeight;
+	if (window.scrollY > 500 || window.scrollY === currentScroll) {
 		document.getElementById("go-top").style.display = "flex";
 		setTimeout(() => {
 			document.getElementById("go-top").classList.add("show");
