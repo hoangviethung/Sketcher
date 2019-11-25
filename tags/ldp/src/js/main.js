@@ -4,6 +4,7 @@ import Loading from '../../vendors/loading';
 // getBranch
 // provinceId
 
+
 const ajaxPaginationProduct = () => {
 	$('body').on('click', '.block-product .pagination-list li', function(e) {
 		e.preventDefault();
@@ -11,14 +12,14 @@ const ajaxPaginationProduct = () => {
 		$.ajax({
 			url: url,
 			type: 'GET',
+			beforeSend: function() {
+				$('.block-product .container').height($('.block-product .container').height())
+			},
 			success: function(res) {
-				$('body').css({
-					'overflow': 'hidden'
-				})
 				$('.block-product .container').html($(res).find('.container').html());
 			},
-			complete: function(res) {
-				$('body').removeAttr('style');
+			complete: function() {
+				$('.block-product .container').removeAttr('style');
 			}
 		});
 	})
