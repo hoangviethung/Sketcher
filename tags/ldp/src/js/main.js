@@ -44,12 +44,12 @@ const ajaxSelectProvince = () => {
 			type: 'POST',
 			success: function(res) {
 				$('.block-branch .branch-list').html($(res).html());
-				const currentUrl = new URL(window.location.href);
-				const search = window.location.search;
-				const params = new URLSearchParams(search)
-				params.set('provinceid', provinceId);
-				currentUrl.search = params.toString();
-				window.history.pushState(null, '', currentUrl.toString());
+				// const currentUrl = new URL(window.location.href);
+				// const search = window.location.search;
+				// const params = new URLSearchParams(search)
+				// params.set('provinceid', provinceId);
+				// currentUrl.search = params.toString();
+				// window.history.pushState(null, '', currentUrl.toString());
 			}
 		})
 	})
