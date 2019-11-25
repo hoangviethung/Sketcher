@@ -17,9 +17,7 @@ const ajaxPaginationProduct = () => {
 			},
 			success: function(res) {
 				$('.block-product .container').html($(res).find('.container').html());
-			},
-			complete: function() {
-				$('.block-product .container').removeAttr('style');
+				$(window).scrollTop($('.block-product').offset().top)
 			}
 		});
 	})
