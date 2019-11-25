@@ -78,6 +78,7 @@ body {
 .ajax-loading {
 	position: relative;
 	overflow: hidden;
+	height: 400px;
 
 	&:before {
 		content: '';

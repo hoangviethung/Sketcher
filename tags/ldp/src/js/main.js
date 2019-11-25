@@ -13,11 +13,9 @@ const ajaxPaginationProduct = () => {
 			type: 'GET',
 			beforeSend: function(res) {
 				$('.block-product .container').addClass('ajax-loading');
-				$('.block-product .container').height($('.block-product .container').height())
 			},
 			complete: function(res) {
 				$('.block-product .container').removeClass('ajax-loading');
-				$('.block-product .container').removeAttr('style');
 			},
 			success: function(res) {
 				$('.block-product .container').html($(res).find('.container').html());
@@ -35,11 +33,9 @@ const ajaxPaginationBranch = () => {
 			type: 'GET',
 			beforeSend: function(res) {
 				$('.block-branch .branch-list').addClass('ajax-loading');
-				$('.block-branch .branch-list').height($('.block-branch .branch-list').height())
 			},
 			complete: function(res) {
 				$('.block-branch .branch-list').removeClass('ajax-loading');
-				$('.block-branch .branch-list').removeAttr('style');
 			},
 			success: function(res) {
 				$('.block-branch .branch-list').html($(res).html());
@@ -60,11 +56,9 @@ const ajaxSelectProvince = () => {
 			type: 'POST',
 			beforeSend: function(res) {
 				$('.block-branch .branch-list').addClass('ajax-loading');
-				$('.block-branch .branch-list').height($('.block-branch .branch-list').height())
 			},
 			complete: function(res) {
 				$('.block-branch .branch-list').removeClass('ajax-loading');
-				$('.block-branch .branch-list').removeAttr('style');
 			},
 			success: function(res) {
 				$('.block-branch .branch-list').html($(res).html());
