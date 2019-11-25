@@ -112,6 +112,12 @@ const LandinPageSlider = () => {
 	let swiper = new Swiper('.ldp-banner .swiper-container', swiperOptions)
 }
 
+const customFancybox = () => {
+	$('[data-fancybox]').fancybox({
+		hash: false,
+	})
+}
+
 const WoWJS = () => {
 	return new WOW({
 		boxClass: 'wow', // animated element css class (default is wow)
@@ -127,6 +133,7 @@ const WoWJS = () => {
 // ==> Call functions here
 document.addEventListener('DOMContentLoaded', () => {
 	Loading();
+	customFancybox();
 	objectFitImages('.ofcv');
 	objectFitImages('.ofct');
 	ajaxPaginationProduct();
