@@ -15,7 +15,7 @@ const Loading = () => {
 	};
 
 	const progressing = () => {
-		let n = 100 / imagesLength * (counter += 1);
+		let n = Math.round(100 / imagesLength * (counter += 1));
 		if (progress.style.width = `${n}`, progressStat.innerHTML = `${n}`, counter === imagesLength) {
 			return turnOffLoadingScreen();
 		}
