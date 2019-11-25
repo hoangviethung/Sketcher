@@ -26,7 +26,7 @@ const ajaxPaginationBranch = () => {
 			url: url,
 			type: 'GET',
 			success: function(res) {
-				$('.block-branch .branch-list').html($(res).find('.branch-list').html());
+				$('.block-branch .branch-list').html($(res).html());
 			}
 		})
 	})
@@ -43,7 +43,7 @@ const ajaxSelectProvince = () => {
 			},
 			type: 'POST',
 			success: function(res) {
-				$('.block-branch .branch-list').html($(res).find('.branch-list').html());
+				$('.block-branch .branch-list').html($(res).html());
 				const currentUrl = new URL(window.location.href);
 				const search = window.location.search;
 				const params = new URLSearchParams(search)
