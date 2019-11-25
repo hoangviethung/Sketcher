@@ -2,6 +2,18 @@
 	.swiper-slide {
 		overflow: hidden;
 	}
+
+	.desktop {
+		@media (max-width: 768px) {
+			display: none;
+		}
+	}
+
+	.mobile {
+		@media (min-width: 769px) {
+			display: none;
+		}
+	}
 }
 
 .block-hot-product {

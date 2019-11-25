@@ -6,17 +6,12 @@ block var
 
 block banner,breadcrumb
 	.ldp-banner
-		.swiper-container
-			.swiper-wrapper
-				.swiper-slide
-					a.slide-inner(href="#" style="background-image: url(./assets/banner.jpg)")
-						img(src="./assets/banner.jpg", alt="")
-				.swiper-slide
-					a.slide-inner(href="#" style="background-image: url(./assets/banner.jpg)")
-						img(src="./assets/banner.jpg", alt="")
-				.swiper-slide
-					a.slide-inner(href="#" style="background-image: url(./assets/banner.jpg)")
-						img(src="./assets/banner.jpg", alt="")
+		.desktop
+			a(href="#")
+				img(src="./assets/banner.jpg", alt="")
+		.mobile
+			a(href="#")
+				img(src="./assets/banner_mobile.jpg", alt="")
 block main
 	section.block-hot-product
 		.container
