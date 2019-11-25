@@ -12,9 +12,6 @@ const ajaxPaginationProduct = () => {
 		$.ajax({
 			url: url,
 			type: 'GET',
-			beforeSend: function() {
-				$('.block-product .container').height($('.block-product .container').height())
-			},
 			success: function(res) {
 				$('.block-product .container').html($(res).find('.container').html());
 				$(window).scrollTop($('.block-product').offset().top)
