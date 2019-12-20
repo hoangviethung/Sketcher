@@ -83,9 +83,11 @@ footer {
 				}
 
 				svg {
+					background-color: white;
+					border-radius: 50%;
+
 					.icon {
 						fill: map_get($mau, main);
-						;
 						stroke-dasharray: 120;
 						stroke-width: 1px;
 						stroke-dashoffset: 0;
@@ -102,9 +104,9 @@ footer {
 
 				&:hover {
 					svg {
-						.icon {
-							animation: iconSocial 1.2s linear;
-						}
+						// .icon {
+						// 	animation: iconSocial 1.2s linear;
+						// }
 
 						.background {
 							stroke-dashoffset: 0;
