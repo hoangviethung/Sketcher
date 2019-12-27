@@ -48,12 +48,15 @@ header {
 				color: #1c1c1c;
 				text-transform: uppercase;
 				transition: all .2s ease-in-out;
+				padding: 5px 0;
+				border-bottom: 2px solid transparent;
 			}
 
 			&.active,
 			&:hover {
 				a {
 					color: map-get($mau, main);
+					border-bottom: 2px solid map-get($mau, main);
 				}
 			}
 
