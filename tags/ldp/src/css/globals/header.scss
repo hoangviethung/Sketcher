@@ -1,8 +1,8 @@
 header {
 	.row {
-		height: 110px;
+		height     : 110px;
 		align-items: center;
-		padding: 18px 0;
+		padding    : 18px 0;
 
 		@media (max-width: 1199.98px) {
 			height: 85px;
@@ -14,17 +14,17 @@ header {
 	}
 
 	.logo {
-		height: 24px;
+		height  : 24px;
 		position: relative;
 
 		a {
-			height: 100%;
+			height : 100%;
 			display: flex;
 		}
 
 		svg {
 			height: 100%;
-			width: auto;
+			width : auto;
 		}
 
 		@media (max-width: 1024px) {
@@ -39,24 +39,25 @@ header {
 
 	.header-nav {
 		list-style-type: none;
-		padding-left: 0;
-		display: flex;
+		padding-left   : 0;
+		display        : flex;
 
 		.header-nav-item {
 			a {
-				font-size: 18px;
-				color: #1c1c1c;
+				font-size     : 18px;
+				color         : #1c1c1c;
 				text-transform: uppercase;
-				transition: all .2s ease-in-out;
-				padding: 5px 0;
-				border-bottom: 2px solid transparent;
+				transition    : all .2s ease-in-out;
+				padding       : 5px 20px;
+				border-bottom : 2px solid transparent;
 			}
 
 			&.active,
 			&:hover {
 				a {
-					color: map-get($mau, main);
-					border-bottom: 2px solid map-get($mau, main);
+					background   : map-get($mau, main);
+					color        : #ffffff;
+					border-radius: 20px;
 				}
 			}
 
