@@ -22,7 +22,8 @@ header {
 			display: flex;
 		}
 
-		svg {
+		svg,
+		img {
 			height: 100%;
 			width : auto;
 		}
@@ -76,30 +77,6 @@ header {
 
 	&.new-header {
 		background: #002d56;
-
-		.row {
-			height: unset;
-
-			@media (max-width: 1199.98px) {
-				height: unset
-			}
-
-			@media (max-width: 768px) {
-				height: unset;
-			}
-		}
-
-		.logo {
-			height: unset;
-
-			@media (max-width: 1024.98px) {
-				height: unset;
-			}
-
-			@media (max-width: 767.98px) {
-				width: 50%;
-			}
-		}
 
 		.header-nav {
 			a {

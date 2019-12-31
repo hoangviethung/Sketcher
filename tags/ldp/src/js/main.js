@@ -198,6 +198,8 @@ function activeMenuByUrl() {
 
 		if (url === (allHref)) {
 			$(this).parents('.header-nav-item').addClass('active');
+		} else if (url === "/") {
+			console.log('Okay');
 		}
 	})
 }
