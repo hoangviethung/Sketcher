@@ -205,6 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	ajaxSelectProvince();
 	LandinPageSlider();
 	WoWJS();
+	checkHeader();
 });
 
 window.addEventListener('scroll', () => {
