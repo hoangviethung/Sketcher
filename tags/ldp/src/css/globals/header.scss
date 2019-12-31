@@ -1,6 +1,4 @@
 header {
-	background: #002d56;
-
 	.row {
 		height     : 110px;
 		align-items: center;
@@ -17,6 +15,7 @@ header {
 
 	.logo {
 		position: relative;
+		height  : 24px;
 
 		a {
 			height : 100%;
@@ -29,7 +28,7 @@ header {
 		}
 
 		@media (max-width: 1024px) {
-			width: 50%;
+			height: 18px;
 		}
 	}
 
@@ -45,7 +44,7 @@ header {
 		.header-nav-item {
 			a {
 				font-size     : 18px;
-				color         : #ffffff;
+				color         : #1c1c1c;
 				text-transform: uppercase;
 				transition    : all .2s ease-in-out;
 				border-bottom : 2px solid transparent;
@@ -54,7 +53,8 @@ header {
 			&.active,
 			&:hover {
 				a {
-					color: #3462AB;
+					border-bottom: 2px solid #3462ab;
+					color        : #3462ab;
 				}
 			}
 
@@ -69,6 +69,33 @@ header {
 
 				+.header-nav-item {
 					margin-left: 20px;
+				}
+			}
+		}
+	}
+
+	&.new-header {
+		background: #002d56;
+
+		.logo {
+			height: unset;
+
+			@media (max-width: 1024.98px) {
+				width : 50%;
+				height: unset;
+			}
+		}
+
+		.header-nav {
+			a {
+				color: #ffffff;
+			}
+
+			&.active,
+			&:hover {
+				a {
+					border-bottom: 2px solid #3462ab;
+					color        : #3462ab;
 				}
 			}
 		}
