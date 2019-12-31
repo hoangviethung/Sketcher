@@ -1,4 +1,6 @@
 header {
+	background: #002d56;
+
 	.row {
 		height     : 110px;
 		align-items: center;
@@ -14,7 +16,6 @@ header {
 	}
 
 	.logo {
-		height  : 24px;
 		position: relative;
 
 		a {
@@ -28,11 +29,7 @@ header {
 		}
 
 		@media (max-width: 1024px) {
-			height: 18px
-		}
-
-		@media (max-width: 767.98px) {
-			height: 12px;
+			width: 50%;
 		}
 	}
 
@@ -48,19 +45,16 @@ header {
 		.header-nav-item {
 			a {
 				font-size     : 18px;
-				color         : #1c1c1c;
+				color         : #ffffff;
 				text-transform: uppercase;
 				transition    : all .2s ease-in-out;
-				padding       : 5px 20px;
 				border-bottom : 2px solid transparent;
 			}
 
 			&.active,
 			&:hover {
 				a {
-					background   : map-get($mau, main);
-					color        : #ffffff;
-					border-radius: 20px;
+					color: #3462AB;
 				}
 			}
 
@@ -75,13 +69,6 @@ header {
 
 				+.header-nav-item {
 					margin-left: 20px;
-				}
-			}
-
-			@media (max-width: 767.98px) {
-				a {
-					font-size: 12px;
-					padding  : 5px 10px;
 				}
 			}
 		}
