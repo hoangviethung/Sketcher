@@ -3,8 +3,6 @@ import Loading from '../../vendors/loading';
 // getPage
 // getBranch
 // provinceId
-
-
 const ajaxPaginationProduct = () => {
 	$('body').on('click', '.block-product .pagination-list li', function(e) {
 		e.preventDefault();
