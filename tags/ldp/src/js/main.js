@@ -203,6 +203,11 @@ function activeMenuByUrl() {
 		}
 	})
 }
+
+function checkHeader() {
+	const namePage = $('.index-2');
+	namePage.parents('main').siblings('header').addClass('new-header');
+}
 // ==> Call functions here
 document.addEventListener('DOMContentLoaded', () => {
 	SVG();
@@ -218,6 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	LandinPageSlider();
 	WoWJS();
 	activeMenuByUrl();
+	checkHeader();
 });
 
 window.addEventListener('scroll', () => {
