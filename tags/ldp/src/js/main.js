@@ -191,6 +191,18 @@ function SVG() {
 	});
 }
 
+// ACTIVE ITEM MENU BY URL
+function activeMenuByUrl() {
+	const url = window.location.pathname;
+	const listLink = $('.header-nav .header-nav-item a');
+	listLink.each(function() {
+		let allHref = $(this).attr('href');
+
+		if (url === (allHref)) {
+			$(this).parents('.header-nav-item').addClass('active');
+		}
+	})
+}
 // ==> Call functions here
 document.addEventListener('DOMContentLoaded', () => {
 	SVG();
@@ -205,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	ajaxSelectProvince();
 	LandinPageSlider();
 	WoWJS();
-	checkHeader();
+	activeMenuByUrl();
 });
 
 window.addEventListener('scroll', () => {
