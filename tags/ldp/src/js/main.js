@@ -39,9 +39,9 @@ const ajaxPaginationBranch = () => {
 }
 
 const ajaxSelectProvince = () => {
-	$('body').on('change', '#province-select, #agency-select', function() {
-		const provinceId = $(this).val();
-		const AgencyId = $(this).val();
+	$('body').on('change', '.block-branch .filter select', function() {
+		const provinceId = $('#province-select').val();
+		const AgencyId = $('#agency-select').val();
 		const url = $(this).attr('data-url');
 		$.ajax({
 			url: url,
@@ -209,6 +209,7 @@ function checkHeader() {
 	const namePage = $('.index-2');
 	namePage.parents('main').siblings('header').addClass('new-header');
 }
+
 // ==> Call functions here
 document.addEventListener('DOMContentLoaded', () => {
 	SVG();
