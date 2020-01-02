@@ -39,34 +39,15 @@ const ajaxPaginationBranch = () => {
 }
 
 const ajaxSelectProvince = () => {
-	$('body').on('change', '#province-select', function() {
+	$('body').on('change', '#province-select, #agency-select', function() {
 		const provinceId = $(this).val();
+		const AgencyId = $(this).val();
 		const url = $(this).attr('data-url');
 		$.ajax({
 			url: url,
 			data: {
 				ProvinceId: provinceId,
-			},
-			type: 'POST',
-			beforeSend: function(res) {
-				$('.block-branch .branch-list').addClass('ajax-loading');
-			},
-			complete: function(res) {
-				$('.block-branch .branch-list').removeClass('ajax-loading');
-			},
-			success: function(res) {
-				$('.block-branch .branch-list').html($(res).html());
-			}
-		})
-	})
-
-	$('body').on('change', '#agency-select', function() {
-		const url = $(this).attr('data-url');
-		const AgencyId = $(this).val();
-		$.ajax({
-			url: url,
-			data: {
-				AgencyId: AgencyId
+				AgencyId: AgencyId,
 			},
 			type: 'POST',
 			beforeSend: function(res) {
