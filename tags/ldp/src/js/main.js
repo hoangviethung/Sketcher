@@ -42,10 +42,12 @@ const ajaxSelectProvince = () => {
 	$('body').on('change', '#province-select', function() {
 		const provinceId = $(this).val();
 		const url = $(this).attr('data-url');
+		const AgencyId = $(this).val();
 		$.ajax({
 			url: url,
 			data: {
-				ProvinceId: provinceId
+				ProvinceId: provinceId,
+				AgencyId: AgencyId
 			},
 			type: 'POST',
 			beforeSend: function(res) {
