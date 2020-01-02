@@ -162,10 +162,6 @@
 
 		.main-title {
 			margin-bottom: 0;
-
-			@media (max-width: 1024.98px) {
-				margin-bottom: 15px;
-			}
 		}
 
 		.filter {
@@ -173,9 +169,11 @@
 			flex-wrap  : wrap;
 			margin-left: auto;
 
-			@media (max-width: 1024.98px) {
-				flex     : 0 0 100%;
-				max-width: 100%;
+			@media (max-width: 1440px) {
+				margin-top : 15px;
+				margin-left: 0;
+				flex       : 0 0 100%;
+				max-width  : 100%;
 			}
 		}
 
