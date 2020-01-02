@@ -196,10 +196,9 @@ function activeMenuByUrl() {
 	listLink.each(function() {
 		let allHref = $(this).attr('href');
 
-		if (url === (allHref)) {
+		if (url === allHref) {
 			$(this).parents('.header-nav-item').addClass('active');
-		} else if (url === "/") {
-			console.log('Okay');
+			$('.header-nav-item').removeClass('default')
 		}
 	})
 }
