@@ -3,7 +3,7 @@
 		padding-left: 0;
 		list-style-type: none;
 		display: flex;
-		justify-content: flex-end;
+		justify-content: center;
 	}
 
 	.pagination-next {
@@ -37,10 +37,11 @@
 			align-items: center;
 		}
 
-		&.active, &:hover {
+		&.active,
+		&:hover {
 			a {
-				background: #DCDCDC;
-				color: map_get($mau, main);
+				background: rgba(map-get($mau, main), .5);
+				color: white;
 				border: 1px solid map_get($mau, main);
 			}
 		}
