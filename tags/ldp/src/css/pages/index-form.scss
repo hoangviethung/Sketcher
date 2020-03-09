@@ -67,6 +67,12 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
+			transition: all .3s ease;
+
+			&:hover,
+			&:active {
+				background-color: darken(#D80202, 10%);
+			}
 		}
 	}
 

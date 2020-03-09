@@ -210,6 +210,11 @@ function checkHeader() {
 	namePage.parents('main').siblings('header').addClass('new-header');
 }
 
+
+const countdown = () => {
+	
+}
+
 // ==> Call functions here
 document.addEventListener('DOMContentLoaded', () => {
 	SVG();
