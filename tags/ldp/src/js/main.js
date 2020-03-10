@@ -212,7 +212,33 @@ function checkHeader() {
 
 
 const countdown = () => {
-	
+	const dateGroup = Array.from(document.querySelectorAll('.countdown-container'));
+	dateGroup.forEach(group => {
+		const endTimeString = group.getAttribute('data-time');
+		const endTime = new Date(endTimeString);
+
+		const period = setInterval(() => {
+			const currentTime = new Date();
+			const distance = endTime.getTime() - currentTime.getTime();
+
+			const days = Math.floor((distance / (1000 * 60 * 60 * 24)));
+			const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+			const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+			group.querySelector('#day').innerHTML = days;
+			group.querySelector('#hour').innerHTML = hours;
+			group.querySelector('#minute').innerHTML = minutes;
+			group.querySelector('#second').innerHTML = seconds;
+			if (distance <= 0) {
+				clearInterval(period);
+				group.innerHTML = `<div class="countdown-end">Đã hết thời gian ưu đãi</div>`;
+			}
+		}, 1000);
+	})
+
+
+
 }
 
 // ==> Call functions here
@@ -231,6 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	WoWJS();
 	activeMenuByUrl();
 	checkHeader();
+	countdown();
 });
 
 window.addEventListener('scroll', () => {

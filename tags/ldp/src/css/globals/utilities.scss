@@ -49,6 +49,10 @@ body {
 	text-transform: uppercase;
 	margin-bottom: 75px;
 
+	a {
+		color: #1c1c1c;
+	}
+
 	@media (max-width: 1659px) {
 		font-size: 45px;
 		margin-bottom: 70px;
